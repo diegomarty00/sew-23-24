@@ -15,3 +15,4 @@ Repositorio de la asignatura de SEW. Aquí podrás encontrar los validadores nec
 * [Herramienta Wave](http://wave.webaim.org/)
 * [Herramienta Achecks](https://achecks.org/achecker)
 
+Luego para la especifidad, se puede consultar [specificity](https://specificity.keegan.st/)

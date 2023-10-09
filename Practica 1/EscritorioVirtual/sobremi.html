@@ -16,40 +16,39 @@
 
 <body>
     <!-- Datos con el contenidos que aparece en el navegador -->
-    <h1>Escritorio Virtual</h1>
-	<nav>
-		<a href="index.html" tabindex="1" accesskey= "i">Inicio</a>
-		<a href="sobremi.html" tabindex="2" class="active" accesskey= "s">Sobre mi</a>
-		<a href="noticias.html" tabindex="3" accesskey= "n">Noticias</a>
-		<a href="agenda.html" tabindex="4" accesskey= "a">Agenda</a>
-		<a href="meteorologia.html" tabindex="5" accesskey= "m">Meteorología</a>
-		<a href="viajes.html" tabindex="6" accesskey= "v">Viajes</a>
-		<a href="juegos.html" tabindex="7" accesskey= "j">Juegos</a>
-	</nav>
+	<header>
+		<h1>Escritorio Virtual</h1>
+		<nav>
+			<a href="index.html" tabindex="1" accesskey= "i">Inicio</a>
+			<a href="sobremi.html" tabindex="2" class="active" accesskey= "s">Sobre mi</a>
+			<a href="noticias.html" tabindex="3" accesskey= "n">Noticias</a>
+			<a href="agenda.html" tabindex="4" accesskey= "a">Agenda</a>
+			<a href="meteorologia.html" tabindex="5" accesskey= "m">Meteorología</a>
+			<a href="viajes.html" tabindex="6" accesskey= "v">Viajes</a>
+			<a href="juegos.html" tabindex="7" accesskey= "j">Juegos</a>
+		</nav>
+	</header>
 	
-	
-	<h2>Datos personales</h2>		
-		<h3>Nombre</h3>
-		<P>Diego Martínez Menéndez</p>
-		<h3>Estudios</h3>
-		<p>Estudiante Informática del Software</p>
-		<h3>Correo</h3>
-		<p>uo270457@uniovi.es</p>
-		<p>GitHub: <a href="https://github.com/diegomarty00">DiegoMarty00</a> </p>
-		
-		<picture>
-			<source type="image/jpg" media="(max-width: 465px)" srcset="multimedia/imagenes/FotoPerfilDiego-25x100.jpg" />
-			<source type="image/jpg" media="(max-width: 799px)" srcset="multimedia/imagenes/FotoPerfilDiego-50x100.jpg" />
-			<source type="image/jpg" media="(min-width: 800px)" srcset="multimedia/imagenes/FotoPerfilDiego.jpg" />
-			<img src="multimedia/imagenes/FotoPerfilDiego.jpg" alt="Foto de Perfil Diego" />
-		</picture>
-		
-		<audio controls loop>
-			<source src="multimedia/audios/wii-mii.mp3" type="audio/mpeg">
-			<source src="multimedia/audios/wii-mii.wav" type="audio/wav">
-			<source src="multimedia/audios/wii-mii.ogg" type="audio/ogg">
-		</audio>
-		
+	<main>
+		<h2>Datos personales</h2>		
+			<P>Nombre: Diego Martínez Menéndez</p>
+			<p>Estudios: Estudiante Informática del Software</p>
+			<p>Correo: <a href="mailto:uo270457@uniovi.es">uo270457@uniovi.es</a></p>
+			<p>GitHub: <a href="https://github.com/diegomarty00">DiegoMarty00</a> </p>
+			
+			<picture>
+				<source type="image/jpg" media="(max-width: 465px)" srcset="multimedia/imagenes/FotoPerfilDiego-25x100.jpg" />
+				<source type="image/jpg" media="(max-width: 799px)" srcset="multimedia/imagenes/FotoPerfilDiego-50x100.jpg" />
+				<source type="image/jpg" media="(min-width: 800px)" srcset="multimedia/imagenes/FotoPerfilDiego.jpg" />
+				<img src="multimedia/imagenes/FotoPerfilDiego.jpg" alt="Foto de Perfil Diego" />
+			</picture>
+			
+			<audio controls loop>
+				<source src="multimedia/audios/wii-mii.mp3" type="audio/mpeg">
+				<source src="multimedia/audios/wii-mii.wav" type="audio/wav">
+				<source src="multimedia/audios/wii-mii.ogg" type="audio/ogg">
+			</audio>
+	</main>	
 	
 	<h2>Otros datos de interes</h2>
 		<h3>Aficiones</h3>
@@ -95,65 +94,67 @@
 		</ol>
 		<h3>Asignaturas favoritas</h3>
 		<dl>
-			<dt>SEW</dt><dd>TEXTOLARGO</dd>
-			<dt>CPM</dt><dd>Computación Persona Máquina</dd>
-			<dt>DS</dt><dd>Diseño del Software</dd>
-			<dt>TPP</dt><dd>Tenología y Paradigmas de la Programación</dd>
-			<dt>RI</dt><dd>Repositorios de la Información</dd>
+			<dt>SEW</dt><dd>Es una de mis asignaturas favoritas porque se habla sobre como hacer un buen diseño de sitios web, para que los usuarios sepan utilizar y encontrar toda la información que se les puede llegar a ofrecer en dicho lugar.</dd>
+			<dt>CPM</dt><dd>Esta asignatura me ha gustado mucho debido a la actividad extra del curso, implementar un bingo, el cual implementé uno con la temática del Mercadona, y quedó muy buen implementado y redimensionado, ya que no use plantillas de diseño, tuve que diseñar la mia propia.</dd>
+			<dt>DS</dt><dd>Me ha gustado saber las mejores formas de optimizar el código de mi aplicación, haciendo que sea más facil de organizar las cosas, encontrarlas e incluso ampliar las tareas.</dd>
+			<dt>Alg</dt><dd>Me gusta el tema de optimizar el código, tanto reduciendo los tiempos de espera del usuario como la saturación del propio progama solicitando y piendo recursos del sistema.</dd>
+			<dt>RI</dt><dd>Gracias a esta asignatura entendí como organizar mejor los proyectos, y a raíz de esta asignatura, saqué otras asignaturas como IPS, donde la estructura era fundamental para el desarollo del proyecto.</dd>
 		</dl>
 		
-	<h2>Tiempo en ciudad natal</h2>
-	<p> Se puede consultar toda la información en <a href="https://www.tutiempo.net/clima/ws-80110.html">TuTiempo.net</a> </p>
-	<table>
-		<caption> Temperatura media Avilés  </caption>  
-		<thead>
-			<tr>    
-				<th scope="col" id="anios">Años</th>
-				<th scope="col" id="grados">Grados</th>
-			</tr>
-		<tbody>
-			<tr>    
-				<th scope="row" id="2013" headers="anios">2013  </th>  
-				<td headers="2013 grados">13.7  </td> 
-			</tr>
-			<tr>    
-				<th scope="row" id="2014" headers="anios">2014  </th>  
-				<td headers="2014 grados">14.5  </td>   
-			</tr>
-			<tr>    
-				<th scope="row" id="2015" headers="anios">2015  </th>  
-				<td headers="2015 grados">14.1  </td>   
-			</tr>
-			<tr>    
-				<th scope="row" id="2016" headers="anios">2016  </th>  
-				<td headers="2016 grados">13.8  </td>   
-			</tr>
-			<tr>    
-				<th scope="row" id="2017" headers="anios">2017  </th>  
-				<td headers="2017 grados">13.7  </td>    
-			</tr>
-			<tr>    
-				<th scope="row" id="2018" headers="anios">2018  </th>  
-				<td headers="2018 grados">13.8  </td>   
-			</tr>
-			<tr>    
-				<th scope="row" id="2019" headers="anios">2019  </th>  
-				<td headers="2019 grados">13.8  </td>   
-			</tr>
-			<tr>    
-				<th scope="row" id="2020" headers="anios">2020  </th>  
-				<td headers="2020 grados">14.3  </td>   
-			</tr>
-			<tr>    
-				<th scope="row" id="2021" headers="anios">2021  </th>  
-				<td headers="2021 grados">13.7  </td>   
-			</tr>
-			<tr>    
-				<th scope="row" id="2022" headers="anios">2022  </th>  
-				<td headers="2022 grados">14.6  </td>   
-			</tr>
+	<aside>
+		<h2>Tiempo en ciudad natal</h2>
+		<p> Se puede consultar toda la información en <a href="https://www.tutiempo.net/clima/ws-80110.html">TuTiempo.net</a> </p>
+		<table>
+			<caption> Temperatura media Avilés  </caption>  
+			<thead>
+				<tr>    
+					<th scope="col" id="anios">Años</th>
+					<th scope="col" id="grados">Grados</th>
+				</tr>
+			<tbody>
+				<tr>    
+					<th scope="row" id="2013" headers="anios">2013  </th>  
+					<td headers="2013 grados">13.7  </td> 
+				</tr>
+				<tr>    
+					<th scope="row" id="2014" headers="anios">2014  </th>  
+					<td headers="2014 grados">14.5  </td>   
+				</tr>
+				<tr>    
+					<th scope="row" id="2015" headers="anios">2015  </th>  
+					<td headers="2015 grados">14.1  </td>   
+				</tr>
+				<tr>    
+					<th scope="row" id="2016" headers="anios">2016  </th>  
+					<td headers="2016 grados">13.8  </td>   
+				</tr>
+				<tr>    
+					<th scope="row" id="2017" headers="anios">2017  </th>  
+					<td headers="2017 grados">13.7  </td>    
+				</tr>
+				<tr>    
+					<th scope="row" id="2018" headers="anios">2018  </th>  
+					<td headers="2018 grados">13.8  </td>   
+				</tr>
+				<tr>    
+					<th scope="row" id="2019" headers="anios">2019  </th>  
+					<td headers="2019 grados">13.8  </td>   
+				</tr>
+				<tr>    
+					<th scope="row" id="2020" headers="anios">2020  </th>  
+					<td headers="2020 grados">14.3  </td>   
+				</tr>
+				<tr>    
+					<th scope="row" id="2021" headers="anios">2021  </th>  
+					<td headers="2021 grados">13.7  </td>   
+				</tr>
+				<tr>    
+					<th scope="row" id="2022" headers="anios">2022  </th>  
+					<td headers="2022 grados">14.6  </td>   
+				</tr>
 
-	</table>	
+		</table>
+	</aside>	
 	
 	<h2>Publicidad</h2>
 
@@ -163,7 +164,9 @@
 
 	</video>
 	
-
+	<footer> 
+		<p>Copyright © 2023 Diego Martínez</p>
+	</footer>
 </body>
 
 </html>

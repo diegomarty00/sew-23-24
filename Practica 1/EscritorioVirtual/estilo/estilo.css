@@ -48,7 +48,7 @@ nav{
   	text-align: center;
   	padding: 1em;
 	font-size: 1.3em;
-	background-color: #EBF094;
+
 }
 
 /*Especificidad: 002*/
@@ -75,7 +75,6 @@ nav ul li a {
 
 /*Especificidad: 024, 014*/
 nav ul li a:hover:not(.active), nav ul li a:focus {
-  color: 304606;
   font-weight: bold;
 }
 

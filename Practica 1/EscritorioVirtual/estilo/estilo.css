@@ -23,6 +23,7 @@ body {
 /*Especificidad: 001*/
 header{
 	/*Mirar*/
+	color: #304606;
 	background-color: #EBF094;
 	display: flex;
 	flex-direction: row;

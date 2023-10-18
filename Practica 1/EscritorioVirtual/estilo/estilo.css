@@ -23,6 +23,7 @@ body {
 /*Especificidad: 001*/
 header{
 	/*Mirar*/
+	background-color: #EBF094;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -36,26 +37,51 @@ h1 {
 
 	background-color: #EBF094;
 	color: #304606;
-	padding: 2em; 
+	padding: 1em; 
 	text-align: center;     
 }
 
 /*Especificidad: 001*/
 nav{
-  	margin: 0.3em;
+  	margin: 0.5em;
   	overflow: hidden;
   	text-align: center;
-  	padding: 0.8em 1em;
+  	padding: 1em;
 	font-size: 1.3em;
 	background-color: #EBF094;
 }
 
-/*Especifidad: 022*/
-nav a:hover:not(.active) {
-  	background-color: #111;
+/*Especificidad: 002*/
+nav ul {
+  list-style-type: none;
+}
+
+/*Especificidad: 003*/
+nav ul li {
+  float: left;
+  margin-right: 0.5em;
+}
+
+/*Especificidad: 004*/
+nav ul li a {
+  padding: 0.25em 1em;
+  text-decoration: none; /* no underline */
+  background-color: #E6D1DC; 
+  color: #304606; 
+  border: 2px solid black;
+  border-radius: 0.5em; /* rounded corner! */
+  /* border-top-right-radius: 1em 1em; /* another rounded corner! */
+}
+
+/*Especificidad: 024, 014*/
+nav ul li a:hover:not(.active), nav ul li a:focus {
+  color: 304606;
+  font-weight: bold;
 }
 
 /*Especifidad: 010*/
 .active {
-  	background-color: #8b4abf;;
+  	color: #EBF094;
+	background-color: #304606;
 }
+

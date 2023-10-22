@@ -38,7 +38,7 @@ h1 {
 
 	background-color: #EBF094;
 	color: #304606;
-	padding: 1em; 
+	padding: 0.5em; 
 	text-align: center;     
 }
 
@@ -47,7 +47,6 @@ nav{
   	margin: 0.5em;
   	overflow: hidden;
   	text-align: center;
-  	padding: 1em;
 	font-size: 1.3em;
 
 }
@@ -60,7 +59,7 @@ nav ul {
 /*Especificidad: 003*/
 nav ul li {
   float: left;
-  margin-right: 0.5em;
+  margin: 0.5em;
 }
 
 /*Especificidad: 004*/
@@ -70,6 +69,7 @@ nav ul li a {
   background-color: #E6D1DC; 
   color: #304606; 
   border: 2px solid black;
+
   border-radius: 0.5em; /* rounded corner! */
   /* border-top-right-radius: 1em 1em; /* another rounded corner! */
 }

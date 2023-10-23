@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rutas SYSTEM "rutas.dtd"> 
+
+
+<rutas>
+	<ruta nombreRuta="Amphitheatre Viewpoint – Tugela Gorge Recorrido circular desde Bonjaneni" > 
+		<datos>
+			<tipoRuta>"Senderismo"</tipoRuta>
+			<medioTransporte>"A pie"</medioTransporte>
+			<coordenadasRuta>
+				<longitud>-28.7112194</longitud>
+				<latitud>28.9335923</latitud>
+				<altitud>18.08</altitud>
+			</coordenadasRuta>
+			<fechaIni></fechaIni>
+			<horaIni></horaIni>
+			<duracion>"4 horas 38 minutos - 12,6 km"</duracion>
+			<agencia>"Ninguna"</agencia>
+			<descripcionRuta>"Caminata moderada. Se necesita buena forma física. 
+				Sendas accesibles en su mayoría. Se requiere tener paso firme. 
+				El punto de inicio de la Ruta está junto a un aparcamiento."</descripcionRuta>
+			<sugerencias>"Llevar agua"</sugerencias>
+			<lugar>"Bonjaneni"</lugar>
+			<direccion>"Thendele Camp, Royal Natal Park, Sudáfrica"</direccion>
+			<referencia>"https://www.komoot.com/es-es/smarttour/109968"</referencia>
+			<recomendacion>9.8</recomendacion>
+		</datos>
+		<hitos>
+			<hito nombreHito="Mushroomrock">
+				<descripcionHito>"Lugar favorito para senderismo"</descripcionHito>
+				<coordenadasHito>
+					<longitud>-28.7112194</longitud>
+					<latitud>28.9335923</latitud>
+					<altitud>18.08</altitud>
+				</coordenadasHito>
+				<distancia>"1.96km"</distancia>
+				<foto>"algo"</foto>
+				<video>"algo"</video>
+			</hito>
+		</hitos>
+		
+		
+	</ruta>
+</rutas>

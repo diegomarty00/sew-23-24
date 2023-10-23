@@ -17,7 +17,18 @@ B. Black #000000
 body {
 	font-family: Tahoma, sans-serif;
 	color: #000000;
-	background-color: #FFFFFF;
+	background-color: #304606;
+	margin: auto;
+}
+
+/*Especifidad: 001*/
+p{
+	color: #E6D1DC;
+}
+
+
+article{
+	margin: 1em;
 }
  
 /*Especificidad: 001*/
@@ -29,18 +40,45 @@ header{
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	
 
 }
   
 /*Especificidad: 001*/
-h1 {
-	/*Sobrecarga el background-color del BODY*/ 
-
+h1, h2 {
+	font-family: Helveltica, Verdana, sans-serif;
 	background-color: #EBF094;
 	color: #304606;
 	padding: 0.5em; 
-	text-align: center;     
+	text-align: center; 
+	border-radius: 0.5em 0em; 
+	margin: 0.5em;	
+	
 }
+
+/*Especificidad: 001*/
+h1{
+	font-size: 2em;
+}
+
+/*Especificidad: 001*/
+h2{
+	font-size: 1.7em;
+}
+
+/*Especifidad: 001*/
+h3 {
+	
+	font-family: Helveltica, Verdana, sans-serif;
+	background-color: #E6D1DC;
+	color: #5B3354;
+	padding: 0.5em;   
+	font-size: 1.3em;	
+	Display:inline;
+	border-radius: 0.5em 0em;
+	margin: 1em;
+}
+
 
 /*Especificidad: 001*/
 nav{
@@ -69,8 +107,7 @@ nav ul li a {
   background-color: #E6D1DC; 
   color: #304606; 
   border: 2px solid black;
-
-  border-radius: 0.5em; /* rounded corner! */
+  border-radius: 0.5em 0em; 
   /* border-top-right-radius: 1em 1em; /* another rounded corner! */
 }
 
@@ -85,3 +122,102 @@ nav ul li a:hover:not(.active), nav ul li a:focus {
 	background-color: #304606;
 }
 
+/*Especifidad: 001*/
+video{
+  	max-width: 100%;
+  	height: auto;
+	display:block;
+	margin: auto;	
+}
+
+/*Especifidad: 001*/
+footer{
+    text-align: right;
+	margin: 0.5em;	
+}
+
+/*Especifidad: 001*/
+table {
+	border-radius: 5px;
+	background-color: #304606;
+	text-align: center;
+	margin: auto;
+}
+
+/*Especifidad: 002*/
+table caption{
+	font-family: Helveltica, Verdana, sans-serif;
+	font-weight: bold;
+	font-style: normal;
+	text-align:center;
+	padding-top: 0.8em;
+	padding-bottom: 0.3em;
+	color: #E6D1DC;
+	font-size: 1.3em;
+	text-decoration: underline
+}
+
+
+/*Especifidad: 003*/
+table tr th {
+	text-align:center;
+	color: white;
+	font-size: 1.3em;
+	border-radius: 5px;
+	background-color: #9BA216;
+}
+
+/*Especifidad: 003*/
+table tr td{
+	border-radius: 5px;
+	background-color: white;
+}
+
+/*Especifidad: 001*/
+a {
+	color: #FFFFFF;
+}
+
+aside{
+	margin: 0.5em;
+}
+
+/*Especifidad: 001*/
+ul {
+	color: #FFFFFF;
+    font-size: 1em; 
+    line-height: 1.5;
+}
+
+/*Especifidad: 001*/
+ol {
+	color: #FFFFFF;
+    font-size: 1em; 
+    line-height: 1.5;
+}
+
+/*Especifidad: 001*/
+dl {
+	display: table;
+	color: #FFFFFF;
+	margin: 0.5em;
+	padding: 0.5em;
+}
+
+/*Especifidad: 002*/
+dl dd{
+    font-size: 1em; 
+	font-family: Times, Helveltica, serif;
+}
+
+/*Especifidad: 002*/
+dl dt{
+	font-size: 1em; 
+	font-weight: bold;
+}
+
+audio{
+	display:block;
+	margin: 0.5em;
+	padding: 1em;
+}

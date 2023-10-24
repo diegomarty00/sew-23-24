@@ -3,7 +3,7 @@
 <!ELEMENT datos (tipoRuta, medioTransporte, 
 	fechaIni?, horaIni?, duracion, 
 	agencia, descripcionRuta, sugerencias,
-	lugar, direccion, coordenadasRuta, referencia, 
+	lugar, direccion, coordenadasRuta, referencia+, 
 	recomendacion)>
 	
 <!ELEMENT tipoRuta (#PCDATA)>

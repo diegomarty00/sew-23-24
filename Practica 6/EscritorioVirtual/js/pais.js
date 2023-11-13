@@ -29,4 +29,24 @@ class Pais {
 	
 }
 
-var lesoto = new Pais('Lesoto', 'Maseru', '330760', 'monarquía parlamentaria', '-29.31', '27.48', 'Cristianismo');
+var lesoto = new Pais('Lesoto', 'Maseru', '330760');
+lesoto.setCoordenadas('-29.31', '27.48');
+lesoto.setGobierno('monarquía parlamentaria');
+lesoto.setReligion('Cristianismo');
+
+document.write("<p>Pais: ")
+document.write(lesoto.nombre);
+document.write("</p>")
+
+document.write("<p>Capital: ")
+document.write(lesoto.capital);
+document.write("</p>")
+
+document.write("<p>Población: ")
+document.write(lesoto.poblacion);
+document.write("</p>")
+
+document.write("<section>");
+document.write("<h2>Otros datos del pais</h2>");
+document.write(lesoto.verDatosSecundarios());
+document.write("</section>");

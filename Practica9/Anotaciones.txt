@@ -8,7 +8,7 @@ Tabla --> Guardar un archivo para que puedan crear la misma base de datos para c
 
 
 PHP se ejecuta directamente en el servidor, como se delega al servidor, no se puede parar ni ejecutar el inspector con el php
-Si queremos saber los valores, usamos el print.r($vale) o el var.dump($vale) exit; para parar la ejecución.
+Si queremos saber los valores, usamos el print_r($vale) o el var_dump($vale) exit; para parar la ejecución.
 	crucigrama.html --> crucigrama.php (Nos devuelve la salida de la ejecucón, que es un HTML.
 
 
@@ -25,3 +25,12 @@ Se puede tambien usar una llamar el valor de una ejeción
 
 La parte del codigo que está en azul, es la que el código se ejecuta en el servidor, y el resultado del codigo, es justo lo que está debajo,
 que es el resultado del código de arriba. Solo se vería sino los valores del servidor, y no podemos entrar en ella.
+
+
+Ejemplo de una calcula diabética donde tenemos un formulario (seguir ejemplo)
+	# invoca a este fichero
+	post Los datos van ocultos
+	value = '$midato' readonly (solo rectura)
+
+
+Los resultados del crucigrama se añaden siempre, no hay que editar valores

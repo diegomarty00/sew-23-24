@@ -1,4 +1,3 @@
-"use strict";
 class Pais {
 
 	constructor(nombre, capital, poblacion) {
@@ -19,6 +18,19 @@ class Pais {
 		this.longitud = longitud;
 		this.latitud = latitud;
 	}
+	
+	getNombre() {
+        return this.nombre;
+    }
+
+    getCapital() {
+        return this.capital;
+    }
+	
+	getCoordenadas(){
+		return this.latitud + ", " + this.longitud;
+	}
+
 
 	verDatosSecundarios(){
 		 var stringDatos =  "<ul><li>Población: " + this.poblacion + "</li>";
@@ -26,27 +38,74 @@ class Pais {
              stringDatos += "<li>Religión mayoritaria: " + this.religion + "</li><ul>";
 		return stringDatos;
 	}	
+
+	verTiempo() {
+        const apiKey = '13e780276233960d55c6d669b702711f';
+        const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.capital}&units=metric&appid=${apiKey}`;
+
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+				var filteredList = data.list.filter(item => item.dt_txt.includes('12:00:00'));
+
+				var table = $('<table>');
+				var article = $('<article>').attr('data-name', 'meteo').append(table);
+
+				var row = $(`
+						<tr>
+							<th scope="col" id="dia">Día</th>
+							<th scope="col" id="tempMax">Temp. Máxima</th>
+							<th scope="col" id="tempMin">Temp. Máxima</th>
+							<th scope="col" id="humidity">Humedad</th>
+							<th scope="col" id="rain">Lluvia</th>
+							<th scope="col" id="iconMeto">Previsión</th>	
+						</tr>
+					`);
+
+					table.append(row);
+
+				filteredList.forEach(item => {
+					// Crear un bloque section para cada día
+					var daySection = $('<section>');
+
+					// Obtener los valores requeridos y asignar 0 si rain no está presente
+					var dia = item.dt_txt.split(" ")[0];
+					var tempMax = item.main.temp_max || 0;
+					var tempMin = item.main.temp_min || 0;
+					var humidity = item.main.humidity || 0;
+					var rain = item.rain ? item.rain['3h'] : 0;
+
+					// Obtener la URL base para los iconos y agregar el nombre del icono
+					var iconUrlBase = 'http://openweathermap.org/img/wn/';
+					var iconUrl = `${iconUrlBase}${item.weather[0].icon}.png`;
+
+					 // Agregar elementos a la tabla
+					var row = $(`
+						<tr>
+						
+							<td>${dia} </td>
+							<td>${tempMax}°C</td>
+							<td>${tempMax}°C</td>
+							<td>${humidity}%</td>
+							<td>${rain} mm</td>
+							<td><img src="${iconUrl}" alt="Icono del tiempo"></td>
+						</tr>
+					`);
+
+					table.append(row);
+				});
+
+				$('body').append(article);
+				//console.log(filteredList);
+			},
+			error: function(error) {
+				console.error(error);
+			}
+		});
+	}
+
 	
 }
 
-var lesoto = new Pais('Lesoto', 'Maseru', '330760');
-lesoto.setCoordenadas('-29.31', '27.48');
-lesoto.setGobierno('monarquía parlamentaria');
-lesoto.setReligion('Cristianismo');
-
-document.write("<p>Pais: ")
-document.write(lesoto.nombre);
-document.write("</p>")
-
-document.write("<p>Capital: ")
-document.write(lesoto.capital);
-document.write("</p>")
-
-document.write("<p>Población: ")
-document.write(lesoto.poblacion);
-document.write("</p>")
-
-document.write("<section>");
-document.write("<h2>Otros datos del pais</h2>");
-document.write(lesoto.verDatosSecundarios());
-document.write("</section>");

@@ -216,6 +216,14 @@ dl dt{
 	font-weight: bold;
 }
 
+
+/*Especifidad: 001*/
+img {
+    max-width: 100%;
+    margin-left: 1.4em;
+}
+
+/*Especifidad: 001*/
 audio{
 	display:block;
 	margin: 0.5em;

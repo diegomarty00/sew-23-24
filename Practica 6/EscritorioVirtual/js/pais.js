@@ -33,9 +33,9 @@ class Pais {
 
 
 	verDatosSecundarios(){
-		 var stringDatos =  "<ul><li>Población: " + this.poblacion + "</li>";
-             stringDatos += "<li>Forma de gobierno: " + this.gobierno + "</li>";
-             stringDatos += "<li>Religión mayoritaria: " + this.religion + "</li><ul>";
+		 var stringDatos =  "<p>Población: " + this.poblacion + "</p>";
+             stringDatos += "<p>Forma de gobierno: " + this.gobierno + "</p>";
+             stringDatos += "<p>Religión mayoritaria: " + this.religion + "</p>";
 		return stringDatos;
 	}	
 

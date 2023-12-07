@@ -1,0 +1,80 @@
+/* Diego Martinez Menendez - UO270457 
+
+W. White #FFFFFF
+B. Black #000000
+
+1. Olive Green #9BA216 	B
+2. Dark Green #304606 	W, 3, 4, 5
+3. Chartreuse #D6E024 	B, 2, 7
+4. Yellow Green #EBF094 B, 2, 7
+
+5. Mauve #E6D1DC 		B, 2, 7 
+6. Lavender #C197D2		B
+7. Orchid #5B3354 		w, 3, 4, 5
+*/
+
+/*Especificidad: 002*/
+main section{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main section > * {
+    flex: 1 0 20%; /* Esto hará que cada elemento ocupe el 25% del ancho del contenedor, permitiendo un máximo de 4 elementos por fila */
+}
+  
+/*Especificidad: 012*/
+article[data-state="revealed"] img,
+article[data-state="flip"] img {
+    transform: rotateY(0deg);
+}
+
+  
+/*Especificidad: 001*/
+article {
+
+	color: #304606;
+	background-color: #EBF094;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+    width: 10em;
+    height:10em;
+    transform: scale(1);
+	cursor: pointer;
+	transform-style: preserve-3d;
+    transition: transform .5s;
+    border-radius: 0.5em; 
+}
+  
+
+/*Especificidad: 002*/
+article h4, article img {
+	margin: 0;
+	width: 100%;
+    height: 100%;
+	position: absolute;
+	border-radius: 0.5em;
+	backface-visibility: hidden;
+	
+}
+  
+/*Especificidad: 002*/
+article h4 {
+	display: flex;
+	background: #EBF094;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+  
+/*Especificidad: 002*/
+article img {
+	background: #EBF094;
+	transform: rotateY(180deg);
+	object-fit: contain;
+}  
+  
+ 

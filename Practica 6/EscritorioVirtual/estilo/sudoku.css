@@ -47,7 +47,14 @@ p span{
 }
 
 /*Especificidad: 011*/
+p:nth-child(3n-1){
+    border-left-width: 0.2em;
+    border-left-style: solid;
+}
+
+/*Especificidad: 011*/
 p:nth-child(3n-1),p:nth-child(3n)  {
+   
     border-right-width: 0.1em;
     border-right-style: dashed;
 }
@@ -64,32 +71,38 @@ p:nth-child(-n+82) {
     border-bottom-style: solid;
 }
 
-/*Especificidad: 011*/
+/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
 p:nth-child(-n+73) {
     border-bottom-width: 0.1em;
     border-bottom-style: dashed;
 }
 
-/*Especificidad: 011*/
+/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
 p:nth-child(-n+55) {
     border-bottom-width: 0.2em;
     border-bottom-style: solid;
 }
 
-/*Especificidad: 011*/
+/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
 p:nth-child(-n+46) {
     border-bottom-width: 0.1em;
     border-bottom-style: dashed;
 }
 
-/*Especificidad: 011*/
+/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
 p:nth-child(-n+28) {
     border-bottom-width: 0.2em;
     border-bottom-style: solid;
 }
 
-
+/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
 p:nth-child(-n+19) {
     border-bottom-width: 0.1em;
     border-bottom-style: dashed;
+}
+
+/*Especificidad: 011*/
+p:nth-child(-n+10) {
+    border-top-width: 0.2em;
+    border-top-style: solid;
 }

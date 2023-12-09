@@ -47,7 +47,8 @@ main section > h2 {
 	flex-basis: 100%;
 }
 
-/*Especificidad: 003*/
+/*Especificidad: 003
+Definido el color en la línea 67*/
 main section article{
     margin: 1em;
     padding: 1em;
@@ -61,18 +62,20 @@ main section article{
     
 }
 
-/*Especificidad: 004*/
+/*Especificidad: 004
+Definido el background-color
+en la línea 52*/
 main section article p{
     color: #5B3354;
 }
 
-/*Especificidad: 004*/
+/*Especificidad: 004
+Al ser una imagen no necesita color*/
 main section article img{
     background-color: #E6D1DC;
     border-color: #5B3354;
     border-style: solid;
     border-radius: 0.5em; 
     align-self: flex-end;
-    
 }
 

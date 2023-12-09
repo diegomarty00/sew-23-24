@@ -71,19 +71,21 @@ article h4, article img {
 	
 }
   
-/*Especificidad: 002*/
+/*Especificidad: 002
+Controlado el contraste con el color del h4*/
 article h4 {
 	display: flex;
-	background: #EBF094;
+	background-color: #EBF094;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
 }
   
-/*Especificidad: 002*/
+/*Especificidad: 002
+Al ser una imagen no necesita color*/
 article img {
-	background: #EBF094;
+	background-color: #EBF094;
 	transform: rotateY(180deg);
 	object-fit: contain;
 }  

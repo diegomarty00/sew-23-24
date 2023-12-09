@@ -21,11 +21,16 @@ body {
 	margin: auto;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Controlado con el color del fondo*/
 p{
 	color: #E6D1DC;
 }
 
+
+main{
+	margin: 1em;
+}
 
 article{
 	margin: 1em;
@@ -52,8 +57,6 @@ h1, h2 {
 	padding: 0.5em; 
 	text-align: center; 
 	border-radius: 0.5em 0em; 
-	margin: 0.5em;	
-	
 }
 
 /*Especificidad: 001*/
@@ -64,10 +67,11 @@ h1{
 /*Especificidad: 001*/
 h2{
 	font-size: 1.7em;
+	margin: 0.5em;	
 }
 
-/*Especifidad: 001*/
-h3 {
+/*Especifidad: 002*/
+h3 span{
 	
 	font-family: Helveltica, Verdana, sans-serif;
 	background-color: #E6D1DC;
@@ -82,11 +86,10 @@ h3 {
 
 /*Especificidad: 001*/
 nav{
-  	margin: 0.5em;
   	overflow: hidden;
   	text-align: center;
-	font-size: 1.3em;
-
+	font-size: 1em;
+	
 }
 
 /*Especificidad: 002*/
@@ -102,7 +105,7 @@ nav ul li {
 
 /*Especificidad: 004*/
 nav ul li a {
-  padding: 0.25em 1em;
+  padding: 0.25em 0.5em;
   text-decoration: none; /* no underline */
   background-color: #E6D1DC; 
   color: #304606; 
@@ -114,6 +117,42 @@ nav ul li a {
 /*Especificidad: 024, 014*/
 nav ul li a:hover:not(.active), nav ul li a:focus {
   font-weight: bold;
+}
+
+/*Especificidad: 002*/
+section ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+/*Especificidad: 003*/
+section ul li {
+  float: left;
+  margin: 0.5em;
+}
+
+/*Especificidad: 004*/
+section ul li a {
+  padding: 0.25em 1em;
+  text-decoration: none; /* no underline */
+  background-color: #E6D1DC; 
+  color: #304606; 
+  border: 2px solid black;
+  border-radius: 0.5em 0em; 
+  /* border-top-right-radius: 1em 1em; /* another rounded corner! */
+}
+
+/*Especificidad: 024, 014*/
+section ul li a:hover:not(.active), section ul li a:focus {
+	font-weight: bold;
+}
+
+/*Especificidad: 014*/
+section ul li .active{
+	background-color: #EBF094;
+	color: #304606;
+	font-weight: bold;
 }
 
 /*Especifidad: 010*/
@@ -136,7 +175,9 @@ footer{
 	margin: 0.5em;	
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+El color se le indica en los
+parametros siguientes*/
 table {
 	border-radius: 5px;
 	background-color: #304606;
@@ -144,7 +185,9 @@ table {
 	margin: auto;
 }
 
-/*Especifidad: 002*/
+/*Especifidad: 002
+Definido el background-color
+anteriormente en table*/
 table caption{
 	font-family: Helveltica, Verdana, sans-serif;
 	font-weight: bold;
@@ -173,7 +216,9 @@ table tr td{
 	background-color: white;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Definido el background-color
+anteriormente en body*/
 a {
 	color: #FFFFFF;
 }
@@ -182,21 +227,27 @@ aside{
 	margin: 0.5em;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Definido el background-color
+anteriormente en body*/
 ul {
 	color: #FFFFFF;
     font-size: 1em; 
     line-height: 1.5;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Definido el background-color
+anteriormente en body*/
 ol {
 	color: #FFFFFF;
     font-size: 1em; 
     line-height: 1.5;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Definido el background-color
+anteriormente en body*/
 dl {
 	display: table;
 	color: #FFFFFF;
@@ -216,6 +267,14 @@ dl dt{
 	font-weight: bold;
 }
 
+
+/*Especifidad: 001*/
+img {
+    max-width: 100%;
+    margin-left: 1.4em;
+}
+
+/*Especifidad: 001*/
 audio{
 	display:block;
 	margin: 0.5em;

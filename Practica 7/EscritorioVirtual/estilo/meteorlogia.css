@@ -1,0 +1,81 @@
+/* Diego Martinez Menendez - UO270457 
+
+W. White #FFFFFF
+B. Black #000000
+
+1. Olive Green #9BA216 	B
+2. Dark Green #304606 	W, 3, 4, 5
+3. Chartreuse #D6E024 	B, 2, 7
+4. Yellow Green #EBF094 B, 2, 7
+
+5. Mauve #E6D1DC 		B, 2, 7 
+6. Lavender #C197D2		B
+7. Orchid #5B3354 		w, 3, 4, 5
+*/
+
+/*Especificidad: 001*/
+section{
+    margin: 1em;
+}
+
+h3 span{
+    border-color: #5B3354;
+    border-style: solid;
+}
+
+
+
+
+/*Especificidad: 002*/
+main section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/*Especificidad: 003*/
+main section > article {
+    flex-grow: 1;
+    flex-shrink: 1 ; 
+    flex-basis: 40%;
+}
+
+/*Especificidad: 003*/
+main section > h2 {
+	flex-grow: 1;
+    flex-shrink: 1 ; 
+	flex-basis: 100%;
+}
+
+/*Especificidad: 003
+Definido el color en la línea 67*/
+main section article{
+    margin: 1em;
+    padding: 1em;
+    background-color: #EBF094;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: center;
+    border-radius: 0.5em; 
+    align-self: flex-end;
+    
+}
+
+/*Especificidad: 004
+Definido el background-color
+en la línea 52*/
+main section article p{
+    color: #5B3354;
+}
+
+/*Especificidad: 004
+Al ser una imagen no necesita color*/
+main section article img{
+    background-color: #E6D1DC;
+    border-color: #5B3354;
+    border-style: solid;
+    border-radius: 0.5em; 
+    align-self: flex-end;
+}
+

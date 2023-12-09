@@ -10,7 +10,11 @@
 	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
     <title>Escritorio Virtual - Meteorologia</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="estilo/meteorlogia.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
+	<script src="js/pais.js"></script>
 </head>
 
 <body>
@@ -29,8 +33,31 @@
 			</ul>
 		</nav>
 	</header>
-	 <h1>Información del pais</h1>
-	<script src="js/pais.js"></script>
+	 
+	<script>
+		var lesoto = new Pais('Lesoto', 'Maseru, LS', 330760);
+		
+		lesoto.setCoordenadas('-29.3167', '27.4833');
+		lesoto.setGobierno('Monarquía parlamentaria');
+		lesoto.setReligion('Cristianismo');
+
+		document.write("<section>");
+		document.write("<h1>Información del pais</h1>")
+		document.write("<p>Pais: " + lesoto.getNombre() + "</p>")
+		document.write("<p>Capital: " + lesoto.getCapital() + "</p>")
+		document.write("<p>Coordenadas: " + lesoto.getCoordenadas() + "</p>")
+		document.write("</section>");
+
+		document.write("<section>");
+		document.write("<h2>Otros datos del pais</h2>");
+		document.write(lesoto.verDatosSecundarios());
+		document.write("</section>");
+		lesoto.verTiempo(lesoto.getCapital());
+	</script>
+
+	<main>
+		
+	</main>
 </body>
 
 </html>

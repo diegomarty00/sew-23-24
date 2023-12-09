@@ -21,7 +21,8 @@ body {
 	margin: auto;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Controlado con el color del fondo*/
 p{
 	color: #E6D1DC;
 }
@@ -174,7 +175,9 @@ footer{
 	margin: 0.5em;	
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+El color se le indica en los
+parametros siguientes*/
 table {
 	border-radius: 5px;
 	background-color: #304606;
@@ -182,7 +185,9 @@ table {
 	margin: auto;
 }
 
-/*Especifidad: 002*/
+/*Especifidad: 002
+Definido el background-color
+anteriormente en table*/
 table caption{
 	font-family: Helveltica, Verdana, sans-serif;
 	font-weight: bold;
@@ -211,7 +216,9 @@ table tr td{
 	background-color: white;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Definido el background-color
+anteriormente en body*/
 a {
 	color: #FFFFFF;
 }
@@ -220,21 +227,27 @@ aside{
 	margin: 0.5em;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Definido el background-color
+anteriormente en body*/
 ul {
 	color: #FFFFFF;
     font-size: 1em; 
     line-height: 1.5;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Definido el background-color
+anteriormente en body*/
 ol {
 	color: #FFFFFF;
     font-size: 1em; 
     line-height: 1.5;
 }
 
-/*Especifidad: 001*/
+/*Especifidad: 001
+Definido el background-color
+anteriormente en body*/
 dl {
 	display: table;
 	color: #FFFFFF;

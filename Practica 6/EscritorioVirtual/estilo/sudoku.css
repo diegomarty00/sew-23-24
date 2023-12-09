@@ -39,7 +39,9 @@ p {
 }
 
 
-/*Especificidad: 002*/
+/*Especificidad: 002 
+No hace falta background-color
+porque está de antes, de p*/
 p span{
     font-weight: bold;
     color: black;

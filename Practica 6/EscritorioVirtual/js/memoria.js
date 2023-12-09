@@ -71,9 +71,11 @@ class Memoria {
     createElements(){
         const main = document.querySelector('main')
 		const tablero = document.createElement('section')
+        const span = document.createElement('span')
 		var h3 = document.createElement('h3');
-		h3.textContent = 'Juego de Memoria'
-		main.appendChild(h3);
+		span.textContent = 'Juego de Memoria'
+        h3.appendChild(span);
+		tablero.appendChild(h3);
 		main.appendChild(tablero);
         for (const carta in this.elements) {
                 const elementData = this.elements[carta];
@@ -92,8 +94,6 @@ class Memoria {
                 img.src = elementData.source;
                 img.alt = elementData.element;
                 card.appendChild(img);
-                //solamente se visualizará cuando la tarjeta sea clicada por el usuario y se dé la vuelta.
-                 // Añadir la tarjeta al tablero de memoria
                 tablero.appendChild(card);
                 
         }

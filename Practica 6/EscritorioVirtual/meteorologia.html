@@ -10,6 +10,7 @@
 	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
     <title>Escritorio Virtual - Meteorologia</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="estilo/meteorlogia.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
@@ -40,7 +41,6 @@
 		lesoto.setGobierno('Monarquía parlamentaria');
 		lesoto.setReligion('Cristianismo');
 
-		document.write("<main>")
 		document.write("<section>");
 		document.write("<h1>Información del pais</h1>")
 		document.write("<p>Pais: " + lesoto.getNombre() + "</p>")
@@ -52,11 +52,12 @@
 		document.write("<h2>Otros datos del pais</h2>");
 		document.write(lesoto.verDatosSecundarios());
 		document.write("</section>");
-		document.write("</main>");
-		
-		lesoto.verTiempo();
-		
+		lesoto.verTiempo(lesoto.getCapital());
 	</script>
+
+	<main>
+		
+	</main>
 </body>
 
 </html>

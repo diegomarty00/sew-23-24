@@ -39,7 +39,7 @@ class Pais {
 		return stringDatos;
 	}	
 
-	verTiempo() {
+	verTiempo(capital) {
         const apiKey = '13e780276233960d55c6d669b702711f';
         const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.capital}&units=metric&appid=${apiKey}`;
 
@@ -50,25 +50,10 @@ class Pais {
 			success: function(data) {
 				var filteredList = data.list.filter(item => item.dt_txt.includes('12:00:00'));
 
-				var table = $('<table>');
-				var article = $('<article>').attr('data-name', 'meteo').append(table);
-
-				var row = $(`
-						<tr>
-							<th scope="col" id="dia">Día</th>
-							<th scope="col" id="tempMax">Temp. Máxima</th>
-							<th scope="col" id="tempMin">Temp. Máxima</th>
-							<th scope="col" id="humidity">Humedad</th>
-							<th scope="col" id="rain">Lluvia</th>
-							<th scope="col" id="iconMeto">Previsión</th>	
-						</tr>
-					`);
-
-					table.append(row);
-
+				var section = $('<section>').attr('data-name', 'meteo');
+				section.append($(`<h2>Tiempo en ${capital} </h2>`));
 				filteredList.forEach(item => {
-					// Crear un bloque section para cada día
-					var daySection = $('<section>');
+					var article = $('<article>');
 
 					// Obtener los valores requeridos y asignar 0 si rain no está presente
 					var dia = item.dt_txt.split(" ")[0];
@@ -82,22 +67,21 @@ class Pais {
 					var iconUrl = `${iconUrlBase}${item.weather[0].icon}.png`;
 
 					 // Agregar elementos a la tabla
-					var row = $(`
-						<tr>
-						
-							<td>${dia} </td>
-							<td>${tempMax}°C</td>
-							<td>${tempMax}°C</td>
-							<td>${humidity}%</td>
-							<td>${rain} mm</td>
-							<td><img src="${iconUrl}" alt="Icono del tiempo"></td>
-						</tr>
+					var text = $(`
+							<h3><span>${dia}</span></h3>
+							<p>Temp. Máxima: ${tempMax}°C</p>
+							<p>Temp. Mínima: ${tempMin}°C</p>
+							<p>Humedad: ${humidity}%</p>
+							<p>Lluvia: ${rain} mm</p>
+							<img src="${iconUrl}" alt="Icono del tiempo">
 					`);
 
-					table.append(row);
+					article.append(text);
+					section.append(article);
 				});
 
-				$('body').append(article);
+				$('main').append(section);
+				
 				//console.log(filteredList);
 			},
 			error: function(error) {
@@ -105,7 +89,5 @@ class Pais {
 			}
 		});
 	}
-
-	
 }
 

@@ -13,15 +13,26 @@ B. Black #000000
 7. Orchid #5B3354 		w, 3, 4, 5
 */
 
-/*Especificidad: 002*/
-main section{
+
+
+main section {
     display: flex;
     flex-wrap: wrap;
 }
 
-main section > * {
-    flex: 1 0 20%; /* Esto hará que cada elemento ocupe el 25% del ancho del contenedor, permitiendo un máximo de 4 elementos por fila */
+main section > article {
+    flex-grow: 1;
+    flex-shrink: 1 ; 
+    flex-basis: 20%;
 }
+
+main section > h3 {
+	flex-grow: 0;
+    flex-shrink: 1 ; 
+	flex-basis: 100%;
+}
+
+
   
 /*Especificidad: 012*/
 article[data-state="revealed"] img,

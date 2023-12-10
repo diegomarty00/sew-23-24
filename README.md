@@ -10,7 +10,7 @@ Repositorio de la asignatura de SEW. Aquí podrás encontrar los validadores nec
 * [Google Mobile-friendly](https://search.google.com/test/mobile-friendly)
 * [Screenfly](https://bluetree.ai/screenfly/)
 
-# Accesibilidad Web 
+# Accesibilidad Web
 * [Herramienta TAW](http://www.tawdis.net/) 
 * [Herramienta Wave](http://wave.webaim.org/)
 * [Herramienta Achecks](https://achecks.org/achecker)

@@ -1,9 +1,9 @@
-class Crucigrama{
+class Crucigrama {
 
     //fácil
-    cadena = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,"  +
-            "20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16"
-    ;
+    cadena = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=," +
+        "20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16"
+        ;
     numFil = 11;
     numCol = 9;
     init_time;// momento en el que se inicia el juego
@@ -11,45 +11,46 @@ class Crucigrama{
     tablero = [];
 
 
-    constructor(){
+    constructor() {
         this.tablero = Array.from({ length: this.numFil }, () => Array(this.numCol));//inicializa al tamaño correspondinte
 
         this.start();
-        
+
     }
 
-     /*Pone valores dentor del array bidimensional */
-     start() {
+    /*Pone valores dentor del array bidimensional */
+    start() {
         let contador = 0;
         const elementos = this.cadena.split(',');//array con el contenido de la cadena sin las comas
-        
+
         for (let fila = 0; fila < this.numFil; fila++) {
             for (let col = 0; col < this.numCol; col++) {
                 const caracter = elementos[contador];
-    
+
                 // Comprobar y asignar valores según las reglas
                 switch (caracter) {
                     case '#':
                         this.tablero[fila][col] = -1;
-                        break; 
+                        break;
                     case '.':
                         this.tablero[fila][col] = 0;
-                        break; 
+                        break;
                     default:
                         const valor = parseInt(caracter);
                         this.tablero[fila][col] = isNaN(valor) ? caracter : valor;
-                        break; 
+                        break;
                 }
                 contador++;
             }
         }
-        console.log(this.tablero);
+
+        this.init_time = new Date();
     }
-    
+
 
     /* crear en el documento HTML, a través de jQuery, los párrafos que representarán las celdas del crucigrama.
-    Luego  inicializa la variable init_time de la clase Crucigrama al valor de la fecha actual.*/ 
-    paintMathword(){
+    Luego  inicializa la variable init_time de la clase Crucigrama al valor de la fecha actual.*/
+    paintMathword() {
 
         const main = document.querySelector('main')
         //si selecciono una celda pero noe scribo nada, y selecciono otra, la primera a qué estado vuelve?
@@ -67,21 +68,113 @@ class Crucigrama{
                     });
                 } else {
 
-                    if(valor === -1){
+                    if (valor === -1) {
                         p.setAttribute('data-state', 'empty')
                     } else {
                         p.setAttribute('data-state', 'blocked');
                         // Asignar el valor al párrafo: operador o el valor del numero
                         p.textContent = valor;
                     }
-                    
+
                 }
                 main.appendChild(p);
             }
         }
 
-        //iniciliaza init_time
-        this.init_time = new Date();
+
+
+    }
+
+    introduceNumber(numPulsado) {
+        const celda = document.querySelectorAll('p[data-state="clicked"]');
+        const r = celda[0].dataset.row;
+        const c = celda[0].dataset.column;
+
+        if (this.asserts(numPulsado, r, c))
+            return;
+
+        celda[0].textContent = numPulsado;
+        this.boardArry[r][c] = numPulsado;
+        celda[0].onClick = null;
+        celda[0].setAttribute('data-state', 'correct');
+
+
+        let finish = true;
+
+        // Recorre cada fila del tablero
+        for (let i = 0; i < this.boardArry.length; i++) {
+            let row = this.boardArry[i];
+
+            // Recorre cada elemento de la fila
+            for (let j = 0; j < row.length; j++) {
+                let element = row[j];
+
+                // Si el elemento es igual a 0
+                if (element === 0) {
+                    finish = false;
+                    break;
+                }
+            }
+
+            if (!finish) {
+                break;
+            }
+        }
+
+        this.totalTime = (Date.now() - this.init_time) / 1000;
+        return finish;
+
+    }
+
+    introduceElement(numPulsado) {
+        const celda = document.querySelectorAll('p[data-state="clicked"]');
+        const r = celda[0].dataset.row;
+        const c = celda[0].dataset.column;
+
+        if (this.asserts(numPulsado, r, c))
+            return;
+
+        celda[0].textContent = numPulsado;
+        this.boardArry[r][c] = numPulsado;
+        celda[0].onClick = null;
+        celda[0].setAttribute('data-state', 'correct');
+
+
+        let finish = true;
+
+        // Recorre cada fila del tablero
+        for (let i = 0; i < this.boardArry.length; i++) {
+            let row = this.boardArry[i];
+
+            // Recorre cada elemento de la fila
+            for (let j = 0; j < row.length; j++) {
+                let element = row[j];
+
+                // Si el elemento es igual a 0
+                if (element === 0) {
+                    finish = false;
+                    break;
+                }
+            }
+
+            if (!finish) {
+                break;
+            }
+        }
+
+        this.totalTime = (Date.now() - this.init_time) / 1000;
+        return finish;
+
+    }
+
+    finish() {
+        let tiempo;
+        if (Math.floor(this.totalTime / 60) != 0) {
+            tiempo = Math.floor(this.totalTime / 60) + " minutos y " + Math.floor(this.totalTime % 60) + " segundos";
+        } else {
+            tiempo = Math.floor(this.totalTime % 60) + " segundos";
+        }
+        alert('Felicidades, has tardado ' + tiempo);
 
     }
 }

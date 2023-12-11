@@ -24,7 +24,7 @@ class Memoria {
         this.createElements();
         this.addEventListeners();
 
-       
+
     }
 
     //Algoritmo Durstenfeld
@@ -34,14 +34,14 @@ class Memoria {
             [this.elements[i], this.elements[j]] = [this.elements[j], this.elements[i]];
         }
     }
-    unflipCards(){
+    unflipCards() {
         this.lockBoard = true; // Bloquea el tablero
 
         setTimeout(() => {
             this.firstCard.dataset.state = 'init';
             this.secondCard.dataset.state = 'init';
 
-            this.resetBoard(); 
+            this.resetBoard();
         }, 1000); // 
     }
 
@@ -51,55 +51,55 @@ class Memoria {
         this.hasFlippedCard = false;
         this.lockBoard = false;
     }
-   
-	checkForMatch(){
-        if(this.firstCard.dataset.element.split('_')[0] === this.secondCard.dataset.element.split('_')[0]){
-			if (this.firstCard.dataset.element.split('_')[1] != this.secondCard.dataset.element.split('_')[1])
-				this.disableCards();
-		}else{
-			this.unflipCards();
-		}
+
+    checkForMatch() {
+        if (this.firstCard.dataset.element.split('_')[0] === this.secondCard.dataset.element.split('_')[0]) {
+            if (this.firstCard.dataset.element.split('_')[1] != this.secondCard.dataset.element.split('_')[1])
+                this.disableCards();
+        } else {
+            this.unflipCards();
+        }
     }
 
     //deshabilita las interacciones sobre las tarjetas de memoria que ya han sido emparejadas
-    disableCards(){
+    disableCards() {
         this.firstCard.dataset.state = 'revealed';
         this.secondCard.dataset.state = 'revealed';
         this.resetBoard();
     }
 
-    createElements(){
+    createElements() {
         const main = document.querySelector('main')
-		const tablero = document.createElement('section')
+        const tablero = document.createElement('section')
         const span = document.createElement('span')
-		var h3 = document.createElement('h3');
-		span.textContent = 'Juego de Memoria'
+        var h3 = document.createElement('h3');
+        span.textContent = 'Juego de Memoria'
         h3.appendChild(span);
-		tablero.appendChild(h3);
-		main.appendChild(tablero);
+        tablero.appendChild(h3);
+        main.appendChild(tablero);
         for (const carta in this.elements) {
-                const elementData = this.elements[carta];
+            const elementData = this.elements[carta];
 
-                // Crear un nodo article por cada elemento
-                const card = document.createElement('article');
-                card.setAttribute('data-element', elementData.element);// valor igual al valor de la variable element extraída del JSON.
+            // Crear un nodo article por cada elemento
+            const card = document.createElement('article');
+            card.setAttribute('data-element', elementData.element);// valor igual al valor de la variable element extraída del JSON.
 
-                // Encabezado de orden 4
-                const h4 = document.createElement('h4');
-                h4.textContent = 'Tarjeta de memoria';
-                card.appendChild(h4);
+            // Encabezado de orden 4
+            const h4 = document.createElement('h4');
+            h4.textContent = 'Tarjeta de memoria';
+            card.appendChild(h4);
 
-                // Imagen de la tarjeta
-                const img = document.createElement('img');
-                img.src = elementData.source;
-                img.alt = elementData.element;
-                card.appendChild(img);
-                tablero.appendChild(card);
-                
+            // Imagen de la tarjeta
+            const img = document.createElement('img');
+            img.src = elementData.source;
+            img.alt = elementData.element;
+            card.appendChild(img);
+            tablero.appendChild(card);
+
         }
     }
 
-    addEventListeners(){
+    addEventListeners() {
         const cards = document.querySelectorAll('article');
         cards.forEach(card => {
             card.addEventListener('click', this.flipCard.bind(card, this));
@@ -108,16 +108,16 @@ class Memoria {
 
     flipCard(game) {
         if (this.dataset.state == 'revealed') return;
-        if(game.lockBoard) return;
-        if(game.firstCard != null)
-            if(this.dataset.element== game.firstCard.element) return;
+        if (game.lockBoard) return;
+        if (game.firstCard != null)
+            if (this.dataset.element == game.firstCard.element) return;
 
-        this.dataset.state ='flip';
+        this.dataset.state = 'flip';
 
-        if(game.hasFlippedCard){
-            game.secondCard=this;
+        if (game.hasFlippedCard) {
+            game.secondCard = this;
             game.checkForMatch();
-        } else{
+        } else {
             game.hasFlippedCard = true;
             game.firstCard = this;
         }

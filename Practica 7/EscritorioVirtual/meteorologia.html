@@ -1,42 +1,44 @@
 <!DOCTYPE HTML>
 
 <html lang="es">
+
 <head>
-    <!-- Datos que describen el documento -->
-    <meta charset="UTF-8" />
-	<meta name ="author" content ="Diego Martinez Menendez" />
-	<meta name ="description" content ="ESCRIBEME" />
-	<meta name ="keywords" content ="HTML, HTML5, W3C, estandar, whatwg, meteorologia, tiempo" />
-	<meta name ="viewport" content ="width=device-width, initial-scale=1.0" />
-    <title>Escritorio Virtual - Meteorologia</title>
-    <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+	<!-- Datos que describen el documento -->
+	<meta charset="UTF-8" />
+	<meta name="author" content="Diego Martinez Menendez" />
+	<meta name="description" content="ESCRIBEME" />
+	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, meteorologia, tiempo" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Escritorio Virtual - Meteorologia</title>
+	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="estilo/meteorlogia.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<!--jquery min-->
 	<script src="js/pais.js"></script>
 </head>
 
 <body>
-    <!-- Datos con el contenidos que aparece en el navegador -->
-    <header>
+	<!-- Datos con el contenidos que aparece en el navegador -->
+	<header>
 		<h1>Escritorio Virtual</h1>
 		<nav>
 			<ul>
-				<li><a href="index.html" tabindex="1" accesskey= "i">Inicio</a></li>
-				<li><a href="sobremi.html" tabindex="2" accesskey= "s">Sobre mi</a></li>
-				<li><a href="noticias.html" tabindex="3" accesskey= "n">Noticias</a></li>
-				<li><a href="agenda.html" tabindex="4" accesskey= "a">Agenda</a></li>
-				<li><a href="meteorologia.html" tabindex="5" class="active" accesskey= "m">Meteorología</a></li>
-				<li><a href="viajes.html" tabindex="6"  accesskey= "v">Viajes</a></li>
-				<li><a href="juegos.html" tabindex="7" accesskey= "j">Juegos</a></li>
+				<li><a href="index.html" tabindex="1" accesskey="i">Inicio</a></li>
+				<li><a href="sobremi.html" tabindex="2" accesskey="s">Sobre mi</a></li>
+				<li><a href="noticias.html" tabindex="3" accesskey="n">Noticias</a></li>
+				<li><a href="agenda.html" tabindex="4" accesskey="a">Agenda</a></li>
+				<li><a href="meteorologia.html" tabindex="5" class="active" accesskey="m">Meteorología</a></li>
+				<li><a href="viajes.html" tabindex="6" accesskey="v">Viajes</a></li>
+				<li><a href="juegos.html" tabindex="7" accesskey="j">Juegos</a></li>
 			</ul>
 		</nav>
 	</header>
-	 
+
 	<script>
-		var lesoto = new Pais('Lesoto', 'Maseru, LS', 330760);
-		
+		var lesoto = new Pais('Lesoto', 'Maseru', 330760);
+
 		lesoto.setCoordenadas('-29.3167', '27.4833');
 		lesoto.setGobierno('Monarquía parlamentaria');
 		lesoto.setReligion('Cristianismo');
@@ -56,7 +58,7 @@
 	</script>
 
 	<main>
-		
+
 	</main>
 </body>
 

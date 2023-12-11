@@ -18,93 +18,66 @@ main {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     gap: 0;
-    border-width: 0.3em;
-    border-style: solid;
-    border-color: black;
-    width: 40em;
-    height: 40em;
-    margin:auto;
+    width: 100%;
+    max-width: 40em;
+    height: auto;
+    max-height: 50em;
+    margin: auto;
     align-self: center;
 }
 
 /*Especificidad: 001*/
+h3 {
+    grid-column: 1 / span 9;
+}
+
+/*Especificidad: 001*/
 p {
-    padding-top: 1.5em;
+    padding: 1em;
     margin: 0;
-    color:grey;
+    color: grey;
     background-color: white;
     text-align: center;
     border-color: black;
     font-weight: bold;
+    border-width: 0.1em;
+    border-style: dashed;
 }
 
-
-/*Especificidad: 002 
+/*Especificidad: 011 
 No hace falta background-color
 porque está de antes, de p*/
-p span{
+p[data-state="blocked"] {
     font-weight: bold;
     color: black;
     font-size: 1.2em;
 }
 
 /*Especificidad: 011*/
-p:nth-child(3n-1){
+p:nth-child(3n) {
     border-left-width: 0.2em;
     border-left-style: solid;
 }
 
 /*Especificidad: 011*/
-p:nth-child(3n-1),p:nth-child(3n)  {
-   
-    border-right-width: 0.1em;
-    border-right-style: dashed;
-}
-
-/*Especificidad: 011*/
-p:nth-child(3n+1) {
+p:nth-child(3n+2) {
     border-right-width: 0.2em;
     border-right-style: solid;
 }
 
-/*Especificidad: 011*/
-p:nth-child(-n+82) {
+
+/*Especificidad: 021*/
+p:nth-child(n+21):nth-child(-n+29),
+p:nth-child(n+48):nth-child(-n+56),
+p:nth-child(n+75):nth-child(-n+83) {
     border-bottom-width: 0.2em;
     border-bottom-style: solid;
 }
 
-/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
-p:nth-child(-n+73) {
-    border-bottom-width: 0.1em;
-    border-bottom-style: dashed;
-}
-
-/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
-p:nth-child(-n+55) {
-    border-bottom-width: 0.2em;
-    border-bottom-style: solid;
-}
-
-/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
-p:nth-child(-n+46) {
-    border-bottom-width: 0.1em;
-    border-bottom-style: dashed;
-}
-
-/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
-p:nth-child(-n+28) {
-    border-bottom-width: 0.2em;
-    border-bottom-style: solid;
-}
-
-/*Especificidad: 011 SOBREESCRIBE AL ANTERIOR*/
-p:nth-child(-n+19) {
-    border-bottom-width: 0.1em;
-    border-bottom-style: dashed;
-}
-
-/*Especificidad: 011*/
-p:nth-child(-n+10) {
+/*Especificidad: 021*/
+p:nth-child(n+2):nth-child(-n+11),
+p:nth-child(n+30):nth-child(-n+38),
+p:nth-child(n+57):nth-child(-n+65) {
     border-top-width: 0.2em;
     border-top-style: solid;
 }

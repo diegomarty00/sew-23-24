@@ -11,6 +11,9 @@
     <title>Escritorio Virtual - Agenda</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
+  <script src="js/agenda.js"></script>
 </head>
 
 <body>
@@ -29,6 +32,15 @@
 			</ul>
 		</nav>
 	</header>
+	
+	<main>
+    <h2>Agenda</h2>
+    <button onclick=agenda.verCarreras()>Ver XML carreras</button>
+  </main>
+  
+  <script>
+    var agenda = new Agenda()
+  </script>
 </body>
 
 </html>

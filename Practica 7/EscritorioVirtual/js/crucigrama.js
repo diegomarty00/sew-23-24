@@ -1,86 +1,87 @@
-"use strict";
-class Crucigrama {
+class Crucigrama{
 
-	const column = 9;
-	const row = 11;
+    //fácil
+    cadena = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,"  +
+            "20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16"
+    ;
+    numFil = 11;
+    numCol = 9;
+    init_time;// momento en el que se inicia el juego
+    end_time; // momento en el que se termina el juego
+    tablero = [];
 
-	let boardStringEasy = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-
-						,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-
-						,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16”;
-						
-	let boardStringMidium = “12,*,.,=,36,#,#,#,15,#,#,*,#,/,#,#,#,*,.,-
-						,.,=,.,#,55,#,.,*,#,=,#,=,#,/,#,=,.,#,15,#,9,*,.,=,45,=,#,#,#,#,#,=,#,#,72,#,20,-,.,=,11,#,.,#,#,-
-						,#,+,#,#,#,*,56,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,12,#,16,*,.,=,32";
 
-	let boardStringHard = "4,.,.,=,36,#,#,#,25,#,#,*,#,.,#,#,#,.,.,-
-						,.,=,.,#,15,#,.,*,#,=,#,=,#,.,#,=,.,#,18,#,6,*,.,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-
-						,.,=,3,#,.,#,#,*,#,+,#,#,#,*,20,.,.,=,18,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,18,#,24,.,.,=,72";
-						
-	let boardArray = [][];
-	let init_time;
-	let end_time;
-	
+    constructor(){
+        this.tablero = Array.from({ length: this.numFil }, () => Array(this.numCol));//inicializa al tamaño correspondinte
 
-	constructor(difficulty) {
-		start(difficulty);
-  }
+        this.start();
+        
+    }
+
+     /*Pone valores dentor del array bidimensional */
+     start() {
+        let contador = 0;
+        const elementos = this.cadena.split(',');//array con el contenido de la cadena sin las comas
+        
+        for (let fila = 0; fila < this.numFil; fila++) {
+            for (let col = 0; col < this.numCol; col++) {
+                const caracter = elementos[contador];
+    
+                // Comprobar y asignar valores según las reglas
+                switch (caracter) {
+                    case '#':
+                        this.tablero[fila][col] = -1;
+                        break; 
+                    case '.':
+                        this.tablero[fila][col] = 0;
+                        break; 
+                    default:
+                        const valor = parseInt(caracter);
+                        this.tablero[fila][col] = isNaN(valor) ? caracter : valor;
+                        break; 
+                }
+                contador++;
+            }
+        }
+        console.log(this.tablero);
+    }
+    
+
+    /* crear en el documento HTML, a través de jQuery, los párrafos que representarán las celdas del crucigrama.
+    Luego  inicializa la variable init_time de la clase Crucigrama al valor de la fecha actual.*/ 
+    paintMathword(){
+
+        const main = document.querySelector('main')
+        //si selecciono una celda pero noe scribo nada, y selecciono otra, la primera a qué estado vuelve?
+        for (let fila = 0; fila < this.numFil; fila++) {
+            for (let col = 0; col < this.numCol; col++) {
+                const valor = this.tablero[fila][col];
+
+                const p = document.createElement('p');
+                //le guardo la fila y columna para agilizra las futuras comprobaciones
+                p.dataset.row = fila;
+                p.dataset.column = col;
+                if (valor === 0) { //no tendrá contenido --> se puede escribrir
+                    p.addEventListener('click', () => {
+                        p.setAttribute('data-state', 'clicked')
+                    });
+                } else {
+
+                    if(valor === -1){
+                        p.setAttribute('data-state', 'empty')
+                    } else {
+                        p.setAttribute('data-state', 'blocked');
+                        // Asignar el valor al párrafo: operador o el valor del numero
+                        p.textContent = valor;
+                    }
+                    
+                }
+                main.appendChild(p);
+            }
+        }
+
+        //iniciliaza init_time
+        this.init_time = new Date();
+
+    }
 }
-	}
-	
-	start(difficulty){
-		var drawBoard = boardStringEasy.split(",");
-		if (difficulty == 2)
-			drawBoard = boardStringMidium.split(",");
-		if (difficulty == 3)
-			drawBoard = boardStringHard.split(",");
-		
-		var counter = 0;
-		for (let i = 0; i < row; i++) {
-			for (let j = 0; j < column; j++) {
-				boardArray[i][j] = ValueBoard(drawBoard[counter]);
-				counter++;
-			}
-		}
-		
-		init_time = Date.now();
-	}
-	
-	ValueBoard(){
-		if (character == "#")
-			return -1;
-		if (character == ".")
-			return 0;
-		return character;
-	}
-
-	paintMathword(){
-		for (let i = 0; i < row; i++) {
-			for (let j = 0; j < column; j++) {
-				let $parrafos = $("<p></p>").appendTo("body");
-			}
-		}
-		
-	
-}
-
-var lesoto = new Pais('Lesoto', 'Maseru', '330760');
-lesoto.setCoordenadas('-29.31', '27.48');
-lesoto.setGobierno('monarquía parlamentaria');
-lesoto.setReligion('Cristianismo');
-
-document.write("<p>Pais: ")
-document.write(lesoto.nombre);
-document.write("</p>")
-
-document.write("<p>Capital: ")
-document.write(lesoto.capital);
-document.write("</p>")
-
-document.write("<p>Población: ")
-document.write(lesoto.poblacion);
-document.write("</p>")
-
-document.write("<section>");
-document.write("<h2>Otros datos del pais</h2>");
-document.write(lesoto.verDatosSecundarios());
-document.write("</section>");

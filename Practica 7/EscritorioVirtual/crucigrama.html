@@ -11,6 +11,9 @@
     <title>Escritorio Virtual - Juegos</title>
     <link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> <!--jquery min-->
+	<script src="js/crucigrama.js"></script>
 </head>
 
 <body>
@@ -37,6 +40,15 @@
 			<li><a href="crucigrama.html" tabindex="10" class="active">Crucigrama</a></li>
 		</ul>
 	</section>
+	
+	<main>
+		<h2>crucigrama</h2>
+	</main>
+  
+  <script>
+    var juego = new Crucigrama()
+    juego.paintMathword();
+  </script>
 </body>
 
 </html>

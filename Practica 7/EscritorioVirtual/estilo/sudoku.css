@@ -15,9 +15,8 @@ B. Black #000000
 
 /*Especificidad: 001*/
 main {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: 0;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     max-width: 40em;
     height: auto;
@@ -28,11 +27,13 @@ main {
 
 /*Especificidad: 001*/
 h3 {
-    grid-column: 1 / span 9;
+    flex-basis: 100%; 
 }
 
 /*Especificidad: 001*/
 p {
+    flex-basis: calc(100% / 9); 
+    box-sizing: border-box;
     padding: 1em;
     margin: 0;
     color: grey;

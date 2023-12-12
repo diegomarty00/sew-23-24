@@ -18,13 +18,11 @@ section {
     margin: 1em;
 }
 
-h3 span {
+/*Especificidad: 001*/
+h3 {
     border-color: #5B3354;
     border-style: solid;
 }
-
-
-
 
 /*Especificidad: 002*/
 main section {
@@ -33,7 +31,6 @@ main section {
     align-items: center;
     justify-content: center;
 }
-
 
 /*Especificidad: 003*/
 main section>h2 {
@@ -54,7 +51,6 @@ main section article {
     text-align: center;
     border-radius: 0.5em;
     align-self: flex-end;
-
 }
 
 /*Especificidad: 004

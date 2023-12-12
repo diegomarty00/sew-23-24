@@ -72,14 +72,13 @@ h2 {
 }
 
 /*Especifidad: 002*/
-h3 span {
-
+h3 {
 	font-family: Helveltica, Verdana, sans-serif;
 	background-color: #E6D1DC;
 	color: #5B3354;
 	padding: 0.5em;
 	font-size: 1.3em;
-	Display: inline;
+	display: inline table;
 	border-radius: 0.5em 0em;
 	margin: 1em;
 }

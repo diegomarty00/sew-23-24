@@ -27,7 +27,6 @@ class Fondo {
 
         };
 
-
         $.getJSON(flickrAPI, conf)
             .done(function (data) {
                 //seleccionar la foto
@@ -36,7 +35,6 @@ class Fondo {
                 var url = `url('${betterQuality}')`
                 console.log(url)
 
-                //establecer la imagen para que ocupe toda la pantalla
                 $('body').css('background-image', url)
                     .css('background-size', 'cover');
                 console.log('se cambió el fondo')

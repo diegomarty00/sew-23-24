@@ -15,23 +15,26 @@ B. Black #000000
 
 
 
-main section {
+main {
 	display: flex;
 	flex-wrap: wrap;
+	max-width: 100%;
+    padding: 0 10%;
 }
 
-main section>article {
+/*Especificidad: 003*/
+main article {
+	
 	flex-grow: 1;
 	flex-shrink: 1;
-	flex-basis: 20%;
+	flex-basis: 20%; 
+    box-sizing: border-box;
 }
 
-main section>h3 {
-	flex-grow: 0;
-	flex-shrink: 1;
+/*Especificidad: 003*/
+h3 {
 	flex-basis: 100%;
 }
-
 
 
 /*Especificidad: 012*/
@@ -43,11 +46,8 @@ article[data-state="flip"] img {
 
 /*Especificidad: 001*/
 article {
-
 	color: #304606;
 	background-color: #EBF094;
-	display: flex;
-	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	width: 10em;

@@ -15,18 +15,23 @@ B. Black #000000
 
 /*Especificidad: 001*/
 main {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(12, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     /*11+1 porque incluye el h2*/
     max-width: 80%;
-    padding-left: 10%;
+    padding: 0 10%;
     /* Ajustar padding izquierdo para centrar */
+}
+
+/*Especificidad: 002*/
+main p {
+    flex-basis: calc(100% / 9); 
+    box-sizing: border-box;
 }
 
 /*Especificidad: 001*/
 h3 {
-    grid-column: 1 / span 9;
+    flex-basis: 100%;
 }
 
 /*Especificidad: 011*/
@@ -38,7 +43,7 @@ p[data-state="empty"] {
 
 /*Especificidad: 001*/
 p {
-    padding-top: 1.5em;
+    padding: 1em;
     margin: 0;
     color: grey;
     background-color: white;

@@ -96,6 +96,14 @@ class Crucigrama {
             return false;
         }
 
+
+        //Buscamos el igual a la derecha
+            //Asignamos first_number, expression, second_number y result
+
+
+        //Buscamos el igual a la izquierda
+
+
         celda[0].textContent = pulsado;
         this.boardArry[r][c] = pulsado;
         celda[0].onClick = null;

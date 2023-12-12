@@ -40,6 +40,12 @@ p[data-state="empty"] {
     background-color: black;
 }
 
+/*Especificidad: 011 
+No hace falta color
+porque está de antes, de p*/
+p[data-state="clicked"] {
+    background-color: rgb(169, 212, 230);
+}
 
 /*Especificidad: 001*/
 p {

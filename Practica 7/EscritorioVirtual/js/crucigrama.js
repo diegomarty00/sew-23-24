@@ -1,62 +1,65 @@
 class Crucigrama {
 
-    //fácil
-    cadena = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-,.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=," +
-        "20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-,#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16"
-        ;
-    numFil = 11;
-    numCol = 9;
-    init_time;// momento en el que se inicia el juego
-    end_time; // momento en el que se termina el juego
-    tablero = [];
+    lvl1 = "4,*,.,=,12,#,#,#,5,#,#,*,#,/,#,#,#,*,4,-" +
+        ",.,=,.,#,15,#,.,*,#,=,#,=,#,/,#,=,.,#,3,#,4,*,.,=,20,=,#,#,#,#,#,=,#,#,8,#,9,-,.,=,3,#,.,#,#,-" +
+        ",#,+,#,#,#,*,6,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,6,#,8,*,.,=,16";
+    lvl2 = "12,*,.,=,36,#,#,#,15,#,#,*,#,/,#,#,#,*,.,-" +
+        ",.,=,.,#,55,#,.,*,#,=,#,=,#,/,#,=,.,#,15,#,9,*,.,=,45,=,#,#,#,#,#,=,#,#,72,#,20,-,.,=,11,#,.,#,#,-" +
+        ",#,+,#,#,#,*,56,/,.,=,.,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,12,#,16,*,.,=,32";
+    lvl3 = "4,.,.,=,36,#,#,#,25,#,#,*,#,.,#,#,#,.,.,-" +
+        ",.,=,.,#,15,#,.,*,#,=,#,=,#,.,#,=,.,#,18,#,6,*,.,=,30,=,#,#,#,#,#,=,#,#,56,#,9,-" +
+        ",.,=,3,#,.,#,#,*,#,+,#,#,#,*,20,.,.,=,18,#,#,#,.,#,#,=,#,=,#,#,#,=,#,#,18,#,24,.,.,=,72"
+
+    row = 11;
+    column = 9;
+    boardArry = [];
 
 
-    constructor() {
-        this.tablero = Array.from({ length: this.numFil }, () => Array(this.numCol));//inicializa al tamaño correspondinte
-
+    constructor(lvl) {
+        this.boardArry = Array.from({ length: this.row }, () => Array(this.column));//inicializa al tamaño correspondinte
+        this.lvl = lvl;
         this.start();
-
     }
 
-    /*Pone valores dentor del array bidimensional */
-    start() {
+    start(lvl) {
         let contador = 0;
-        const elementos = this.cadena.split(',');//array con el contenido de la cadena sin las comas
+        let elementos = this.lvl1.split(',');
+        if (this.lvl == 2)
+            elementos = this.lvl2.split(',');
+        if (this.lvl == 3)
+            elementos = this.lvl3.split(',');
 
-        for (let fila = 0; fila < this.numFil; fila++) {
-            for (let col = 0; col < this.numCol; col++) {
+        for (let fila = 0; fila < this.row; fila++) {
+            for (let col = 0; col < this.column; col++) {
                 const caracter = elementos[contador];
 
                 // Comprobar y asignar valores según las reglas
                 switch (caracter) {
                     case '#':
-                        this.tablero[fila][col] = -1;
+                        this.boardArry[fila][col] = -1;
                         break;
                     case '.':
-                        this.tablero[fila][col] = 0;
+                        this.boardArry[fila][col] = 0;
                         break;
                     default:
                         const valor = parseInt(caracter);
-                        this.tablero[fila][col] = isNaN(valor) ? caracter : valor;
+                        this.boardArry[fila][col] = isNaN(valor) ? caracter : valor;
                         break;
                 }
                 contador++;
             }
         }
-
-        this.init_time = new Date();
     }
 
-
-    /* crear en el documento HTML, a través de jQuery, los párrafos que representarán las celdas del crucigrama.
-    Luego  inicializa la variable init_time de la clase Crucigrama al valor de la fecha actual.*/
     paintMathword() {
 
         const main = document.querySelector('main')
-        //si selecciono una celda pero noe scribo nada, y selecciono otra, la primera a qué estado vuelve?
-        for (let fila = 0; fila < this.numFil; fila++) {
-            for (let col = 0; col < this.numCol; col++) {
-                const valor = this.tablero[fila][col];
+        const h3 = document.createElement('h3');
+        h3.textContent = "Crucigrama - Nivel " + this.lvl + "";
+        main.appendChild(h3);        //si selecciono una celda pero noe scribo nada, y selecciono otra, la primera a qué estado vuelve?
+        for (let fila = 0; fila < this.row; fila++) {
+            for (let col = 0; col < this.column; col++) {
+                const valor = this.boardArry[fila][col];
 
                 const p = document.createElement('p');
                 //le guardo la fila y columna para agilizra las futuras comprobaciones
@@ -72,7 +75,6 @@ class Crucigrama {
                         p.setAttribute('data-state', 'empty')
                     } else {
                         p.setAttribute('data-state', 'blocked');
-                        // Asignar el valor al párrafo: operador o el valor del numero
                         p.textContent = valor;
                     }
 
@@ -80,34 +82,35 @@ class Crucigrama {
                 main.appendChild(p);
             }
         }
-
-
-
+        this.init_time = new Date();
     }
 
-    introduceNumber(numPulsado) {
+
+    introduceElement(pulsado) {
         const celda = document.querySelectorAll('p[data-state="clicked"]');
         const r = celda[0].dataset.row;
         const c = celda[0].dataset.column;
 
-        if (this.asserts(numPulsado, r, c))
-            return;
+        if (this.asserts(pulsado, r, c)) {
+            celda[0].setAttribute('data-state', 'incorrent');
+            return false;
+        }
 
-        celda[0].textContent = numPulsado;
-        this.boardArry[r][c] = numPulsado;
+        celda[0].textContent = pulsado;
+        this.boardArry[r][c] = pulsado;
         celda[0].onClick = null;
         celda[0].setAttribute('data-state', 'correct');
 
 
-        let finish = true;
+        let finish = false;
 
         // Recorre cada fila del tablero
         for (let i = 0; i < this.boardArry.length; i++) {
-            let row = this.boardArry[i];
+            let r = this.boardArry[i];
 
             // Recorre cada elemento de la fila
-            for (let j = 0; j < row.length; j++) {
-                let element = row[j];
+            for (let j = 0; j < this.row.length; j++) {
+                let element = r[j];
 
                 // Si el elemento es igual a 0
                 if (element === 0) {
@@ -126,45 +129,81 @@ class Crucigrama {
 
     }
 
-    introduceElement(numPulsado) {
-        const celda = document.querySelectorAll('p[data-state="clicked"]');
-        const r = celda[0].dataset.row;
-        const c = celda[0].dataset.column;
+    asserts(pulsado, r, c) {
+        if (!isNaN(pulsado) && pulsado > 0 && pulsado <= 9) {
+            try {
+                if (this.boardArry[r][c + 1] > 0 &&
+                    this.boardArry[r][c + 1] <= 99)
+                    return true;
+            } catch (error) {
+            }
+            try {
+                if (this.boardArry[r][c - 1] > 0 &&
+                    this.boardArry[r][c - 1] <= 99)
+                    return true;
+            } catch (error) {
+            }
 
-        if (this.asserts(numPulsado, r, c))
-            return;
-
-        celda[0].textContent = numPulsado;
-        this.boardArry[r][c] = numPulsado;
-        celda[0].onClick = null;
-        celda[0].setAttribute('data-state', 'correct');
-
-
-        let finish = true;
-
-        // Recorre cada fila del tablero
-        for (let i = 0; i < this.boardArry.length; i++) {
-            let row = this.boardArry[i];
-
-            // Recorre cada elemento de la fila
-            for (let j = 0; j < row.length; j++) {
-                let element = row[j];
-
-                // Si el elemento es igual a 0
-                if (element === 0) {
-                    finish = false;
-                    break;
+            try {
+                if (this.boardArry[r + 1][c] > 0 &&
+                    this.boardArry[r + 1][c] <= 99)
+                    return true;
+            } catch (error) {
+            }
+            try {
+                if (this.boardArry[r - 1][c] > 0 &&
+                    this.boardArry[r - 1][c] <= 99)
+                    return true;
+            } catch (error) {
+            }
+            return false;
+        }
+        if (['+', '-', '*', '/'].includes(pulsado)) {
+            if (r != 0) {
+                try {
+                    if (this.boardArry[r - 1][c] > 0 &&
+                        this.boardArry[r - 1][c] <= 99)
+                        return false;
+                } catch (error) {
                 }
             }
+            if (c != 0) {
+                try {
+                    if (this.boardArry[r][c - 1] > 0 &&
+                        this.boardArry[r][c - 1] <= 99)
+                        return false;
+                } catch (error) {
+                }
+            }
+            if (r != (this.row - 1)) {
+                try {
+                    if (this.boardArry[r + 1][c] > 0 &&
+                        this.boardArry[r + 1][c] <= 99)
+                        return false;
+                } catch (error) {
+                }
+            }
+            if (c != (this.column - 1)) {
+                try {
+                    if (this.boardArry[r][c + 1] > 0 &&
+                        this.boardArry[r][c + 1] <= 99)
+                        return false;
+                } catch (error) {
+                }
+            }
+            return true;
+        }
+        return true;
+    }
 
-            if (!finish) {
-                break;
+    check_win_condition() {
+        for (let r = 0; r < this.row; r++) {
+            for (let c = 0; c < this.column; c++) {
+                if (this.boardArry[r][c] == 0)
+                    return false;
             }
         }
-
-        this.totalTime = (Date.now() - this.init_time) / 1000;
-        return finish;
-
+        return true;
     }
 
     finish() {

@@ -54,6 +54,13 @@ p[data-state="blocked"] {
     font-size: 1.2em;
 }
 
+/*Especificidad: 011 
+No hace falta color
+porque está de antes, de p*/
+p[data-state="clicked"] {
+    background-color: rgb(169, 212, 230);
+}
+
 /*Especificidad: 011*/
 p:nth-child(3n) {
     border-left-width: 0.2em;

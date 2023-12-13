@@ -58,13 +58,13 @@
 		document.addEventListener("keydown", (event) => {
 			const keyValue = event.key;
 			if (finish) {
-				juego.finish();
+				juego.calculate_date_difference();
 			} else {
 				const selectedCell = document.querySelector('p[data-state="clicked"]');
 				if (selectedCell) {
 					if (juego.introduceElement(keyValue)) {
 						finish = true;
-						juego.finish();
+						juego.calculate_date_difference();
 					}
 				}
 			}

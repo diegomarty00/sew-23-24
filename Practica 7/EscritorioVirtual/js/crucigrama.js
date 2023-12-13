@@ -222,6 +222,21 @@ class Crucigrama {
             tiempo = Math.floor(this.totalTime % 60) + " segundos";
         }
         alert('Felicidades, has tardado ' + tiempo);
+    }
 
+    calculate_date_difference(){
+        let tiempo;
+
+        let horas = Math.floor(this.totalTime / (60 * 60));
+        tiempo = tiempo - (horas * 60 * 60);
+
+        let minutos = Math.floor(tiempo / 60);
+        let segundos = Math.floor(this.totalTime % 60);
+
+        let resultado = (horas >= 10 ? horas : "0" + horas) + ":" +
+            (minutos >= 10 ? minutos : "0" + minutos) + ":" +
+            (segundos >= 10 ? segundos : "0" + segundos);
+    
+        return resultado;
     }
 }

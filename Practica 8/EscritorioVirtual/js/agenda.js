@@ -7,7 +7,6 @@ class Agenda {
     }
 
     verCarreras() {
-
         const now = new Date();
         const self = this;
         if (this.last_api_call !== null && (now - this.last_api_call) / (1000 * 60) < this.intervalo) {
@@ -21,33 +20,37 @@ class Agenda {
             success: function (data) {
                 self.last_api_call = now;
                 self.last_api_result = data;
-                console.log(data)
-
-                const section = $('<section>');
-
-
-                $(data).find('Race').each((index, race) => {
-                    var raceName = $(race).find('RaceName').text();
-                    var circuitName = $(race).find('CircuitName').text();
-                    var date = $(race).find('Date').first().text();
-                    var time = $(race).find('Time').first().text();
-                    var formatTime = time.substring(0, 5);;
-                    var location = $(race).find('Location').text();
-                    var latitud = $(race).find('Location').attr('lat');
-                    var longitud = $(race).find('Location').attr('long');
-
-                    const article = $('<article>');
-                    article.html('<h3>' + raceName + "</h3><p>" + circuitName + "</p><p>(" + latitud + ', ' + longitud
-                        + ")</p><p>" + date + ", " + formatTime + "</p>");
-                    section.append(article);
-                });
-                $('main').append(section);
-
+                printData(data);
             },
             error: function (error) {
                 console.error('Error en la solicitud AJAX:', error);
             }
         });
+
+        function printData(data) {
+            const section = $('<section>');
+
+
+            $(data).find('Race').each((index, race) => {
+                var raceName = $(race).find('RaceName').text();
+                var circuitName = $(race).find('CircuitName').text();
+
+                var latitud = $(race).find('Location').attr('lat');
+                var longitud = $(race).find('Location').attr('long');
+
+                var date = $(race).find('Date').first().text();
+                var time = $(race).find('Time').first().text();
+                var formatTime = time.substring(0, 5);;
+                var location = $(race).find('Location').text();
+
+
+                const article = $('<article>');
+                article.html('<h3>' + raceName + "</h3><p>" + circuitName + "</p><p>(" + latitud + ', ' + longitud
+                    + ")</p><p>" + date + ", " + formatTime + "</p>");
+                section.append(article);
+            });
+            $('main').append(section);
+        }
     }
 
 }

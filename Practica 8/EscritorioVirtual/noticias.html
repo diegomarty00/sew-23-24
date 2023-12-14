@@ -11,7 +11,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Escritorio Virtual - Noticias</title>
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="estilo/noticias.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<!--jquery min-->
+	<script src="js/noticias.js"></script>
 </head>
 
 <body>
@@ -28,6 +33,28 @@
 			<a href="juegos.html" tabindex="7" accesskey="j">Juegos</a>
 		</nav>
 	</header>
+	<main>
+		<h2>Noticias</h2>
+	</main>
+	<section>
+		<h2>Insertar noticias</h2>
+		<article>
+			<h3>Automáticamente</h3>
+			<input title="Noticias" type="file" onchange="noticias.readInputFile(this.files);">
+		</article>
+		<article>
+			<h3>Manualmente</h3>
+			<input type="text" name="Titulo" placeholder="Titular">
+			<textarea name='Entradilla' required placeholder="Entradilla"></textarea>
+			<textarea name='Noticia' required placeholder="Texto informativo sorbe la noticia"></textarea>
+			<input type="text" name="Autor" placeholder="Autor">
+			<button onclick="noticias.insertarNoticialManualmente()">Añadir noticia</button>
+		</article>
+	</section>
+
+	<script>
+		var noticias = new Noticias();
+	</script>
 
 </body>
 

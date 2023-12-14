@@ -52,7 +52,7 @@ class Crucigrama {
     }
 
     paintMathword() {
-
+        let celdaClicada = null;
         const main = document.querySelector('main')
         const h3 = document.createElement('h3');
         h3.textContent = "Crucigrama - Nivel " + this.lvl + "";
@@ -62,12 +62,15 @@ class Crucigrama {
                 const valor = this.boardArry[fila][col];
 
                 const p = document.createElement('p');
-                //le guardo la fila y columna para agilizra las futuras comprobaciones
                 p.dataset.row = fila;
                 p.dataset.column = col;
-                if (valor === 0) { //no tendrá contenido --> se puede escribrir
+                if (valor === 0) {
                     p.addEventListener('click', () => {
-                        p.setAttribute('data-state', 'clicked')
+                        if (celdaClicada) {
+                            celdaClicada.setAttribute('data-state', 'init');
+                        }
+                        celdaClicada = p;
+                        celdaClicada.setAttribute('data-state', 'clicked')
                     });
                 } else {
 
@@ -82,12 +85,12 @@ class Crucigrama {
                 main.appendChild(p);
             }
         }
-        this.init_time = new Date();
+        this.init_time = Date.now();
     }
 
 
     introduceElement(pulsado) {
-        const celda = document.querySelectorAll('p[data-state="clicked"]');
+        var celda = document.querySelectorAll('p[data-state="clicked"]');
         const r = celda[0].dataset.row;
         const c = celda[0].dataset.column;
 
@@ -96,45 +99,28 @@ class Crucigrama {
             return false;
         }
 
-
-        //Buscamos el igual a la derecha
-            //Asignamos first_number, expression, second_number y result
-
-
-        //Buscamos el igual a la izquierda
-
-
-        celda[0].textContent = pulsado;
         this.boardArry[r][c] = pulsado;
-        celda[0].onClick = null;
-        celda[0].setAttribute('data-state', 'correct');
+        var expression_row = this.check_horizontal(r, c);
+        var expression_col = this.check_vertical(r, c);
 
+        console.log(expression_row + " - " + expression_col)
+        if (expression_row && expression_col) {
+            celda[0].textContent = pulsado;
+            celda[0].setAttribute("data-state", "correct");
 
-        let finish = false;
-
-        // Recorre cada fila del tablero
-        for (let i = 0; i < this.boardArry.length; i++) {
-            let r = this.boardArry[i];
-
-            // Recorre cada elemento de la fila
-            for (let j = 0; j < this.row.length; j++) {
-                let element = r[j];
-
-                // Si el elemento es igual a 0
-                if (element === 0) {
-                    finish = false;
-                    break;
-                }
-            }
-
-            if (!finish) {
-                break;
-            }
+        } else {
+            this.boardArry[r][c] = 0;
+            celda[0].setAttribute("data-state", "incorrent");
+            alert("Elemento introducido no correcto");
         }
 
-        this.totalTime = (Date.now() - this.init_time) / 1000;
-        return finish;
+        if (this.check_win_condition()) {
+            this.end_time = Date.now();
+            
+            return true;
 
+        }
+        return false;
     }
 
     asserts(pulsado, r, c) {
@@ -215,28 +201,108 @@ class Crucigrama {
     }
 
     finish() {
-        let tiempo;
-        if (Math.floor(this.totalTime / 60) != 0) {
-            tiempo = Math.floor(this.totalTime / 60) + " minutos y " + Math.floor(this.totalTime % 60) + " segundos";
-        } else {
-            tiempo = Math.floor(this.totalTime % 60) + " segundos";
-        }
-        alert('Felicidades, has tardado ' + tiempo);
+        this.totalTime = this.calculate_date_difference();
+        alert("Felicidades, tu tiempo a sido: " + this.totalTime)
     }
 
-    calculate_date_difference(){
-        let tiempo;
+    calculate_date_difference() {
+        let tiempo = Math.floor((this.end_time-this.init_time)/1000);
 
-        let horas = Math.floor(this.totalTime / (60 * 60));
+        let horas = Math.floor( tiempo / (60 * 60));
         tiempo = tiempo - (horas * 60 * 60);
 
         let minutos = Math.floor(tiempo / 60);
-        let segundos = Math.floor(this.totalTime % 60);
+        let segundos = Math.floor(tiempo % 60);
 
         let resultado = (horas >= 10 ? horas : "0" + horas) + ":" +
             (minutos >= 10 ? minutos : "0" + minutos) + ":" +
             (segundos >= 10 ? segundos : "0" + segundos);
-    
+
         return resultado;
+    }
+
+    check_horizontal(r, c) {
+        var expression_row = true;
+        let first_number = 0;
+        let second_number = 0;
+        let expression = 0;
+        let result = 0;
+
+        c++;
+        if (c < this.column) {
+            if (this.boardArry[r][c] != -1) {
+                do {
+                    if (this.boardArry[r][c] === "=") {
+                        first_number = this.boardArry[r][c - 3];
+                        second_number = this.boardArry[r][c - 1];
+                        expression = this.boardArry[r][c - 2];
+                        result = this.boardArry[r][c + 1];
+                        break;
+                    }
+
+                    c++;
+
+                    if (c >= this.column)
+                        break;
+
+                } while (this.boardArry[r][c] != -1)
+            }
+        }
+        if (first_number != 0 && second_number != 0 && expression != 0 && result != 0) {
+            var expr = [first_number, expression, second_number];
+            var resEval;
+            try {
+                resEval = eval(expr.join(''));
+                if (resEval != result)
+                    expression_row = false;
+            } catch (error) {
+                expression_row = false;
+            }
+
+        }
+
+        return expression_row;
+    }
+
+
+
+    check_vertical(r, c) {
+        var expression_col = true;
+        var first_number, second_number, expression, result = 0;
+
+        r++;
+        if (r < this.column) {
+            if (this.boardArry[r][c] != -1) {
+                do {
+                    if (this.boardArry[r][c] === "=") {
+                        first_number = this.boardArry[r - 3][c];
+                        second_number = this.boardArry[r - 1][c];
+                        expression = this.boardArry[r - 2][c];
+                        result = this.boardArry[r + 1][c];
+                        break;
+                    }
+
+                    r++;
+
+                    if (r >= this.row)
+                        break;
+
+                } while (this.boardArry[r][c] != -1)
+            }
+        }
+
+        if (first_number != 0 && second_number != 0 && expression != 0 && result != 0) {
+            var expr = [first_number, expression, second_number];
+            var resEval;
+            try {
+                resEval = eval(expr.join(''));
+                if (resEval != result)
+                    expression_col = false;
+            } catch (error) {
+                expression_col = false;
+            }
+        }
+
+        return expression_col;
     }
 }

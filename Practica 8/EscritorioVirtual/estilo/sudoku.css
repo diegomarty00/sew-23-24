@@ -17,12 +17,8 @@ B. Black #000000
 main {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    max-width: 40em;
-    height: auto;
-    max-height: 50em;
-    margin: auto;
     align-self: center;
+    min-height: 40em;
 }
 
 /*Especificidad: 001*/
@@ -34,7 +30,7 @@ h3 {
 p {
     flex-basis: calc(100% / 9); 
     box-sizing: border-box;
-    padding: 1em;
+    padding: 2%;
     margin: 0;
     color: grey;
     background-color: white;
@@ -43,6 +39,7 @@ p {
     font-weight: bold;
     border-width: 0.1em;
     border-style: dashed;
+    font-size: .82em;
 }
 
 /*Especificidad: 011 
@@ -51,7 +48,7 @@ porque está de antes, de p*/
 p[data-state="blocked"] {
     font-weight: bold;
     color: black;
-    font-size: 1.2em;
+    
 }
 
 /*Especificidad: 011 

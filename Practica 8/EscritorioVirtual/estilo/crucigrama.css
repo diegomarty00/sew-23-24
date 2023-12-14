@@ -18,10 +18,12 @@ main {
     display: flex;
     flex-wrap: wrap;
     /*11+1 porque incluye el h2*/
-    max-width: 80%;
-    padding: 0 10%;
+    align-self: center;
+    max-width: 100%;
+    min-height: 40em;
     /* Ajustar padding izquierdo para centrar */
 }
+
 
 /*Especificidad: 002*/
 main p {
@@ -49,8 +51,9 @@ p[data-state="clicked"] {
 
 /*Especificidad: 001*/
 p {
-    padding: 1em;
+    padding: 2%;
     margin: 0;
+    font-size: .82em;
     color: grey;
     background-color: white;
     text-align: center;
@@ -63,14 +66,4 @@ p {
 p[data-state="blocked"] {
     font-weight: bold;
     color: black;
-    font-size: 1.2em;
-}
-
-/*Especificidad: 002 
-No hace falta background-color
-porque está de antes, de p*/
-p span {
-    font-weight: bold;
-    color: black;
-    font-size: 1.2em;
 }

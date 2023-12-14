@@ -68,7 +68,7 @@ class Pais {
 
 					// Agregar elementos a la tabla
 					var text = $(`
-							<h3><span>${dia}</span></h3>
+							<h3>${dia}</h3>
 							<p>Temp. Máxima: ${tempMax}°C</p>
 							<p>Temp. Mínima: ${tempMin}°C</p>
 							<p>Humedad: ${humidity}%</p>

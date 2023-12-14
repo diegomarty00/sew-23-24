@@ -13,13 +13,11 @@ B. Black #000000
 7. Orchid #5B3354 		w, 3, 4, 5
 */
 
-
-
 main {
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 100%;
-    padding: 0 10%;
+    
 }
 
 /*Especificidad: 003*/

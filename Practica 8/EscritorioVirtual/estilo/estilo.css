@@ -29,11 +29,12 @@ p {
 	color: #E6D1DC;
 }
 
-
+/*Especificidad: 001*/
 main {
 	margin: 1em;
 }
 
+/*Especificidad: 001*/
 article {
 	margin: 1em;
 }

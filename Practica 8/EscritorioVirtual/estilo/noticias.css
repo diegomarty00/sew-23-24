@@ -59,7 +59,7 @@ article p[data-element="entradilla"] {
     font-weight: bold;
 }
 
-
+/*Especificidad: 012*/
 article p[data-element="autor"] {
     text-align: end;
 }

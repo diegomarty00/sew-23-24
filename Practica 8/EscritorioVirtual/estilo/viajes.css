@@ -1,0 +1,110 @@
+/* Diego Martinez Menendez - UO270457 
+
+W. White #FFFFFF
+B. Black #000000
+
+1. Olive Green #9BA216 	B
+2. Dark Green #304606 	W, 3, 4, 5
+3. Chartreuse #D6E024 	B, 2, 7
+4. Yellow Green #EBF094 B, 2, 7
+
+5. Mauve #E6D1DC 		B, 2, 7 
+6. Lavender #C197D2		B
+7. Orchid #5B3354 		w, 3, 4, 5
+*/
+
+/*Especificidad: 001*/
+main section img {
+    width: 60%;
+    height: auto;
+    margin-top: 4em;
+}
+
+#dinamico {
+    margin-top: 4em;
+    height: 60vw;
+}
+
+section[data-element="fileUpload"] {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.5em;
+}
+
+section[data-element="fileUpload"] p {
+    width: 100%;
+}
+
+section[data-element="rutas"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+article[data-element="infoRuta"] {
+    display: flex;
+    flex-direction: column;
+    border: 0.1em solid #071330;
+    padding: 1em;
+    width: 80%;
+}
+
+article[data-element="infoRuta"] p {
+    margin: 0.2em;
+}
+
+article[data-element="infoRuta"] h4[data-element="nombre-ruta"] {
+    align-self: center;
+}
+
+section[data-element="galeria"] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 35vh;
+    gap: 0em;
+    overflow: auto;
+}
+
+section h4 {
+    margin: 1.2em;
+}
+
+section[data-element="galeria"] h4 {
+    flex: 100%;
+}
+
+section[data-element="galeria"] img {
+    width: 50%;
+    height: auto;
+    margin: 0;
+}
+
+main section[data-element="rutas"] article[data-element="infoRuta"] li {
+    color: #071330; /*No se establece el color de fondo porque lo hereda de body*/
+}
+
+section[data-element="archivosSVG"] {
+    display: flex;
+    flex-direction: column;
+}
+
+section[data-element="archivosSVG"] svg {
+    width: 80%;
+    height: 35vh;
+    overflow: hidden;
+}
+
+section[data-element="archivosSVG"] h4 {
+    text-align: center;
+}
+
+section[data-element="archivosSVG"] polyline {
+    transform: scale(0.6);
+}
+
+section[data-element="archivosSVG"] text {
+    transform: scale(0.6);
+}

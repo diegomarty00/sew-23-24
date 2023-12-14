@@ -33,6 +33,34 @@
 			<a href="juegos.html" tabindex="7" accesskey="j">Juegos</a>
 		</nav>
 	</header>
+	<main>
+		<h2>Viajes</h2>
+		<button onclick="viajes.getMapaEstaticoGoogle('estatico')">Obtener mapa estático</button>
+        <figure id="estatico"></figure>
+        <figure id="dinamico"></figure>
+        <section data-element="fileUpload">
+            <h3>Carga de archivos</h3>
+            <p>Carga el archivo rutasEsquema.xml para ver su contenido: </p>
+            <input type="file" accept=".xml" onchange="viajes.leerArchivoXML(this.files)">
+            <p>Carga archivos KML para representarlos en el mapa dinámico</p>
+            <input type="file" accept=".kml"  onchange="viajes.leerArchivoKML(this.files)" multiple>
+            <p>Carga archivos SVG para representarlos en el documento</p>
+            <input type="file" accept=".svg"  onchange="viajes.leerArchivoSVG(this.files)" multiple>
+        </section>
+	</main>
+	<script>
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCrbYGj55x3xpStJ_qDNQu9SLTiaHDbto&callback=initMap"
+		let viajes = new Viajes();
+
+		function initMap() {
+			viajes.getMapaDinamicoGoogle();
+		}
+
+		$("button[data-action='next']").on("click", viajes.carruselSiguiente());
+		$("button[data-action='prev']").on("click", viajes.carruselAnterior());
+
+	</script>
 </body>
+
 
 </html>

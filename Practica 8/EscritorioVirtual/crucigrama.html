@@ -12,6 +12,7 @@
 	<title>Escritorio Virtual - Juegos</title>
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="estilo/crucigrama.css" />
+	<link rel="stylesheet" type="text/css" href="estilo/botonera.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -45,28 +46,49 @@
 	</section>
 
 	<main>
+		<script>
+			var juego = new Crucigrama(2);
+			var finish = false;
+			juego.paintMathword();
 
-	</main>
-
-	<script>
-		var juego = new Crucigrama(2);
-		var finish = false;
-		juego.paintMathword();
-
-		document.addEventListener("keydown", (event) => {
-			const keyValue = event.key;
-			if (finish) {
-				juego.finish();
-			} else {
-				const selectedCell = document.querySelector('p[data-state="clicked"]');
-				if (selectedCell) {
-					if (juego.introduceElement(keyValue)) {
-						finish = true;
+			document.addEventListener("keydown", (event) => {
+				const keyValue = event.key;
+				if (finish) {
+					juego.finish();
+				} else {
+					const selectedCell = document.querySelector('p[data-state="clicked"]');
+					if (selectedCell) {
+						if (juego.introduceElement(keyValue)) {
+							finish = true;
+						}
 					}
 				}
-			}
-		});
-	</script>
+			});
+		</script>
+	</main>
+
+	<section data-type="botonera">
+		<h2>Botonera</h2>
+		<article data-type="numeros">
+			<button onclick="juego.introduceElement(1)">1</button>
+			<button onclick="juego.introduceElement(2)">2</button>
+			<button onclick="juego.introduceElement(3)">3</button>
+			<button onclick="juego.introduceElement(4)">4</button>
+			<button onclick="juego.introduceElement(5)">5</button>
+			<button onclick="juego.introduceElement(6)">6</button>
+			<button onclick="juego.introduceElement(7)">7</button>
+			<button onclick="juego.introduceElement(8)">8</button>
+			<button onclick="juego.introduceElement(9)">9</button>
+		</article>
+		<article data-type="operadores">
+			<button onclick="juego.introduceElement('*')">*</button>
+			<button onclick="juego.introduceElement('/')">/</button>
+			<button onclick="juego.introduceElement('-')">-</button>
+			<button onclick="juego.introduceElement('+')">+</button>
+		</article>
+	</section>
+
+
 </body>
 
 </html>

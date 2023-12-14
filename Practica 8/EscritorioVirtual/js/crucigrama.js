@@ -103,7 +103,6 @@ class Crucigrama {
         var expression_row = this.check_horizontal(r, c);
         var expression_col = this.check_vertical(r, c);
 
-        console.log(expression_row + " - " + expression_col)
         if (expression_row && expression_col) {
             celda[0].textContent = pulsado;
             celda[0].setAttribute("data-state", "correct");
@@ -113,7 +112,7 @@ class Crucigrama {
             celda[0].setAttribute("data-state", "incorrent");
             alert("Elemento introducido no correcto");
         }
-        console.log(this.check_win_condition())
+
         if (this.check_win_condition()) {
             this.end_time = Date.now();
             this.finish()
@@ -206,9 +205,9 @@ class Crucigrama {
     }
 
     calculate_date_difference() {
-        let tiempo = Math.floor((this.end_time-this.init_time)/1000);
+        let tiempo = Math.floor((this.end_time - this.init_time) / 1000);
 
-        let horas = Math.floor( tiempo / (60 * 60));
+        let horas = Math.floor(tiempo / (60 * 60));
         tiempo = tiempo - (horas * 60 * 60);
 
         let minutos = Math.floor(tiempo / 60);
@@ -283,7 +282,7 @@ class Crucigrama {
                         result = this.boardArry[r + 1][c];
                         break;
                     }
-                    
+
                     r++;
 
                     if (r >= this.row)
@@ -292,7 +291,7 @@ class Crucigrama {
                 } while (this.boardArry[r][c] != -1)
             }
         }
-       if (first_number != 0 && second_number != 0 && expression != 0 && result != 0) {
+        if (first_number != 0 && second_number != 0 && expression != 0 && result != 0) {
             var expr = [first_number, expression, second_number];
             var resEval;
             try {

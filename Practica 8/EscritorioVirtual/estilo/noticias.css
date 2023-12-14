@@ -49,9 +49,19 @@ article {
 
 /*Especificidad: 002*/
 article p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
     color: black;
+}
+
+/*Especificidad: 012*/
+article p[data-element="entradilla"] {
+    text-align: center;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+
+article p[data-element="autor"] {
+    text-align: end;
 }
 
 /*Especificidad: 001*/

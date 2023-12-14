@@ -63,6 +63,7 @@ p {
     font-weight: bold;
 }
 
+/*Especificidad: 011*/
 p[data-state="blocked"] {
     font-weight: bold;
     color: black;

@@ -13,6 +13,7 @@ B. Black #000000
 7. Orchid #5B3354 		w, 3, 4, 5
 */
 
+/*Especificidad: 011*/
 section[data-type=botonera] {
     display: flex;
     gap: 1em;
@@ -21,6 +22,7 @@ section[data-type=botonera] {
     flex-wrap: wrap;
 }
 
+/*Especificidad: 012*/
 section[data-type=botonera] h2 {
     width: 100%;
     text-align: center;
@@ -28,6 +30,7 @@ section[data-type=botonera] h2 {
     
 }
 
+/*Especificidad: 001*/
 article{
     display: flex;
     flex-wrap: wrap;
@@ -38,6 +41,7 @@ article{
     margin-bottom: 0em;
 }
 
+/*Especificidad: 003*/
 section article button{
     width: 4em;
     height: 4em;
@@ -47,7 +51,7 @@ section article button{
     font-weight: bolder;
 }
 
-
+/*Especificidad: 013*/
 section article[data-type=numeros] button {
     background-color: #E6D1DC;
     border-color: #5B3354;
@@ -55,6 +59,7 @@ section article[data-type=numeros] button {
     
 }
 
+/*Especificidad: 013*/
 section article[data-type=operadores] button {
     background-color: #D6E024;
     border-color: #304606;

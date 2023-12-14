@@ -113,10 +113,10 @@ class Crucigrama {
             celda[0].setAttribute("data-state", "incorrent");
             alert("Elemento introducido no correcto");
         }
-
+        console.log(this.check_win_condition())
         if (this.check_win_condition()) {
             this.end_time = Date.now();
-            
+            this.finish()
             return true;
 
         }
@@ -268,10 +268,12 @@ class Crucigrama {
 
     check_vertical(r, c) {
         var expression_col = true;
-        var first_number, second_number, expression, result = 0;
-
+        let first_number = 0;
+        let second_number = 0;
+        let expression = 0;
+        let result = 0;
         r++;
-        if (r < this.column) {
+        if (r < this.row) {
             if (this.boardArry[r][c] != -1) {
                 do {
                     if (this.boardArry[r][c] === "=") {
@@ -281,7 +283,7 @@ class Crucigrama {
                         result = this.boardArry[r + 1][c];
                         break;
                     }
-
+                    
                     r++;
 
                     if (r >= this.row)
@@ -290,8 +292,7 @@ class Crucigrama {
                 } while (this.boardArry[r][c] != -1)
             }
         }
-
-        if (first_number != 0 && second_number != 0 && expression != 0 && result != 0) {
+       if (first_number != 0 && second_number != 0 && expression != 0 && result != 0) {
             var expr = [first_number, expression, second_number];
             var resEval;
             try {

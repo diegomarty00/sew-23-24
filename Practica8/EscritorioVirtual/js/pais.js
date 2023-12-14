@@ -6,48 +6,48 @@ class Pais {
 		this.poblacion = poblacion;
 	}
 
-	setGobierno(gobierno){
+	setGobierno(gobierno) {
 		this.gobierno = gobierno;
 	}
-	
-	setReligion(religion){
+
+	setReligion(religion) {
 		this.religion = religion;
 	}
-	
+
 	setCoordenadas(longitud, latitud) {
 		this.longitud = longitud;
 		this.latitud = latitud;
 	}
-	
-	getNombre() {
-        return this.nombre;
-    }
 
-    getCapital() {
-        return this.capital;
-    }
-	
-	getCoordenadas(){
+	getNombre() {
+		return this.nombre;
+	}
+
+	getCapital() {
+		return this.capital;
+	}
+
+	getCoordenadas() {
 		return this.latitud + ", " + this.longitud;
 	}
 
 
-	verDatosSecundarios(){
-		 var stringDatos =  "<p>Población: " + this.poblacion + "</p>";
-             stringDatos += "<p>Forma de gobierno: " + this.gobierno + "</p>";
-             stringDatos += "<p>Religión mayoritaria: " + this.religion + "</p>";
+	verDatosSecundarios() {
+		var stringDatos = "<p>Población: " + this.poblacion + "</p>";
+		stringDatos += "<p>Forma de gobierno: " + this.gobierno + "</p>";
+		stringDatos += "<p>Religión mayoritaria: " + this.religion + "</p>";
 		return stringDatos;
-	}	
+	}
 
 	verTiempo(capital) {
-        const apiKey = '13e780276233960d55c6d669b702711f';
-        const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.capital}&units=metric&appid=${apiKey}`;
+		const apiKey = '13e780276233960d55c6d669b702711f';
+		const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.capital}&units=metric&appid=${apiKey}`;
 
 		$.ajax({
 			url: url,
 			type: 'GET',
 			dataType: 'json',
-			success: function(data) {
+			success: function (data) {
 				var filteredList = data.list.filter(item => item.dt_txt.includes('12:00:00'));
 
 				var section = $('<section>').attr('data-name', 'meteo');
@@ -66,7 +66,7 @@ class Pais {
 					var iconUrlBase = 'http://openweathermap.org/img/wn/';
 					var iconUrl = `${iconUrlBase}${item.weather[0].icon}.png`;
 
-					 // Agregar elementos a la tabla
+					// Agregar elementos a la tabla
 					var text = $(`
 							<h3><span>${dia}</span></h3>
 							<p>Temp. Máxima: ${tempMax}°C</p>
@@ -81,10 +81,10 @@ class Pais {
 				});
 
 				$('main').append(section);
-				
+
 				//console.log(filteredList);
 			},
-			error: function(error) {
+			error: function (error) {
 				console.error(error);
 			}
 		});

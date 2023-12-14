@@ -57,9 +57,8 @@ class Sudoku {
                         celdaClicada.setAttribute('data-state', 'clicked')
                     });
                 } else {
-                    const span = document.createElement('span');
-                    span.textContent = valor;
-                    p.appendChild(span);
+                    p.setAttribute('data-state', 'blocked');
+                    p.textContent = valor;
                 }
                 main.appendChild(p);
             }

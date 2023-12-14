@@ -15,33 +15,33 @@ class Memoria {
             { element: "W3C_2", source: "https://upload.wikimedia.org/wikipedia/commons/5/5e/W3C_icon.svg" },
         ];
 
-        this.hasFlippedCard = false;//si ya hay una carta dada la vuelta
-        this.lockBoard = false;//si el tablero se encuentra bloqueado a la interacción cdel usuario
-        this.firstCard = null;// cuál es la primera carta a la que se ha dado la vuelta
-        this.secondCard = null;//cuál es la segunda carta a la que se ha dado la vuelta
+        this.hasFlippedCard = false;
+        this.lockBoard = false;
+        this.firstCard = null;
+        this.secondCard = null;
 
         this.shuffleElements()
         this.createElements();
         this.addEventListeners();
 
-       
+
     }
 
     //Algoritmo Durstenfeld
     shuffleElements() {
         for (let i = this.elements.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
+            var j = Math.floor(Math.random() * (i + 1));
             [this.elements[i], this.elements[j]] = [this.elements[j], this.elements[i]];
         }
     }
-    unflipCards(){
-        this.lockBoard = true; // Bloquea el tablero
+    unflipCards() {
+        this.lockBoard = true; 
 
         setTimeout(() => {
             this.firstCard.dataset.state = 'init';
             this.secondCard.dataset.state = 'init';
 
-            this.resetBoard(); 
+            this.resetBoard();
         }, 1000); // 
     }
 
@@ -51,55 +51,46 @@ class Memoria {
         this.hasFlippedCard = false;
         this.lockBoard = false;
     }
-   
-	checkForMatch(){
-        if(this.firstCard.dataset.element.split('_')[0] === this.secondCard.dataset.element.split('_')[0]){
-			if (this.firstCard.dataset.element.split('_')[1] != this.secondCard.dataset.element.split('_')[1])
-				this.disableCards();
-		}else{
-			this.unflipCards();
-		}
+
+    checkForMatch() {
+        if (this.firstCard.dataset.element.split('_')[0] === this.secondCard.dataset.element.split('_')[0]) {
+            if (this.firstCard.dataset.element.split('_')[1] != this.secondCard.dataset.element.split('_')[1])
+                this.disableCards();
+        } else {
+            this.unflipCards();
+        }
     }
 
-    //deshabilita las interacciones sobre las tarjetas de memoria que ya han sido emparejadas
-    disableCards(){
+    disableCards() {
         this.firstCard.dataset.state = 'revealed';
         this.secondCard.dataset.state = 'revealed';
         this.resetBoard();
     }
 
-    createElements(){
-        const main = document.querySelector('main')
-		const tablero = document.createElement('section')
-        const span = document.createElement('span')
-		var h3 = document.createElement('h3');
-		span.textContent = 'Juego de Memoria'
-        h3.appendChild(span);
-		tablero.appendChild(h3);
-		main.appendChild(tablero);
+    createElements() {
+        let tablero = document.querySelector('main')
+        var h3 = document.createElement('h3');
+        h3.textContent = 'Juego de Memoria'
+        tablero.appendChild(h3);
         for (const carta in this.elements) {
-                const elementData = this.elements[carta];
+            const elementData = this.elements[carta];
 
-                // Crear un nodo article por cada elemento
-                const card = document.createElement('article');
-                card.setAttribute('data-element', elementData.element);// valor igual al valor de la variable element extraída del JSON.
+            const card = document.createElement('article');
+            card.setAttribute('data-element', elementData.element);
 
-                // Encabezado de orden 4
-                const h4 = document.createElement('h4');
-                h4.textContent = 'Tarjeta de memoria';
-                card.appendChild(h4);
+            const h4 = document.createElement('h4');
+            h4.textContent = 'Tarjeta de memoria';
+            card.appendChild(h4);
 
-                // Imagen de la tarjeta
-                const img = document.createElement('img');
-                img.src = elementData.source;
-                img.alt = elementData.element;
-                card.appendChild(img);
-                tablero.appendChild(card);
-                
+            const img = document.createElement('img');
+            img.src = elementData.source;
+            img.alt = elementData.element;
+            card.appendChild(img);
+            tablero.appendChild(card);
         }
     }
 
-    addEventListeners(){
+    addEventListeners() {
         const cards = document.querySelectorAll('article');
         cards.forEach(card => {
             card.addEventListener('click', this.flipCard.bind(card, this));
@@ -108,16 +99,16 @@ class Memoria {
 
     flipCard(game) {
         if (this.dataset.state == 'revealed') return;
-        if(game.lockBoard) return;
-        if(game.firstCard != null)
-            if(this.dataset.element== game.firstCard.element) return;
+        if (game.lockBoard) return;
+        if (game.firstCard != null)
+            if (this.dataset.element == game.firstCard.element) return;
 
-        this.dataset.state ='flip';
+        this.dataset.state = 'flip';
 
-        if(game.hasFlippedCard){
-            game.secondCard=this;
+        if (game.hasFlippedCard) {
+            game.secondCard = this;
             game.checkForMatch();
-        } else{
+        } else {
             game.hasFlippedCard = true;
             game.firstCard = this;
         }

@@ -240,21 +240,23 @@ class Viajes {
                         let recomendacion = $("<p>").text(`Recomendación: ${rutaXML.find('recomendacion').text()}/10`).attr("data-element", "recomendacion-ruta");
                         article.append(recomendacion);
 
+                        let referecias = $("<ul>").attr("data-element", "lista-referencias");
+                        
                         rutaXML.find("referencia").each((index, ref) => {
                             let lista = $("<li>").attr("data-element", "referencias-ruta");
                             
-                            let enlace = $("<a>").text(`Referencia ${index+1}`).attr("href", ref);
-
-                            article.append(enlace);
+                            let enlace = $("<a>").text(`Referencia ${index+1}`).attr("href", ref.outerText);
+                            lista.append(enlace);
+                            referecias.append(lista);
                         });
-
+                        article.append(referecias);
 
                         let galeria = $("<section>").attr("data-element", "galeria");
-                        let title = $("<h4>").text("Galería de fotos");
+                        let title = $("<h5>").text("Galería de fotos");
                         galeria.append(title);
 
                         let seccionHitos = $("<section>").attr("data-element", "hitos");
-                        let titleHitos = $("<h4>").text("Hitos");
+                        let titleHitos = $("<h5>").text("Hitos");
                         seccionHitos.append(titleHitos);
                         let hitos = $("<ul>").attr("data-element", "listaHitos");
                         seccionHitos.append(hitos);

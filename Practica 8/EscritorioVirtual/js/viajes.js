@@ -202,7 +202,7 @@ class Viajes {
                         let tipo = $("<p>").text(`Tipo de ruta: ${rutaXML.find("tipoRuta").text()}`).attr("data-element", "tipo-ruta");
                         article.append(tipo);
 
-                        let descripcion = $("<p>").text(rutaXML.find('descripcionRuta').first().text()).attr("data-element", "descripcion-ruta");
+                        let descripcion = $("<p>").text(`Descripción: ${rutaXML.find('descripcionRuta').first().text()}`).attr("data-element", "descripcion-ruta");
                         article.append(descripcion);
 
                         let duracion = $("<p>").text(`Duración: ${rutaXML.find('duracion').text()}`).attr("data-element", "duracion-ruta");
@@ -211,7 +211,7 @@ class Viajes {
                         let lugar = $("<p>").text(`Lugar de inicio: ${rutaXML.find('lugar').text()}`).attr("data-element", "lugar-ruta");
                         article.append(lugar);
 
-                        let direccion = $("<p>").text(`Recomendación: ${rutaXML.find('recomendacion').text()}/10`).attr("data-element", "recomendacion-ruta");
+                        let direccion = $("<p>").text(`Dirección: ${rutaXML.find('direccion').text()}/10`).attr("data-element", "direccion-ruta");
                         article.append(direccion);
 
                         //let fecha_inicio = $("<p>").text(`Fecha inicio: ${rutaXML.find('fecha-inicio').text()}`).attr("data-element", "fecha-inicio-ruta");
@@ -226,10 +226,13 @@ class Viajes {
                         let agencia = $("<p>").text(`Agencia: ${rutaXML.find('agencia').text()}`).attr("data-element", "agencia-ruta");
                         article.append(agencia);
 
-                        let coordenadas = $("<p>").text(`Coordenadas: ${rutaXML.find('cordenadaInicio > altitud')}, ${rutaXML.find('coordenadasRuta').attr('latitud')}`).attr("data-element", "coordenadas-ruta"); 
+                        let coordenadas = $("<p>").text(`Coordenadas: ${rutaXML.find('coordenadasRuta > latitud').text()}, ${rutaXML.find('coordenadasRuta > longitud').text()}`).attr("data-element", "coordenadas-ruta"); 
                         article.append(coordenadas);
 
-                        let sugerencias = $("<p>").text(`Altitud: ${rutaXML.find('sugerencias').text()}`).attr("data-element", "altitud-ruta"); 
+                        let altitud = $("<p>").text(`Altitud: ${rutaXML.find('coordenadasRuta > altitud').text()}`).attr("data-element", "altitud-ruta"); 
+                        article.append(coordenadas);
+
+                        let sugerencias = $("<p>").text(`Sugerencias: ${rutaXML.find('sugerencias').text()}`).attr("data-element", "sugerencias-ruta"); 
                         article.append(sugerencias);
 
 
@@ -237,21 +240,14 @@ class Viajes {
                         let recomendacion = $("<p>").text(`Recomendación: ${rutaXML.find('recomendacion').text()}/10`).attr("data-element", "recomendacion-ruta");
                         article.append(recomendacion);
 
-                        $rutaXML.find("referencia").each(function () {
-                            let enlace = $("<a>").text(`Referencia ${index+1}`).attr("href", referencia.text());
-                            article.append(item);
+                        rutaXML.find("referencia").each((index, ref) => {
+                            let lista = $("<li>").attr("data-element", "referencias-ruta");
+                            
+                            let enlace = $("<a>").text(`Referencia ${index+1}`).attr("href", ref);
+
+                            article.append(enlace);
                         });
 
-                        let referenciasAppend = $("<ul>").attr("data-element", "referencias");
-                        let referencias = $("<p>").text(`Referencia: ${rutaXML.find('referencia').text()}`).attr("data-element", "referencia");
-                        referencias.forEach(referencia => {
-                            let enlace = $("<a>").text(`Referencia ${index+1}`).attr("href", referencia.text());
-                            let item = $("<li>").append(enlace);
-                            referenciasAppend.append(item);
-                        });
-
-
-                        article.append(referenciasAppend);
 
                         let galeria = $("<section>").attr("data-element", "galeria");
                         let title = $("<h4>").text("Galería de fotos");

@@ -28,14 +28,14 @@ class Noticias {
     insertarNoticialManualmente() {
         let article = $("<article></article>");
         let titulo = $("<h3></h3>").text($('input[name="Titulo"]').val()).attr("data-element", "titulo");
-        let entradilla = $("<h4></h4>").text($('input[name="Entradilla"]').val()).attr("data-element", "entradilla");
+        let entradilla = $("<p></p>").text($('textarea[name="Entradilla"]').val()).attr("data-element", "entradilla");
         let texto = $("<p></p>").text($('textarea[name="Noticia"]').val()).attr("data-element", "texto");
         let autor = $("<p></p>").text($('input[name="Autor"]').val()).attr("data-element", "autor");
         article.append(titulo).append(entradilla).append(texto).append(autor);
         $('main').append(article);
 
          titulo.val("");
-         subtitulo.val("");
+         entradilla.val("");
          texto.val("");
          autor.val("");
     }

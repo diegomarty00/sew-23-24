@@ -284,7 +284,7 @@ class Viajes {
                                 let img = $("<img>").attr("src", `xml/${fotoXML.text()}`).attr("alt", `Foto de ${hitoXML.find('nombre').text()}`);
                                 galeria.append(img);
                             })
-                            article.append(galeria);
+                            articuloHitos.append(galeria);
                         })
                         article.append(seccionHitos);
 

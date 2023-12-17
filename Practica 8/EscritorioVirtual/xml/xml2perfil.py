@@ -30,14 +30,14 @@ def xml2perfil(xml):
         svgName = "perfil" + str(i+1) +".svg"
         svg = open(svgName,"w")
         prologo(svg)
-        incremento = 1000 
+        incremento = 100 
         base = 150
 
         for j, hito in enumerate(ruta.findall(".//{http://www.uniovi.es}hito")):
             name = hito.get('nombreHito')
             if(hito.find(".//{http://www.uniovi.es}distancia") != None ):
-                incremento = int((int(hito.find(".//{http://www.uniovi.es}distancia").text))/10)
-            altitud = (float(hito.find(".//{http://www.uniovi.es}altitud").text))/10
+                incremento = incremento + int((int(hito.find(".//{http://www.uniovi.es}distancia").text))/10)
+            altitud = (float(hito.find(".//{http://www.uniovi.es}altitud").text))
             datosHitos = [name, incremento, base]
             hitos.insert(j, datosHitos)
             svg.write(str(incremento) + "," + str(base - altitud) + " \n")

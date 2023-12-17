@@ -3,9 +3,9 @@ class Viajes {
     mapaGeoposicionado;
     colorIndex = 0;
     curSlide = 3;
-
+    token = 'AIzaSyCCrbYGj55x3xpStJ_qDNQu9SLTiaHDbto';
+    
     constructor() {
-        this.token = 'AIzaSyCCrbYGj55x3xpStJ_qDNQu9SLTiaHDbto'
         navigator.geolocation.getCurrentPosition(this.getPosicion.bind(this), this.verErrores.bind(this));
     }
 
@@ -109,11 +109,17 @@ class Viajes {
         var sensor = "&sensor=false";
 
         this.imagenMapa = url + centro + zoom + tamaño + marcador + sensor + "&key=" + this.token;
+        
         ubicacion.innerHTML = "<img src='" + this.imagenMapa + "' alt='mapa estático google' />";
+
+        let infoWindow = new google.maps.InfoWindow;
+        infoWindow.setPosition(posicion);
+        infoWindow.setContent('Ubicación actual');
+        infoWindow.open(ubicacion);
     }
 
     getMapaDinamicoGoogle() {
-        let posicion = { lat: this.latitud, lng: this.longitud }
+        let posicion = {lat: 43.3672702, lng: -5.8502461}
         this.mapaGeoposicionado = new google.maps.Map(document.getElementById('dinamico'), {
             zoom: 13,
             center: posicion,
@@ -122,7 +128,7 @@ class Viajes {
 
         let infoWindow = new google.maps.InfoWindow;
         infoWindow.setPosition(posicion);
-        infoWindow.setContent('Posición actual');
+        infoWindow.setContent('Ubicación actual');
         infoWindow.open(this.mapaGeoposicionado);
     }
 

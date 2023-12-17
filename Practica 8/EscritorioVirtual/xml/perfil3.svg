@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="2.0">
-<polyline points = "0,148.55 
-518,148.53 
-1280,148.35 
+<polyline points = "100,135.5 
+618,135.3 
+1898,133.5 
  " style="fill:white;stroke:red;stroke-width:4"/>
-<text  x="0" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Hotel Maliba Lodge</text>
-<text  x="518" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Black Pool</text>
-<text  x="1280" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Rock Pool</text>
+<text  x="100" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Hotel Maliba Lodge</text>
+<text  x="618" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Black Pool</text>
+<text  x="1898" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Rock Pool</text>
 </svg>

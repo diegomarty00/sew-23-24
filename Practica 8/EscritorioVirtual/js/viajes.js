@@ -250,9 +250,7 @@ class Viajes {
                         });
                         article.append(referecias);
 
-                        let galeria = $("<section>").attr("data-element", "galeria");
-                        let fotos = $("<h5>").text("Galería de fotos");
-                        galeria.append(fotos);
+
 
                         let seccionHitos = $("<section>").attr("data-element", "hitos");
                         let hitos = $("<h5>").text("Hitos");
@@ -276,12 +274,12 @@ class Viajes {
                             let distanciaHito = $("<p>").text(`Distancia de la salida: ${hitoXML.find('distancia').text()}`);
                             articuloHitos.append(distanciaHito);
 
-                            
+                            let galeria = $("<section>").attr("data-element", "galeria");
+                            let fotos = $("<h5>").text("Galería de fotos");
+                            galeria.append(fotos);
 
-                            let listaFotos = hitoXML.find('galeria-fotos');
-                            listaFotos.find('foto').each((index, foto) => {
-                                const fotoXML = $(foto);
-                                let img = $("<img>").attr("src", `xml/${fotoXML.text()}`).attr("alt", `Foto de ${hitoXML.find('nombre').text()}`);
+                            hitoXML.find("foto").each((index, foto) => {
+                                let img = $("<img>").attr("src", foto.outerText).attr("alt", `Foto de ${hitoXML.attr('nombreHito')}`);
                                 galeria.append(img);
                             })
                             articuloHitos.append(galeria);

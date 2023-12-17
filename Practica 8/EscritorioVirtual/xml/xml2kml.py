@@ -1,72 +1,67 @@
 import xml.etree.ElementTree as ET
 
-def convertirXmlToKml(archivoXml):
+
+def prologo(kml, name):
+    kml.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+    kml.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
+    kml.write('<Document>\n')
+    kml.write('<Placemark>\n')
+    kml.write('<name>' + name + '</name>\n')
+    kml.write('<LineString>\n')
+    kml.write('<extrude>1</extrude>\n')
+    kml.write('<tessellate>1</tessellate>\n')
+    kml.write('<coordinates>\n')
+
+def setCoordenadas(coor, kml):
+    longitud = coor.find("./{http://www.uniovi.es}longitud")
+    latitud = coor.find("./{http://www.uniovi.es}latitud")
+    altitud = coor.find("./{http://www.uniovi.es}altitud")
+    kml.write(longitud.text + "," + latitud.text + "," + altitud.text + "\n")
+
+def epilogo(kml):
+    kml.write('</coordinates>\n')
+    kml.write('<altitudeMode>relativeToGround</altitudeMode>\n')
+    kml.write('</LineString>\n')
+    kml.write('<Style> id="lineaRoja">\n')
+    kml.write('<LineStyle>\n')
+    kml.write('<color>#ff0000ff</color>\n')
+    kml.write('<width>5</width>\n')
+    kml.write('</LineStyle>\n')
+    kml.write('</Style>\n')
+    kml.write('</Placemark>\n')
+
+    kml.write('</Document>\n')
+    kml.write('</kml>')
+
+def xml2kml(xml):
     try:
-        arbol = ET.parse(archivoXml)
+        arbol = ET.parse(xml)
     except IOError:
-        print('No se encuentra el archivo', archivoXml)
-        return
+        print('No se encuentra el archivo', xml)
+        exit()
     except ET.ParseError:
-        print("Error procesando el archivo XML =", archivoXml)
-        return
+        print("Error procesando el archivo XML =", xml)
+        exit()
 
     raiz = arbol.getroot()
 
     # Encontrar y procesar cada ruta
-    for i, ruta in enumerate(raiz.findall('.//{http://www.uniovi.es}ruta')):
-        kmlName = f"ruta{i + 1}.kml"
-        with open(kmlName, 'w') as kml:
-            kml.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-            kml.write('<kml xmlns="http://www.opengis.net/kml/2.2">\n')
-            kml.write('<Document>\n')
-
-            # Obtener nombre de la ruta
-            rutaName = ruta.attrib.get('nombreRuta')
-            kml.write(f'<name>ruta{i+1}.LOG</name>\n')
-
-            # Iniciar LineString
-            kml.write('<Placemark>\n')
-            kml.write('<LineString>\n')
-            kml.write('<extrude>1</extrude>\n')
-            kml.write('<tessellate>1</tessellate>\n')
-            kml.write('<coordinates>\n')
-
-            # Obtener coordenadas de datos
-            latitud = ruta.find('.//{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}latitud').text
-            longitud = ruta.find('.//{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}longitud').text
-            altitud = ruta.find('.//{http://www.uniovi.es}coordenadas/{http://www.uniovi.es}altitud').text
-
-            # Escribir coordenadas de datos en el KML
-            kml.write(f'{longitud},{latitud},{altitud}\n')
-
-            # Obtener coordenadas de hitos
-            for hito in ruta.findall('.//{http://www.uniovi.es}hito'):
-                latitud = hito.find('.//{http://www.uniovi.es}coordenadasHito/{http://www.uniovi.es}latitud').text
-                longitud = hito.find('.//{http://www.uniovi.es}coordenadasHito/{http://www.uniovi.es}longitud').text
-                altitud = hito.find('.//{http://www.uniovi.es}coordenadasHito/{http://www.uniovi.es}altitud').text
-
-                # Escribir coordenadas de hitos en el KML
-                kml.write(f'{longitud},{latitud},{altitud}\n')
-
-            # Finalizar LineString y Placemark
-            kml.write('</coordinates>\n')
-            kml.write('</LineString>\n')
-            kml.write('<Style> id="lineaRoja">\n')
-            kml.write('<LineStyle>\n')
-            kml.write('<color>#ff0000ff</color>\n')
-            kml.write('<width>5</width>\n')
-            kml.write('</LineStyle>\n')
-            kml.write('</Style>\n')
-            kml.write('</Placemark>\n')
-
-            kml.write('</Document>\n')
-            kml.write('</kml>')
-
+    for i, ruta in raiz.findall('.//{http://www.uniovi.es}ruta'):
+        kmlName = "ruta{i + 1}.kml"
+        kml = open(kmlName,"x")
+        prologo(kml, kmlName)
+        coorRuta  = ruta.find(".//{http://www.uniovi.es}coordenadasRuta")
+        setCoordenadas(coorRuta, kml)
+        for coorHito in ruta.findall(".//{http://www.uniovi.es}coordenadasHito"):
+            setCoordenadas(coorHito, kml)
+        epilogo(kml)
+        kml.close()
+            
         print(f'Se ha convertido la ruta a KML en {kmlName}')
 
 def main():
-    archivoXml = input('Introduce el archivo XML de entrada: ')
-    convertirXmlToKml(archivoXml)
+    xml = input('Introduce el archivo XML de entrada: ')
+    xml2kml(xml)
 
 if __name__ == "__main__":
     main()

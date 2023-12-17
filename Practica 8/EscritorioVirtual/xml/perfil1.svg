@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="2.0">
-<polyline points = "196,198.192 
-400,198.6 
-603,198.625 
-"
+<polyline points = "196,148.192 
+400,148.6 
+603,148.625 
  " style="fill:white;stroke:red;stroke-width:4"/>
+<text  x="196" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Mushroomrock</text>
+<text  x="400" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Amphitheatre</text>
+<text  x="603" y="150" style="writing-mode: tb; glyph-orientation-vertical: 0;">Tugela Schlucht (George)</text>
 </svg>

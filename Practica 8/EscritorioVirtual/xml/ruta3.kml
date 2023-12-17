@@ -7,12 +7,12 @@
 <extrude>1</extrude>
 <tessellate>1</tessellate>
 <coordinates>
--28.9159641,28.4234915,14.5
--28.9159641,28.4234915,14.5
--28.899246,28.453383,14.7
--28.9163853,28.4432391,16.5
+28.4234915,-28.9159641,14.5
+28.4234915,-28.9159641,14.5
+28.453383,-28.899246,14.7
+28.4432391,-28.9163853,16.5
 </coordinates>
-<altitudeMode>relativeToGround</altitudeMode>
+<altitudeMode>clampToGround</altitudeMode>
 </LineString>
 <Style> id="lineaRoja">
 <LineStyle>

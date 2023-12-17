@@ -13,14 +13,14 @@ def prologo(kml, name):
     kml.write('<coordinates>\n')
 
 def setCoordenadas(coor, kml):
-    longitud = coor.find("./{http://www.uniovi.es}longitud")
-    latitud = coor.find("./{http://www.uniovi.es}latitud")
+    longitud = coor.find("./{http://www.uniovi.es}latitud")
+    latitud = coor.find("./{http://www.uniovi.es}longitud")
     altitud = coor.find("./{http://www.uniovi.es}altitud")
     kml.write(longitud.text + "," + latitud.text + "," + altitud.text + "\n")
 
 def epilogo(kml):
     kml.write('</coordinates>\n')
-    kml.write('<altitudeMode>relativeToGround</altitudeMode>\n')
+    kml.write('<altitudeMode>clampToGround</altitudeMode>\n')
     kml.write('</LineString>\n')
     kml.write('<Style> id="lineaRoja">\n')
     kml.write('<LineStyle>\n')

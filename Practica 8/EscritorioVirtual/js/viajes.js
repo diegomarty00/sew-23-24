@@ -228,7 +228,7 @@ class Viajes {
                         let coordenadas = $("<p>").text(`Coordenadas: ${rutaXML.find('coordenadasRuta > latitud').text()}, ${rutaXML.find('coordenadasRuta > longitud').text()}`).attr("data-element", "coordenadas-ruta");
                         article.append(coordenadas);
 
-                        let altitud = $("<p>").text(`Altitud: ${rutaXML.find('coordenadasRuta > altitud').text()} metros`).attr("data-element", "altitud-ruta");
+                        let altitud = $("<p>").text(`Altitud: ${rutaXML.find('coordenadasRuta > altitud').text()}`).attr("data-element", "altitud-ruta");
                         article.append(altitud);
 
                         let sugerencias = $("<p>").text(`Sugerencias: ${rutaXML.find('sugerencias').text()}`).attr("data-element", "sugerencias-ruta");
@@ -268,10 +268,10 @@ class Viajes {
                             let coordenadasHito = $("<p>").text(`Coordenadas: ${hitoXML.find('coordenadasHito > latitud').text()}, ${hitoXML.find('coordenadasHito > longitud').text()}`);
                             articuloHitos.append(coordenadasHito);
 
-                            let altitud = $("<p>").text(`Altitud: ${hitoXML.find('coordenadasHito > altitud').text()} metros`);
+                            let altitud = $("<p>").text(`Altitud: ${hitoXML.find('coordenadasHito > altitud').text()}`);
                             articuloHitos.append(altitud);
 
-                            let distanciaHito = $("<p>").text(`Distancia de la salida: ${hitoXML.find('distancia').text()}`);
+                            let distanciaHito = $("<p>").text(`Distancia de la salida: ${hitoXML.find('distancia').text()} metros`);
                             articuloHitos.append(distanciaHito);
 
                             let galeria = $("<section>").attr("data-element", "galeria");

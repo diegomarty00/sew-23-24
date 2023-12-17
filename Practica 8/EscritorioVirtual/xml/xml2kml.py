@@ -46,9 +46,11 @@ def xml2kml(xml):
     raiz = arbol.getroot()
 
     # Encontrar y procesar cada ruta
-    for i, ruta in raiz.findall('.//{http://www.uniovi.es}ruta'):
-        kmlName = "ruta{i + 1}.kml"
-        kml = open(kmlName,"x")
+    for i, ruta in enumerate(raiz.findall('.//{http://www.uniovi.es}ruta')):
+        kmlName = "ruta" + str(i+1) +".kml"
+        print(i)
+        print(kmlName)
+        kml = open(kmlName,"w")
         prologo(kml, kmlName)
         coorRuta  = ruta.find(".//{http://www.uniovi.es}coordenadasRuta")
         setCoordenadas(coorRuta, kml)

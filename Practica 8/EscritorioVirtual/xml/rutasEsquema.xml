@@ -34,7 +34,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.9335923</latitud>
 					<altitud>18.08</altitud>
 				</coordenadasHito>
-				<distancia>1.96km</distancia>
+				<distancia>1960</distancia>
 				<foto>multimedia/imagenes/xml/Mushroomrock.png</foto>
 			</hito>
 			<hito nombreHito="Amphitheatre">
@@ -44,7 +44,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.8741134</latitud>
 					<altitud>14</altitud>
 				</coordenadasHito>
-				<distancia>4.00km</distancia>
+				<distancia>4000</distancia>
 				<foto>multimedia/imagenes/xml/Amphitheatre.jpg</foto>
 			</hito>
 			<hito nombreHito="Tugela Schlucht (George)">
@@ -54,7 +54,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.8870956</latitud>
 					<altitud>13.75</altitud>
 				</coordenadasHito>
-				<distancia>6.03km</distancia>
+				<distancia>6030</distancia>
 				<foto>multimedia/imagenes/xml/TugelaSchlucht.jpg</foto>
 				<video>https://www.youtube.com/watch?v=tlZR29yV9K4</video>
 			</hito>
@@ -90,7 +90,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.4234915</latitud>
 					<altitud>14.5</altitud>
 				</coordenadasHito>
-				<distancia>0km</distancia>
+				<distancia>0</distancia>
 				<foto>multimedia/imagenes/xml/HotelMalibaLodge.jpg</foto>
 			</hito>
 			<hito nombreHito="Black Pool">
@@ -100,7 +100,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.453383</latitud>
 					<altitud>14.7</altitud>
 				</coordenadasHito>
-				<distancia>5.18km</distancia>
+				<distancia>5180</distancia>
 				<foto>multimedia/imagenes/xml/BlackPool.png</foto>
 			</hito>
 			<hito nombreHito="Rock Pool">
@@ -110,7 +110,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.4432391</latitud>
 					<altitud>16.5</altitud>
 				</coordenadasHito>
-				<distancia>12.8km</distancia>
+				<distancia>12800</distancia>
 				<foto>multimedia/imagenes/xml/RockPool.png</foto>
 			</hito>
 		</hitos>
@@ -145,7 +145,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.4234915</latitud>
 					<altitud>14.5</altitud>
 				</coordenadasHito>
-				<distancia>0km</distancia>
+				<distancia>0</distancia>
 				<foto>multimedia/imagenes/xml/HotelMalibaLodge.jpg</foto>
 			</hito>
 			<hito nombreHito="Black Pool">
@@ -155,7 +155,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.453383</latitud>
 					<altitud>14.7</altitud>
 				</coordenadasHito>
-				<distancia>5.18km</distancia>
+				<distancia>5180</distancia>
 				<foto>multimedia/imagenes/xml/BlackPool.png</foto>
 			</hito>
 			<hito nombreHito="Rock Pool">
@@ -165,7 +165,7 @@ xsi:schemaLocation="http://www.uniovi.es rutas.xsd"
 					<latitud>28.4432391</latitud>
 					<altitud>16.5</altitud>
 				</coordenadasHito>
-				<distancia>12.8km</distancia>
+				<distancia>12800</distancia>
 				<foto>multimedia/imagenes/xml/RockPool.png</foto>
 			</hito>
 		</hitos>

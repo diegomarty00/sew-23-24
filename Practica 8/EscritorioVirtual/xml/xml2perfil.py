@@ -6,11 +6,9 @@ def prologo(svg):
     svg.write('<svg xmlns="http://www.w3.org/2000/svg" version="2.0">\n')
     svg.write('<polyline points = "')
 
-def epilogo(svg, hitos):
+def epilogo(svg):
     svg.write('"\n')
     svg.write(" \" style=\"fill:white;stroke:red;stroke-width:4\"/>\n")
-    for hito in hitos:
-        svg.write("<text  x=\""+ str(hito[1])+"\" y=\""+str(hito[2])+"\" style=\"writing-mode: tb; glyph-orientation-vertical: 0;\">" + hito[0]+"</text>\n")
     svg.write("</svg>")
 
 def xml2perfil(xml):
@@ -26,25 +24,24 @@ def xml2perfil(xml):
     raiz = arbol.getroot()
 
     # Encontrar y procesar cada ruta
-    for i, ruta in raiz.findall('.//{http://www.uniovi.es}ruta'):
+    for i, ruta in enumerate(raiz.findall('.//{http://www.uniovi.es}ruta')):
         hitos = []
-        svgName = "perfil" + str(n) +".svg"
-        svg = open(svgName,"x")
+        svgName = "perfil" + str(i+1) +".svg"
+        svg = open(svgName,"w")
         prologo(svg)
         incremento = 40 
         base = 200
 
-        for j, hito in ruta.findall(".//{http://www.uniovi.es}hito"):
+        for j, hito in enumerate(ruta.findall(".//{http://www.uniovi.es}hito")):
             name = hito.get('name')
-            if(hito.find(".//{http://www.uniovi.es}distanciaHitoAnterior") != None ):
-                incremento = incremento + int((int(hito.find(".//{http://www.uniovi.es}distanciaHitoAnterior").text))/10)
-            altitud = int((int(hito.find(".//{http://www.uniovi.es}altitud").text))/10)
+            if(hito.find(".//{http://www.uniovi.es}distancia") != None ):
+                incremento = int((int(hito.find(".//{http://www.uniovi.es}distancia").text))/10)
+            altitud = (float(hito.find(".//{http://www.uniovi.es}altitud").text))/10
             datosHitos = [name, incremento, base]
             hitos.insert(j, datosHitos)
             svg.write(str(incremento) + "," + str(base - altitud) + " \n")
-        epilogo(svg, hitos)
+        epilogo(svg)
         svg.close()
-        n = n +1
             
         print(f'Se ha convertido la ruta a SVG en {svgName}')
 

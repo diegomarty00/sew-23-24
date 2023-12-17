@@ -16,9 +16,8 @@ B. Black #000000
 /*Especificidad: 001*/
 main {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Ajusta esto según tus necesidades */
+    flex-wrap: wrap;
+    align-self: center;
 }
 
 

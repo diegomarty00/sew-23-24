@@ -9,11 +9,10 @@
 	<meta name="description" content="ESCRIBEME" />
 	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, juegos, videojuegos, game" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Escritorio Virtual - Juego de Memoria</title>
+	<title>Escritorio Virtual - Juego de APIs</title>
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="estilo/memoria.css" />
+	<link rel="stylesheet" type="text/css" href="estilo/api.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
-	<script src="js/memoria.js"></script>
 </head>
 
 <body>
@@ -35,16 +34,16 @@
 	<section>
 		<h2>Lista de juegos disponibles</h2>
 		<nav>
-			<a href="memoria.html" tabindex="8" class="active">Memoria</a>
+			<a href="memoria.html" tabindex="8">Memoria</a>
 			<a href="sudoku.html" tabindex="9">Sudoku</a>
 			<a href="crucigrama.html" tabindex="10">Crucigrama</a>
-			<a href="api.html" tabindex="11">API</a>
+			<a href="api.html" tabindex="11" class="active">API</a>
 		</nav>
 	</section>
-	<main>
-		<script>
-			var juego = new Memoria();
-		</script>
+	<main">
+		<h3>Juego de mecanografía</h3>
+		<canvas id="gameCanvas" width="320" height="860"></canvas>
+		<script src="js/api.js"></script>
 	</main>
 </body>
 

@@ -111,11 +111,6 @@ class Viajes {
         this.imagenMapa = url + centro + zoom + tamaño + marcador + sensor + "&key=" + this.token;
         
         ubicacion.innerHTML = "<img src='" + this.imagenMapa + "' alt='mapa estático google' />";
-
-        let infoWindow = new google.maps.InfoWindow;
-        infoWindow.setPosition(posicion);
-        infoWindow.setContent('Ubicación actual');
-        infoWindow.open(ubicacion);
     }
 
     getMapaDinamicoGoogle() {

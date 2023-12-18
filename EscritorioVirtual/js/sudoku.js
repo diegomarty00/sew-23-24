@@ -12,6 +12,7 @@ class Sudoku {
         if (level === 3)
             this.boardString = this.level3.split('');
 
+        this.level = level;
         this.row = 9;
         this.column = 9;
         this.boardArry = new Array(this.row).fill().map(() => new Array(this.column).fill(undefined));;
@@ -38,8 +39,12 @@ class Sudoku {
     createStructure() {
         let celdaClicada = null;
 
-        const main = document.querySelector('main')
-
+        const main = document.querySelector('main');
+        
+        const section = document.createElement('section');
+        const h3 = document.createElement('h3');
+        h3.textContent = "Crucigrama - Nivel " + this.level + "";
+        section.appendChild(h3); 
         for (let r = 0; r < this.row; r++) {
             for (let c = 0; c < this.column; c++) {
                 const valor = this.boardArry[r][c];
@@ -54,15 +59,16 @@ class Sudoku {
                             celdaClicada.setAttribute('data-state', 'init');
                         }
                         celdaClicada = p;
-                        celdaClicada.setAttribute('data-state', 'clicked')
+                        celdaClicada.setAttribute('data-state', 'clicked');
                     });
                 } else {
                     p.setAttribute('data-state', 'blocked');
                     p.textContent = valor;
                 }
-                main.appendChild(p);
+                section.appendChild(p);
             }
         }
+        main.append(section);
     }
 
     paintSudoku() {

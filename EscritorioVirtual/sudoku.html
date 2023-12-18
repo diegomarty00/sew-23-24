@@ -41,9 +41,9 @@
 		</nav>
 	</section>
 	<main>
-		<h3>Sudoku - Nivel 1</h3>
+		
 		<script>
-			var juego = new Sudoku();
+			var juego = new Sudoku(1);
 			var finish = false;
 			juego.paintSudoku();
 
@@ -64,22 +64,24 @@
 			});
 
 		</script>
+
+		<section data-type="botonera">
+			<h4>Botonera</h4>
+			<article data-type="numeros">
+				<button onclick="juego.introduceNumber(1)">1</button>
+				<button onclick="juego.introduceNumber(2)">2</button>
+				<button onclick="juego.introduceNumber(3)">3</button>
+				<button onclick="juego.introduceNumber(4)">4</button>
+				<button onclick="juego.introduceNumber(5)">5</button>
+				<button onclick="juego.introduceNumber(6)">6</button>
+				<button onclick="juego.introduceNumber(7)">7</button>
+				<button onclick="juego.introduceNumber(8)">8</button>
+				<button onclick="juego.introduceNumber(9)">9</button>
+			</article>
+		</section>
 	</main>
 
-	<section data-type="botonera">
-		<h2>Botonera</h2>
-		<article data-type="numeros">
-			<button onclick="juego.introduceNumber(1)">1</button>
-			<button onclick="juego.introduceNumber(2)">2</button>
-			<button onclick="juego.introduceNumber(3)">3</button>
-			<button onclick="juego.introduceNumber(4)">4</button>
-			<button onclick="juego.introduceNumber(5)">5</button>
-			<button onclick="juego.introduceNumber(6)">6</button>
-			<button onclick="juego.introduceNumber(7)">7</button>
-			<button onclick="juego.introduceNumber(8)">8</button>
-			<button onclick="juego.introduceNumber(9)">9</button>
-		</article>
-	</section>
+
 </body>
 
 </html>

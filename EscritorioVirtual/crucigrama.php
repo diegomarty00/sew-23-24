@@ -39,7 +39,7 @@
         }
     }
 
-    public function almacenarDatos($nombre, $apellidos, $nivel, $tiempo)
+    function conectarBD($nombre, $apellidos, $nivel, $tiempo)
     {
         $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
 
@@ -55,12 +55,10 @@
 
             $stmt->close();
             $db->close();
-
-            $this->getRecords($nivel);
         }
     }
 
-    public function getRecords($nivel)
+    function getRecords($nivel)
     {
         $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
 
@@ -69,7 +67,7 @@
         } else {
             $db->select_db($this->dbname);
 
-            $stmt = $db->prepare("SELECT nombre, apellidos, tiempo FROM registro WHERE nivel = ? ORDER BY tiempo ASC LIMIT 10");
+            $stmt = $db->prepare("SELECT * FROM registro WHERE nivel = LIKE ? ORDER BY tiempo ASC LIMIT 10");
 
             $stmt->bind_param("s", $nivel);
             $stmt->execute();
@@ -93,6 +91,15 @@
 }
 $record = new Record();
 
+if (count($_POST) > 0) {
+	$nombre = $_POST["nombre"];
+	$apellidos = $_POST["apellidos"];
+	$nivel = $_POST["nivel"];
+	$tiempo = $_POST["tiempo"];
+
+	$record->conectarBD($nombre, $apellidos, $nivel, $tiempo);
+	$record->getRecords($nivel);
+}
 ?>
 
 <body>

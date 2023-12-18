@@ -315,14 +315,20 @@ class Crucigrama {
         form.attr('action', '#');
         form.attr('method', 'post');
 
-        let nameField = $('<input type="text" name="nombre" id="nombre" placeholder="Nombre">');
         let nameLabel = $('<label for="nombre">Nombre:</label>');
-        let surnameField = $('<input type="text" name="apellidos" id="apellidos" placeholder="Apellidos">');
+        let nameField = $('<input type="text" name="nombre" id="nombre" placeholder="Nombre">');
+        
+
         let surnameLabel = $('<label for="apellidos">Apellidos:</label>');
-        let levelField = $('<input type="text" name="nivel" id="nivel" value="' + this.dificultad + '" readonly>');
+        let surnameField = $('<input type="text" name="apellidos" id="apellidos" placeholder="Apellidos">');
+        
+
         let levelLabel = $('<label for="nivel">Nivel:</label>');
-        let timeField = $('<input type="text" name="tiempo" id="tiempo" value="' + Math.round(this.calculate_date_difference()) + '" readonly>');
+        let levelField = $('<input type="text" name="nivel" id="nivel" value="' + this.lvl + '">');
+       
         let timeLabel = $('<label for="tiempo">Tiempo:</label>');
+        let timeField = $('<input type="text" name="tiempo" id="tiempo" value="' + this.calculate_date_difference() + '">');
+        
         let submitBtn = $('<input type="submit" value="Guardar">');
 
         form.append(nameLabel);

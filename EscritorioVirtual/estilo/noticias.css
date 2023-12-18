@@ -38,6 +38,7 @@ h3 {
 article {
     display: flex;
     flex-direction: column;
+    width: 25em;
     background-color: #EBF094;
     border-radius: 1em;
     padding: 0.5em;
@@ -67,23 +68,21 @@ article p[data-element="autor"] {
 /*Especificidad: 001*/
 input,
 textarea {
-    display: block;
-    margin: 0.8em 0;
+    display: flex;
+    margin: 0.8em;
     padding: 0.8em;
     outline: none;
 }
 
 /*Especificidad: 001*/
 button {
-    display: block;
-    width: 200px;
-    margin: 20px auto;
-    padding: 10px;
+    display: flex;
+    padding: 1em;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.5em;
     background-color: #5B3354;
     color: #fff;
-    font-size: 18px;
+    font-size: 1.2em;
     cursor: pointer;
     transition: transform 0.3s;
 }
@@ -95,5 +94,5 @@ button:hover {
 
 /*Especificidad: 011*/
 button:active {
-    transform: scale(0.9);
+    transform: scale(0.8);
 }

@@ -54,9 +54,10 @@ class Crucigrama {
     paintMathword() {
         let celdaClicada = null;
         const main = document.querySelector('main')
+        const section = document.createElement('section');
         const h3 = document.createElement('h3');
         h3.textContent = "Crucigrama - Nivel " + this.lvl + "";
-        main.appendChild(h3);        //si selecciono una celda pero noe scribo nada, y selecciono otra, la primera a qué estado vuelve?
+        section.appendChild(h3);        //si selecciono una celda pero noe scribo nada, y selecciono otra, la primera a qué estado vuelve?
         for (let fila = 0; fila < this.row; fila++) {
             for (let col = 0; col < this.column; col++) {
                 const valor = this.boardArry[fila][col];
@@ -82,9 +83,10 @@ class Crucigrama {
                     }
 
                 }
-                main.appendChild(p);
+                section.appendChild(p);
             }
         }
+        main.append(section);
         this.init_time = Date.now();
     }
 
@@ -207,7 +209,7 @@ class Crucigrama {
 
     finish() {
         this.totalTime = this.calculate_date_difference();
-        alert("Felicidades, tu tiempo a sido: " + this.totalTime)
+        alert("Felicidades, tu tiempo a sido: " + this.totalTime + "\nPor favor, rellene el formulario de bajo de este pagina")
     }
 
     calculate_date_difference() {
@@ -223,7 +225,7 @@ class Crucigrama {
             (minutos >= 10 ? minutos : "0" + minutos) + ":" +
             (segundos >= 10 ? segundos : "0" + segundos);
 
-        return resultado;
+        return resultado+"";
     }
 
     check_horizontal(r, c) {
@@ -324,10 +326,10 @@ class Crucigrama {
         
 
         let levelLabel = $('<label for="nivel">Nivel:</label>');
-        let levelField = $('<input type="text" name="nivel" id="nivel" value="' + this.lvl + '">');
+        let levelField = $('<input type="text" name="nivel" id="nivel" value="' + this.lvl + '" readonly>');
        
         let timeLabel = $('<label for="tiempo">Tiempo:</label>');
-        let timeField = $('<input type="text" name="tiempo" id="tiempo" value="' + this.calculate_date_difference() + '">');
+        let timeField = $('<input type="text" name="tiempo" id="tiempo" value="' + this.calculate_date_difference() + '" readonly>');
         
         let submitBtn = $('<input type="submit" value="Guardar">');
 
@@ -342,5 +344,6 @@ class Crucigrama {
         form.append(submitBtn);
 
         $('main').after(form);
+        window.scrollTo(0,document.body.scrollHeight);
     }
 }

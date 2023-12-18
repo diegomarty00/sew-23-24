@@ -11,8 +11,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Escritorio Virtual - Juegos</title>
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="estilo/crucigrama.css" />
+	
 	<link rel="stylesheet" type="text/css" href="estilo/botonera.css" />
+	<link rel="stylesheet" type="text/css" href="estilo/crucigrama.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -47,10 +48,9 @@
             echo "Conexión fallida: " . $db->connect_error;
         } else {
             $db->select_db($this->dbname);
-
+			
             $stmt = $db->prepare("INSERT INTO registro (nombre, apellidos, nivel, tiempo) VALUES (?, ?, ?, ?)");
-
-            $stmt->bind_param("sssi", $nombre, $apellidos, $nivel, $tiempo);
+            $stmt->bind_param("ssis", $nombre, $apellidos, $nivel, $tiempo);
             $stmt->execute();
 
             $stmt->close();
@@ -66,19 +66,18 @@
             echo "Conexión fallida: " . $db->connect_error;
         } else {
             $db->select_db($this->dbname);
-
-            $stmt = $db->prepare("SELECT * FROM registro WHERE nivel = LIKE ? ORDER BY tiempo ASC LIMIT 10");
+			
+            $stmt = $db->prepare("SELECT * FROM registro WHERE nivel = ? ORDER BY tiempo ASC LIMIT 10");
 
             $stmt->bind_param("s", $nivel);
             $stmt->execute();
 
             $result = $stmt->get_result();
             //Crea la lista ordenada con los resultados
-            echo "<section><h4>Top 10</h4>";
+            echo "<section data-type=\"top\"><h4>Top 10</h4>";
             echo "<ol>";
             while ($row = $result->fetch_assoc()) {
-                $tiempoFormateado = gmdate("H:i:s", $row["tiempo"]);
-                echo "<li>" . $row["nombre"] . " " . $row["apellidos"] . " - " . $tiempoFormateado . "</li>";
+                echo "<li>" . $row["nombre"] . " " . $row["apellidos"] . " - " . $row["tiempo"] . "</li>";
             }
             echo "</ol>";
             echo "</section>";
@@ -91,15 +90,6 @@
 }
 $record = new Record();
 
-if (count($_POST) > 0) {
-	$nombre = $_POST["nombre"];
-	$apellidos = $_POST["apellidos"];
-	$nivel = $_POST["nivel"];
-	$tiempo = $_POST["tiempo"];
-
-	$record->conectarBD($nombre, $apellidos, $nivel, $tiempo);
-	$record->getRecords($nivel);
-}
 ?>
 
 <body>
@@ -127,7 +117,6 @@ if (count($_POST) > 0) {
 			<a href="api.html" tabindex="11">API</a>
 		</nav>
 	</section>
-
 	<main>
 		<script>
 			var juego = new Crucigrama(3);
@@ -146,29 +135,42 @@ if (count($_POST) > 0) {
 				}
 			});
 		</script>
+
+		<section data-type="botonera">
+			<h4>Botonera</h4>
+			<article data-type="numeros">
+				<button onclick="juego.introduceElement(1)">1</button>
+				<button onclick="juego.introduceElement(2)">2</button>
+				<button onclick="juego.introduceElement(3)">3</button>
+				<button onclick="juego.introduceElement(4)">4</button>
+				<button onclick="juego.introduceElement(5)">5</button>
+				<button onclick="juego.introduceElement(6)">6</button>
+				<button onclick="juego.introduceElement(7)">7</button>
+				<button onclick="juego.introduceElement(8)">8</button>
+				<button onclick="juego.introduceElement(9)">9</button>
+			</article>
+			<article data-type="operadores">
+				<button onclick="juego.introduceElement('*')">*</button>
+				<button onclick="juego.introduceElement('/')">/</button>
+				<button onclick="juego.introduceElement('-')">-</button>
+				<button onclick="juego.introduceElement('+')">+</button>
+			</article>
+		</section>
+
+		<?php
+
+		if (count($_POST) > 0) {
+			$nombre = $_POST["nombre"];
+			$apellidos = $_POST["apellidos"];
+			$nivel = $_POST["nivel"];
+			$tiempo = $_POST["tiempo"];
+
+			
+			$record->conectarBD($nombre, $apellidos, $nivel, $tiempo);
+			$record->getRecords($nivel);
+		}
+		?>
 	</main>
-
-	<section data-type="botonera">
-		<h2>Botonera</h2>
-		<article data-type="numeros">
-			<button onclick="juego.introduceElement(1)">1</button>
-			<button onclick="juego.introduceElement(2)">2</button>
-			<button onclick="juego.introduceElement(3)">3</button>
-			<button onclick="juego.introduceElement(4)">4</button>
-			<button onclick="juego.introduceElement(5)">5</button>
-			<button onclick="juego.introduceElement(6)">6</button>
-			<button onclick="juego.introduceElement(7)">7</button>
-			<button onclick="juego.introduceElement(8)">8</button>
-			<button onclick="juego.introduceElement(9)">9</button>
-		</article>
-		<article data-type="operadores">
-			<button onclick="juego.introduceElement('*')">*</button>
-			<button onclick="juego.introduceElement('/')">/</button>
-			<button onclick="juego.introduceElement('-')">-</button>
-			<button onclick="juego.introduceElement('+')">+</button>
-		</article>
-	</section>
-
 
 </body>
 

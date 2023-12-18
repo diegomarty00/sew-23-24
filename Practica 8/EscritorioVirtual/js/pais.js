@@ -41,7 +41,7 @@ class Pais {
 
 	verTiempo(capital) {
 		const apiKey = '13e780276233960d55c6d669b702711f';
-		const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.capital}&units=metric&appid=${apiKey}`;
+		const url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.capital}&units=metric&appid=${apiKey}`;
 
 		$.ajax({
 			url: url,

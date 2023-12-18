@@ -10,7 +10,7 @@ class Fondo {
     buscaFoto() {
         // Configura la URL de la API de Flickr
         const apiKey = 'a09054d9591e63f243358ca426c788d1';
-        const flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+        const flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
         const conf = {
             method: 'flickr.photos.search',

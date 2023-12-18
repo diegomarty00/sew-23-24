@@ -1,6 +1,6 @@
 class Agenda {
     constructor() {
-        this.apiURL = 'http://ergast.com/api/f1/current'
+        this.apiURL = 'https://ergast.com/api/f1/current'
         this.last_api_call = null;
         this.last_api_result = null;
         this.intervalo = 10;

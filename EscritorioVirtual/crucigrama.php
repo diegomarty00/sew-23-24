@@ -20,6 +20,81 @@
 	<script src="js/crucigrama.js"></script>
 </head>
 
+<?php class Record
+{
+
+    private $server;
+    private $user;
+    private $pass;
+    private $dbname;
+    public function __construct()
+    {
+        $this->server = "localhost";
+        $this->user = "DBUSER2023";
+        $this->pass = "DBPSWD2023";
+        $this->dbname = "records";
+        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+        if ($db->connect_error) {
+            die("Conexión fallida: " . $db->connect_error);
+        }
+    }
+
+    public function almacenarDatos($nombre, $apellidos, $nivel, $tiempo)
+    {
+        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+
+        if ($db->connect_error) {
+            echo "Conexión fallida: " . $db->connect_error;
+        } else {
+            $db->select_db($this->dbname);
+
+            $stmt = $db->prepare("INSERT INTO registro (nombre, apellidos, nivel, tiempo) VALUES (?, ?, ?, ?)");
+
+            $stmt->bind_param("sssi", $nombre, $apellidos, $nivel, $tiempo);
+            $stmt->execute();
+
+            $stmt->close();
+            $db->close();
+
+            $this->getRecords($nivel);
+        }
+    }
+
+    public function getRecords($nivel)
+    {
+        $db = new mysqli($this->server, $this->user, $this->pass, $this->dbname);
+
+        if ($db->connect_error) {
+            echo "Conexión fallida: " . $db->connect_error;
+        } else {
+            $db->select_db($this->dbname);
+
+            $stmt = $db->prepare("SELECT nombre, apellidos, tiempo FROM registro WHERE nivel = ? ORDER BY tiempo ASC LIMIT 10");
+
+            $stmt->bind_param("s", $nivel);
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+            //Crea la lista ordenada con los resultados
+            echo "<section><h3>Top 10</h3>";
+            echo "<ol>";
+            while ($row = $result->fetch_assoc()) {
+                $tiempoFormateado = gmdate("H:i:s", $row["tiempo"]);
+                echo "<li>" . $row["nombre"] . " " . $row["apellidos"] . " - " . $tiempoFormateado . "</li>";
+            }
+            echo "</ol>";
+            echo "</section>";
+
+
+            $stmt->close();
+            $db->close();
+        }
+    }
+}
+$record = new Record();
+
+?>
+
 <body>
 	<!-- Datos con el contenidos que aparece en el navegador -->
 	<header>

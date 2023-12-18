@@ -116,6 +116,7 @@ class Crucigrama {
         if (this.check_win_condition()) {
             this.end_time = Date.now();
             this.finish()
+            this.createRecordForm();
             return true;
 
         }
@@ -257,12 +258,10 @@ class Crucigrama {
             } catch (error) {
                 expression_row = false;
             }
-
         }
 
         return expression_row;
     }
-
 
 
     check_vertical(r, c) {
@@ -304,5 +303,33 @@ class Crucigrama {
         }
 
         return expression_col;
+    }
+
+    createRecordForm(){
+        let form = $('<form></form>');
+        form.attr('action', '#');
+        form.attr('method', 'post');
+
+        let nameField = $('<input type="text" name="nombre" id="nombre" placeholder="Nombre">');
+        let nameLabel = $('<label for="nombre">Nombre:</label>');
+        let surnameField = $('<input type="text" name="apellidos" id="apellidos" placeholder="Apellidos">');
+        let surnameLabel = $('<label for="apellidos">Apellidos:</label>');
+        let levelField = $('<input type="text" name="nivel" id="nivel" value="' + this.dificultad + '" readonly>');
+        let levelLabel = $('<label for="nivel">Nivel:</label>');
+        let timeField = $('<input type="text" name="tiempo" id="tiempo" value="' + Math.round(this.calculate_date_difference()) + '" readonly>');
+        let timeLabel = $('<label for="tiempo">Tiempo:</label>');
+        let submitBtn = $('<input type="submit" value="Guardar">');
+
+        form.append(nameLabel);
+        form.append(nameField);
+        form.append(surnameLabel);
+        form.append(surnameField);
+        form.append(levelLabel);
+        form.append(levelField);
+        form.append(timeLabel);
+        form.append(timeField);
+        form.append(submitBtn);
+
+        $('main').after(form);
     }
 }

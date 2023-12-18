@@ -1,4 +1,0 @@
-Tener identificador para el servicio de la moneda en base a los acronicos que hay que pasar
-en el constructor.
-
-Tener la conversión dentro del documento que es lo más rápido y eficiente.

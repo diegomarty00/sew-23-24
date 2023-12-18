@@ -74,7 +74,7 @@ h2 {
 	margin: 0.5em;
 }
 
-/*Especifidad: 002*/
+/*Especifidad: 001*/
 h3 {
 	font-family: Helveltica, Verdana, sans-serif;
 	background-color: #E6D1DC;
@@ -85,6 +85,41 @@ h3 {
 	border-radius: 0.5em 0em;
 	margin: 1em;
 }
+
+/*Especificidad: 001*/
+h4 {
+	font-family: Helveltica, Verdana, sans-serif;
+	background-color: #EBF094;
+	color: #304606;
+	padding: 0.5em;
+	font-size: 1.1em;
+	border-radius: 0.5em 0em;
+	margin: 1em;
+}
+
+/*Especificidad: 001*/
+h5 {
+	font-family: Helveltica, Verdana, sans-serif;
+	background-color: #E6D1DC;
+	color: #5B3354;
+	padding: 0.5em;
+	font-size: 0.9em;
+	border-radius: 0.5em 0em;
+	margin: 1em;
+}
+
+/*Especificidad: 001*/
+h6 {
+	font-family: Helveltica, Verdana, sans-serif;
+	background-color: #E6D1DC;
+	color: #5B3354;
+	padding: 0.5em;
+	font-size: 0.7em;
+	border-radius: 0.5em 0em;
+	margin: 1em;
+}
+
+
 
 
 /*Especificidad: 001*/

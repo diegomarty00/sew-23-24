@@ -56,7 +56,13 @@ section article[data-type=numeros] button {
     background-color: #E6D1DC;
     border-color: #5B3354;
     color: #5B3354;
-    
+}
+
+/*Especificidad: 013*/
+section article[data-type=direcciones] button {
+    background-color: #E6D1DC;
+    border-color: #5B3354;
+    color: #5B3354;
 }
 
 /*Especificidad: 013*/

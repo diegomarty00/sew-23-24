@@ -15,9 +15,9 @@ B. Black #000000
 
 /*Especificidad: 001*/
 main section img {
-    width: 60%;
+    width: 50%;
     height: auto;
-    margin-top: 4em;
+    margin: 0;
 }
 
 #dinamico {
@@ -46,7 +46,6 @@ section[data-element="rutas"] {
 article[data-element="infoRuta"] {
     display: flex;
     flex-direction: column;
-    border: 0.1em solid #071330;
     padding: 1em;
     width: 80%;
 }
@@ -76,15 +75,6 @@ section[data-element="galeria"] h4 {
     flex: 100%;
 }
 
-section[data-element="galeria"] img {
-    width: 50%;
-    height: auto;
-    margin: 0;
-}
-
-main section[data-element="rutas"] article[data-element="infoRuta"] li {
-    color: #071330; /*No se establece el color de fondo porque lo hereda de body*/
-}
 
 section[data-element="archivosSVG"] {
     display: flex;

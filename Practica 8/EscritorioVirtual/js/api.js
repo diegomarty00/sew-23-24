@@ -2,7 +2,7 @@ class Game {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
         this.context = this.canvas.getContext('2d');
-        this.letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        this.letters = 'WASD';
         this.currentLetter = '';
         this.correctPresses = 0;
         this.incorrectPresses = 0;
@@ -26,7 +26,7 @@ class Game {
 
     draw() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.context.font = '2em serif';
+        this.context.font = '30px serif';
         this.context.fillText(this.currentLetter, this.canvas.width / 2, this.canvas.height / 2);
         this.context.fillText(`Tiempo: ${this.timeLeft}`, 10, 50);
         this.context.fillText(`Aciertos: ${this.correctPresses}`, 10, 100);
@@ -86,23 +86,3 @@ class Game {
 
 }
 
-let audio = new Audio('multimedia/audios/wii-mii.mp3');
-audio.loop = true;
-audio.volume = 0.4;
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const game = new Game('gameCanvas');
-    game.init();
-});
-
-window.addEventListener('keydown', (event) =>  audio.play());
-
-// Escuchar los cambios de visibilidad de la página
-document.addEventListener('visibilitychange', () => {
-    // Si la página se vuelve visible, reproducir el sonido
-    if (!document.hidden) {
-        audio.play();
-    } else {
-        audio.pause();
-    }
-});

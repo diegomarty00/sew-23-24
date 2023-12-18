@@ -12,7 +12,9 @@
 	<title>Escritorio Virtual - Juego de APIs</title>
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
 	<link rel="stylesheet" type="text/css" href="estilo/api.css" />
+	<link rel="stylesheet" type="text/css" href="estilo/botonera.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
+	<script src="js/api.js"></script>
 </head>
 
 <body>
@@ -40,11 +42,46 @@
 			<a href="api.html" tabindex="11" class="active">API</a>
 		</nav>
 	</section>
-	<main">
+	<main>
 		<h3>Juego de mecanografía</h3>
+
+		<section data-type="botonera">
+			<h4>Botonera</h4>
+			<article data-type="direcciones">
+				<button class="boton-arriba" onclick="juego.checkLetter(`W`)">W</button>
+				<button onclick="juego.checkLetter(`A`)">A</button>
+				<button onclick="juego.checkLetter(`S`)">S</button>
+				<button onclick="juego.checkLetter(`D`)">D</button>
+			</article>
+		</section>
+
 		<canvas id="gameCanvas" width="320" height="860"></canvas>
-		<script src="js/api.js"></script>
-	</main>
+		<script>
+			let audio = new Audio('multimedia/audios/wii-mii.mp3');
+			audio.loop = true;
+			audio.volume = 0.4;
+			const juego = new Game('gameCanvas');
+			document.addEventListener('DOMContentLoaded', (event) => {
+				juego.init();
+			});
+
+			window.addEventListener('keydown', (event) => audio.play());
+
+			// Escuchar los cambios de visibilidad de la página
+			document.addEventListener('visibilitychange', () => {
+				// Si la página se vuelve visible, reproducir el sonido
+				if (!document.hidden) {
+					audio.play();
+				} else {
+					audio.pause();
+				}
+			});
+
+
+		</script>
+
+		
+		</main>
 </body>
 
 </html>

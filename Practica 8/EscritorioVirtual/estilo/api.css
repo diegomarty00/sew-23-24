@@ -18,10 +18,22 @@ main {
     display: flex;
     flex-wrap: wrap;
     align-self: center;
+    justify-content: center;
+}
+
+
+canvas {
+    flex: 1;
+    /* Esto hace que el elemento canvas ocupe todo el espacio disponible */
+    max-width: 30em;
+}
+
+main section {
+    width: 100%;
 }
 
 
 /*Especificidad: 001*/
 h3 {
-    flex-basis: 100%; 
+    flex-basis: 100%;
 }

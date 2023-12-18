@@ -2,6 +2,7 @@
 Repositorio de la asignatura de SEW. Aquí podrás encontrar los validadores necesarios para pasar las pruebas, así como los adaptadores y herramientas de accesibilidad web.
 
 <a href="https://diegomarty00.github.io/pruebas-23-24/EscritorioVirtual/index.html">Página Web</a>
+<a href="http://localhost/GitHub/pruebas-23-24/EscritorioVirtual/index.html">Página localhost</a>
 
 # Validadores
 * [Validador de Lenguajes de marcas](https://validator.w3.org/)

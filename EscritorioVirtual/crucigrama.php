@@ -103,7 +103,7 @@ $record = new Record();
 			<a href="noticias.html" tabindex="3" accesskey="n">Noticias</a>
 			<a href="agenda.html" tabindex="4" accesskey="a">Agenda</a>
 			<a href="meteorologia.html" tabindex="5" accesskey="m">Meteorología</a>
-			<a href="viajes.html" tabindex="6" accesskey="v">Viajes</a>
+			<a href="viajes.php" tabindex="6" accesskey="v">Viajes</a>
 			<a href="juegos.html" tabindex="7" class="active" accesskey="j">Juegos</a>
 
 		</nav>

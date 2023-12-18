@@ -17,16 +17,16 @@ main {
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 100%;
-    
+
 }
 
 /*Especificidad: 003*/
 main article {
-	
+
 	flex-grow: 1;
 	flex-shrink: 1;
-	flex-basis: 20%; 
-    box-sizing: border-box;
+	flex-basis: 20%;
+	box-sizing: border-box;
 }
 
 /*Especificidad: 003*/
@@ -46,10 +46,12 @@ article[data-state="flip"] img {
 article {
 	color: #304606;
 	background-color: #EBF094;
+	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	width: 10em;
 	height: 10em;
+	min-width:  5.5em;
 	transform: scale(1);
 	cursor: pointer;
 	transform-style: preserve-3d;
@@ -67,7 +69,6 @@ article img {
 	position: absolute;
 	border-radius: 0.5em;
 	backface-visibility: hidden;
-
 }
 
 /*Especificidad: 002
@@ -87,4 +88,5 @@ article img {
 	background-color: #EBF094;
 	transform: rotateY(180deg);
 	object-fit: contain;
+	
 }

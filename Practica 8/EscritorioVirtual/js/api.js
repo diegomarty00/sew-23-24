@@ -27,11 +27,12 @@ class Game {
     draw() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.context.font = '30px serif';
-        this.context.fillText(this.currentLetter, this.canvas.width / 2, this.canvas.height / 2);
+        this.context.fillStyle = '#EBF094';
+        this.context.fillText(this.currentLetter, this.canvas.width / 2, 150);
         this.context.fillText(`Tiempo: ${this.timeLeft}`, 10, 50);
-        this.context.fillText(`Aciertos: ${this.correctPresses}`, 10, 100);
-        this.context.fillText(`Fallos: ${this.incorrectPresses}`, 10, 150);
-        this.context.fillText(`Precisión: ${this.precision} %`, 10, 200);
+        this.context.fillText(`Aciertos: ${this.correctPresses}`, 10, 220);
+        this.context.fillText(`Fallos: ${this.incorrectPresses}`, 10, 270);
+        this.context.fillText(`Precisión: ${this.precision} %`, 10, 320);
     }
 
     checkLetter(key) {
@@ -79,9 +80,9 @@ class Game {
     endGame() {
         this.fin.play();
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.context.fillText(`¡FIN DE LA PARTIDA!`, 0, this.canvas.height / 2);
-        this.context.fillText(`   Has tenido ${this.correctPresses} aciertos`, 0, this.canvas.height / 2 + 40);
-        this.context.fillText(`    Presición del ${this.precision}%`, 0, this.canvas.height / 2 + 80);
+        this.context.fillText(`¡FIN DE LA PARTIDA!`, 0, 100);
+        this.context.fillText(`   Has tenido ${this.correctPresses} aciertos`, 0, 140);
+        this.context.fillText(`    Presición del ${this.precision}%`, 0, 180);
     }
 
 }

@@ -77,8 +77,8 @@ class Sudoku {
         if (this.asserts(numPulsado, r, c))
             return;
 
-        celda[0].textContent = numPulsado;
-        this.boardArry[r][c] = numPulsado;
+        celda[0].textContent = ``+numPulsado;
+        this.boardArry[r][c] = ``+numPulsado;
         celda[0].onClick = null;
         celda[0].setAttribute('data-state', 'correct');
 

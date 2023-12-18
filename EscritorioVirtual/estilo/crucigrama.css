@@ -49,6 +49,13 @@ p[data-state="clicked"] {
     background-color: rgb(169, 212, 230);
 }
 
+/*Especificidad: 011 
+No hace falta color
+porque está de antes, de p*/
+p[data-state="incorrect"] {
+    background-color: rgb(247, 144, 137);
+}
+
 /*Especificidad: 001*/
 p {
     padding: 2%;

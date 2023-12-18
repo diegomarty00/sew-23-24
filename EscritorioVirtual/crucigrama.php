@@ -76,7 +76,7 @@
 
             $result = $stmt->get_result();
             //Crea la lista ordenada con los resultados
-            echo "<section><h3>Top 10</h3>";
+            echo "<section><h4>Top 10</h4>";
             echo "<ol>";
             while ($row = $result->fetch_assoc()) {
                 $tiempoFormateado = gmdate("H:i:s", $row["tiempo"]);
@@ -116,7 +116,7 @@ $record = new Record();
 		<nav>
 			<a href="memoria.html" tabindex="8">Memoria</a>
 			<a href="sudoku.html" tabindex="9">Sudoku</a>
-			<a href="crucigrama.html" tabindex="10" class="active">Crucigrama</a>
+			<a href="crucigrama.php" tabindex="10" class="active">Crucigrama</a>
 			<a href="api.html" tabindex="11">API</a>
 		</nav>
 	</section>
@@ -129,9 +129,7 @@ $record = new Record();
 
 			document.addEventListener("keydown", (event) => {
 				const keyValue = event.key;
-				if (finish) {
-					juego.finish();
-				} else {
+				if (!finish) {
 					const selectedCell = document.querySelector('p[data-state="clicked"]');
 					if (selectedCell) {
 						if (juego.introduceElement(keyValue)) {

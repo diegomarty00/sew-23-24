@@ -95,7 +95,10 @@ class Crucigrama {
         const c = celda[0].dataset.column;
 
         if (this.asserts(pulsado, r, c)) {
-            celda[0].setAttribute('data-state', 'incorrent');
+            celda[0].setAttribute('data-state', 'incorrect');
+            setTimeout(function() {
+                celda[0].setAttribute("data-state", "init");
+              }, 400);
             return false;
         }
 
@@ -109,8 +112,10 @@ class Crucigrama {
 
         } else {
             this.boardArry[r][c] = 0;
-            celda[0].setAttribute("data-state", "incorrent");
-            alert("Elemento introducido no correcto");
+            celda[0].setAttribute("data-state", "incorrect");
+            setTimeout(function() {
+                celda[0].setAttribute("data-state", "init");
+              }, 400);
         }
 
         if (this.check_win_condition()) {

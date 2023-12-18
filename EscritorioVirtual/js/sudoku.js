@@ -74,7 +74,7 @@ class Sudoku {
         const r = celda[0].dataset.row;
         const c = celda[0].dataset.column;
 
-        if (this.asserts(numPulsado, r, c))
+        if (this.asserts(numPulsado, r, c, celda))
             return;
 
         celda[0].textContent = ``+numPulsado;
@@ -121,18 +121,24 @@ class Sudoku {
 
     }
 
-    asserts(numPulsado, r, c) {
-
+    asserts(numPulsado, r, c, celda) {
         numPulsado = numPulsado.toString();
 
         if (this.boardArry[r].includes(numPulsado)) {
-            alert('Coincidencia en la misma línea');
+            celda[0].setAttribute("data-state", "incorrect");
+            setTimeout(function() {
+                celda[0].setAttribute("data-state", "init");
+              }, 400);
             return true;
         }
 
         const columnArray = this.boardArry.map((r) => r[c]);
         if (columnArray.includes(numPulsado)) {
-            alert('Coincidencia en la misma columna');
+            celda[0].setAttribute("data-state", "incorrect");
+            setTimeout(function() {
+                celda[0].setAttribute("data-state", "init");
+              }, 400);
+              
             return true;
         }
 
@@ -142,7 +148,10 @@ class Sudoku {
         for (let row = bigRow; row < bigRow + 3; row++) {
             for (let col = bigColum; col < bigColum + 3; col++) {
                 if (this.boardArry[row][col] === numPulsado) {
-                    alert('Coincidencia en el mismo area');
+                    celda[0].setAttribute("data-state", "incorrect");
+                    setTimeout(function() {
+                        celda[0].setAttribute("data-state", "init");
+                      }, 400);
                     return true;
                 }
             }

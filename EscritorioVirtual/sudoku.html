@@ -36,7 +36,7 @@
 		<nav>
 			<a href="memoria.html" tabindex="8">Memoria</a>
 			<a href="sudoku.html" tabindex="9" class="active">Sudoku</a>
-			<a href="crucigrama.html" tabindex="10">Crucigrama</a>
+			<a href="crucigrama.php" tabindex="10">Crucigrama</a>
 			<a href="api.html" tabindex="11">API</a>
 		</nav>
 	</section>
@@ -50,17 +50,13 @@
 			document.addEventListener("keydown", (event) => {
 				const keyValue = parseInt(event.key);
 				if (!isNaN(keyValue) && keyValue >= 1 && keyValue <= 9) {
-					if (finish) {
-						juego.finish();
-					} else {
+					if (!finish) {
 						const selectedCell = document.querySelector('p[data-state="clicked"]');
 						if (selectedCell) {
 							if (juego.introduceNumber(keyValue)) {
 								finish = true;
 								juego.finish();
 							}
-						} else {
-							alert('Selecciona una celda antes de introducir un número.');
 						}
 					}
 

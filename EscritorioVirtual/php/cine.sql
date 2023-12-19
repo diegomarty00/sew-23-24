@@ -1,8 +1,8 @@
 drop table IF EXISTS cartelera;
 drop table IF EXISTS pelicula;
 drop table IF EXISTS actor;
-drop table IF EXISTS director;
 drop table IF EXISTS productora;
+drop table IF EXISTS director;
 
 -- Crear la tabla director
 CREATE TABLE IF NOT EXISTS director(

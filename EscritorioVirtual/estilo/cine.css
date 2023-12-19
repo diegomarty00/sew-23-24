@@ -1,0 +1,49 @@
+/* Diego Martinez Menendez - UO270457 
+
+W. White #FFFFFF
+B. Black #000000
+
+1. Olive Green #9BA216 	B
+2. Dark Green #304606 	W, 3, 4, 5
+3. Chartreuse #D6E024 	B, 2, 7
+4. Yellow Green #EBF094 B, 2, 7
+
+5. Mauve #E6D1DC 		B, 2, 7 
+6. Lavender #C197D2		B
+7. Orchid #5B3354 		w, 3, 4, 5
+*/
+
+ul {
+	color: #000000;
+}
+
+main {
+	background-color: #EBF094;
+	border-radius: 2em;
+	padding: 1em;
+}
+
+/*Especificidad: 001*/
+h3 {
+	font-family: Helveltica, Verdana, sans-serif;
+	background-color: #E6D1DC;
+	color: #5B3354;
+	border-color: #5B3354;
+	border-style: solid;
+	font-size: 1.7em;
+	margin: 0.5em;
+}
+
+
+/*Especifidad: 001*/
+h4 {
+	font-family: Helveltica, Verdana, sans-serif;
+	background-color: #E6D1DC;
+	color: #5B3354;
+	border-color: #5B3354;
+	border-style: solid;
+	padding: 0.5em;
+	font-size: 1.3em;
+	border-radius: 0.5em 0em;
+	margin: 1em;
+}

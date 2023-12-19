@@ -8,7 +8,6 @@ class Fondo {
     }
 
     buscaFoto() {
-        // Configura la URL de la API de Flickr
         const apiKey = 'a09054d9591e63f243358ca426c788d1';
         const flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
@@ -22,14 +21,13 @@ class Fondo {
             radius: 6,
             text: 'Harare',
             per_page: 1,
-            geo_context: 2, //outdoors
+            geo_context: 2, 
             extras: 'landscape'
 
         };
 
         $.getJSON(flickrAPI, conf)
             .done(function (data) {
-                //seleccionar la foto
                 var fotoLink = data.items[0].media.m;
                 var betterQuality = fotoLink.replace('_m', '_b');
                 var url = `url('${betterQuality}')`
@@ -46,9 +44,6 @@ class Fondo {
     }
 
 
-
-
-    //API PUBLICA
     ponFondo() {
         const flickrApiUrl = 'https://api.flickr.com/services/rest/';
         const flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
@@ -63,7 +58,7 @@ class Fondo {
                 radius: 6,
                 text: 'Harare',
                 sort: 'relevance',
-                per_page: 1 // Obtener solo una imagen
+                per_page: 1 
             })
             .done(function (data) {
                 //seleccionar la foto
@@ -72,7 +67,6 @@ class Fondo {
                 var url = `url('${betterQuality}')`
                 console.log(url)
 
-                //establecer la imagen para que ocupe toda la pantalla
                 $('body').css('background-image', url)
                     .css('background-size', 'cover')
                     .css('background-repeat', 'no-repeat');
@@ -81,6 +75,5 @@ class Fondo {
             .fail(function (error) {
                 console.error('Error en la solicitud AJAX:', error);
             });
-
     }
 }

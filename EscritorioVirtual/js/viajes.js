@@ -20,7 +20,7 @@ class Viajes {
         this.velocidad = posicion.coords.speed;
     }
 
-    carruselSiguiente() {
+    nextCarrusel() {
         let slides = document.querySelectorAll("img[data-element='carruselImg']");
         // maximum number of slides
         let maxSlide = slides.length - 1;
@@ -37,7 +37,7 @@ class Viajes {
         });
     }
 
-    carruselAnterior() {
+    previousCarrusel() {
         let slides = document.querySelectorAll("img[data-element='carruselImg']");
         // maximum number of slides
         let maxSlide = slides.length - 1;
@@ -127,9 +127,9 @@ class Viajes {
         infoWindow.open(this.mapaGeoposicionado);
     }
 
-    leerArchivoKML(files) {
-        for (let i = 0; i < files.length; i++) {
-            let file = files[i];
+    kml2web(kml) {
+        for (let i = 0; i < kml.length; i++) {
+            let file = kml[i];
             let fr = new FileReader();
             fr.onload = this.onFileLoad.bind(this, this.mapaGeoposicionado);
             fr.readAsText(file);
@@ -160,12 +160,12 @@ class Viajes {
         ruta.setMap(this.mapaGeoposicionado);
         mapa.setCenter(nuevoCentro);
     }
-    leerArchivoSVG(files) {
-        let heading = $("<h4>").text("Perfiles SVG");
+    svg2web(svg) {
+        let heading = $("<h3>").text("Perfiles SVG");
         let section = $("<section>").attr("data-element", "archivosSVG");
         section.append(heading);
-        for (let i = 0; i < files.length; i++) {
-            let file = files[i];
+        for (let i = 0; i < svg.length; i++) {
+            let file = svg[i];
             let lector = new FileReader();
             lector.onload = function (evento) {
                 let xml = $.parseXML(lector.result);
@@ -177,12 +177,13 @@ class Viajes {
             lector.readAsText(file);
         }
         $("main").append(section);
+        window.scrollTo(0,document.body.scrollHeight);
     }
 
-    leerArchivoXML(files) {
+    xml2web(xml) {
         if (window.File && window.FileReader && window.FileList && window.Blob) {
             //El navegador soporta el API File
-            let archivo = files[0];
+            let archivo = xml[0];
             if (archivo) {
                 let lector = new FileReader();
                 lector.readAsText(archivo);
@@ -288,6 +289,7 @@ class Viajes {
                         article.append(seccionHitos);
 
                         seccion.append(article);
+                        window.scrollTo(0,document.body.scrollHeight);
                         $("main").append(seccion);
                     });
                 }

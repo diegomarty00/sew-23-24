@@ -11,7 +11,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Escritorio Virtual - Viajes</title>
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="estilo/viajes.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/carrusel.css" />
+    <link rel="stylesheet" type="text/css" href="estilo/viajes.css" />
+    
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -19,67 +21,66 @@
 	<script src="js/viajes.js"></script>
 </head>
 <?php
-    class Carrusel{
-        private $params;
-        private $url;
-        private $encodedParams;
-        private $imagenes;
-        public function __construct($pais,$capital){
-            $tags = $pais . ",landscape";
-            $this->imagenes = array();
-            $this->params = array(
-                'tags' => $tags ,
-                'tagmode' => 'all',
-                'format' => 'php_serial',
-            );
-                
-            $this->encodedParams = array();
-            foreach ($this->params as $k => $v){
-                $this->encodedParams[] = urlencode($k).'='.urlencode($v);
-            }
-                
-            $this->url = "https://api.flickr.com/services/feeds/photos_public.gne?".implode('&',$this->encodedParams);
-                
-            $this->hacerConsulta();
+    class Carrusel {
+        public string $capital = "";
+        public string $pais = "";
+
+        public function __construct($nombreCapital, $nombrePais) {
+            $this->capital = $nombreCapital;
+            $this->pais = $nombrePais;
         }
 
-        private function hacerConsulta(){
-            $rsp = file_get_contents($this->url);
-            $rsp_obj = unserialize($rsp);
-            if(count($rsp_obj['items']) >0 ){
-                for ($i = 0; $i < 10; $i++) {
-                    $this->imagenes[$i] = $rsp_obj['items'][$i]['l_url'];
-                }
-            }
-        }
-        public function getImg(){
-            foreach($this->imagenes as $n => $imagen){
-                echo "<img src='".$imagen."' alt='Imagen del carrusel".$n."'>";
-            }
-        }
+        function getPhotos() {
+            $api_key = 'a09054d9591e63f243358ca426c788d1';
+            $tag = $this->capital;
+            $perPage = 10;
+            // Fotos públicas recientes
+            $url = 'http://api.flickr.com/services/feeds/photos_public.gne?';
+            $url.= '&api_key='.$api_key;
+            $url.= '&tags='.$tag;
+            $url.= '&per_page='.$perPage;
+            $url.= '&format=json';
+            $url.= '&nojsoncallback=1';
 
+            $respuesta = file_get_contents($url);
+            $json = json_decode($respuesta);
+
+            $carrusel = "<article data-element='carrusel'><h3>Carrusel de imágenes</h3>";
+            for($i=0;$i<$perPage;$i++) {
+                $titulo = $json->items[$i]->title;
+                $URLfoto = str_replace("_m.jpg", "_b.jpg", $json->items[$i]->media->m);
+                $img = "<img data-element='carruselImg' alt='".$titulo."' src='".$URLfoto."' />";
+                $carrusel .= $img;
+            }
+            $carrusel .= "<button onclick=\"viajes.nextCarrusel()\" data-action='next'> > </button>
+            <button data-action='previous' onclick=\"viajes.previousCarrusel()\"> < </button></article>";
+            return $carrusel;
+        }
     }
+
     class Moneda {
-        private $monedaLocal;
-        private $monedaCambio;
-        
-        public function __construct($monedaLocal, $monedaCambio) {
-            $this->monedaLocal = $monedaLocal;
-            $this->monedaCambio = $monedaCambio;
+        public string $monedaPropia = "ALL";
+        public string $monedaCambio = "EUR";
+        private string $app_id = "15798ae3eba24c5bbfe6c3352288b483";
+
+        public function __construct($moneda, $cambio) {
+            $this->monedaPropia = $moneda;
+            $this->monedaCambio = $cambio;
         }
-        
-        public function getCambio(){
-            $api_key = "7b61f0b3d5f7b4798ae815df1dd0aaeefc9dd9e4";
-            $amount = 1;
-            $url = "https://api.getgeoapi.com/v2/currency/convert?api_key=".$api_key."&from=".$this->monedaLocal."&to=".$this->monedaCambio."&amount=".$amount."&format=json";
-            $response = file_get_contents($url);
-            $result = json_decode($response, true);
-            echo "<p>El cambio de moneda de euros a dólar trinitense és: 1€ = ".$result['rates']['TTD']['rate']."TT$</p>";
+
+        public function consultaCambio() {
+            // no se puede cambiar la base (USD) porque se necesita suscripcion. Cojo las dos monedas y con factores de conversión consigo el equivalente a 1€ lek albanés
+            $url = "https://openexchangerates.org/api/latest.json?app_id=" . $this->app_id . "&symbols=" . $this->monedaCambio . "," . $this->monedaPropia;
+            $respuesta = file_get_contents($url);
+            $json = json_decode($respuesta);
+            $ALL = $json->rates->ALL;
+            $EUR = $json->rates->EUR;
+            $equivalencia = round($ALL/$EUR, 3);
+            $resultado = "<p>1€=" . $equivalencia . " Leks albaneses</p>";
+            return $resultado;
         }
     }
-    $c = new Carrusel("Trinidad and Tobago", "Puerto España");
-    $m = new Moneda("EUR","TTD");
-?> 
+?>
 <body>
 	<!-- Datos con el contenidos que aparece en el navegador -->
 	<header>
@@ -94,19 +95,36 @@
 			<a href="juegos.html" tabindex="7" accesskey="j">Juegos</a>
 		</nav>
 	</header>
-	<main>
-		<h2>Viajes</h2>
-		<button onclick="viajes.getMapaEstaticoGoogle('estatico')">Obtener mapa estático</button>
-        <figure id="estatico"></figure>
-        <figure id="dinamico"></figure>
+    <main>
+        <h2>Viajes</h2>
+        <section data-element="top">
+            <?php 
+                $carrusel = new Carrusel('Maseru', 'Lesoto');
+                echo $carrusel->getPhotos();
+            ?>
+            <article>
+                <h3>Cambio de moneda</h3>
+                <?php 
+                    $cambio = new Moneda('ALL', 'EUR');
+                    echo $cambio->consultaCambio();
+                ?>
+            </article>
+        </section>
+
+        <section data-element="mapas">
+            <button onclick="viajes.getMapaEstaticoGoogle('estatico')">Pulsa aqui para obtener el mapa estático</button>
+            <figure id="estatico"></figure>
+            <h3>Mapa dinamico</h3>
+            <figure id="dinamico"></figure>
+        </section>
         <section data-element="fileUpload">
-            <h3>Carga de archivos</h3>
-            <p>Carga el archivo rutasEsquema.xml para ver su contenido: </p>
-            <input type="file" accept=".xml" onchange="viajes.leerArchivoXML(this.files)">
-            <p>Carga archivos KML para representarlos en el mapa dinámico</p>
-            <input type="file" accept=".kml"  onchange="viajes.leerArchivoKML(this.files)" multiple>
-            <p>Carga archivos SVG para representarlos en el documento</p>
-            <input type="file" accept=".svg"  onchange="viajes.leerArchivoSVG(this.files)" multiple>
+                <h3>Carga de archivos</h3>
+                <p>Carga el archivo rutasEsquema.xml para ver su contenido: </p>
+                <input type="file" accept=".xml" onchange="viajes.xml2web(this.files)">
+                <p>Carga archivos KML para representarlos en el mapa dinámico</p>
+                <input type="file" accept=".kml"  onchange="viajes.kml2web(this.files)" multiple>
+                <p>Carga archivos SVG para representarlos en el documento</p>
+                <input type="file" accept=".svg"  onchange="viajes.svg2web(this.files)" multiple>
         </section>
 	</main>
 	<script>
@@ -116,12 +134,10 @@
 			viajes.getMapaDinamicoGoogle();
 		}
 
-		$("button[data-action='next']").on("click", viajes.carruselSiguiente());
-		$("button[data-action='prev']").on("click", viajes.carruselAnterior());
+		$("button[data-action='next']").on("click", viajes.nextCarrusel());
+		$("button[data-action='previous']").on("click", viajes.previousCarrusel());
 
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCrbYGj55x3xpStJ_qDNQu9SLTiaHDbto&callback=initMap"></script>
 </body>
-
-
 </html>

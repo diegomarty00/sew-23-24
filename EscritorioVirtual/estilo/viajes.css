@@ -13,30 +13,104 @@ B. Black #000000
 7. Orchid #5B3354 		w, 3, 4, 5
 */
 
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: 1em;
+}
+
 /*Especificidad: 001*/
 main section img {
-    width: 50%;
-    height: auto;
     margin: 0;
 }
 
-#dinamico {
-    margin-top: 4em;
-    height: 60vw;
+
+/*Especificidad: 001*/
+h2, h3, h4, h5, h6{
+    flex-basis: 100%;
+    text-align: center;
+    align-self: center;
 }
 
-section[data-element="fileUpload"] {
+#dinamico {
+    min-width: 20em;
+    max-width: 60em;
+    max-height: 60em;
+    height: 25vw;
+    width: 25vw;
+}
+
+section[data-element="mapas"] img{
+    max-width: 30em;
+    max-height: 30em;
+}
+
+/*Especificidad: 001*/
+main section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+    box-sizing: border-box;
+    align-self: center;
+    max-width: 100%;
+}
+
+section[data-element="rutas"],  
+section[data-element="archivoSVG"]{
+    flex-basis: 100%;
+}
+
+section[data-element="top"],
+section[data-element="mapas"] {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     gap: 0.5em;
+    padding: 1.5em;
+    max-height: 100em;
+    align-items: center;
 }
 
-section[data-element="fileUpload"] p {
-    width: 100%;
+/*Especificidad: 001*/
+section[data-element="mapas"] button {
+    display: flex;
+    padding: 1em;
+    max-width: 35em;
+    border-style: solid;
+    border-radius: 0.5em;
+    background-color: #5B3354;
+	color: #E6D1DC;
+    border-color: #E6D1DC;
+    border-width: 0.2em;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.3s;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Especificidad 022*/
+section[data-element="mapas"] button:active {
+    transform: scale(1.1);
+}
+
+main section[data-element="fileUpload"] {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    align-items: center;
+    justify-self: center;
+    
 }
 
 section[data-element="rutas"] {
+    flex-basis: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,31 +128,23 @@ article[data-element="infoRuta"] p {
     margin: 0.2em;
 }
 
-article[data-element="infoRuta"] h4[data-element="nombre-ruta"] {
-    align-self: center;
-}
 
 section[data-element="galeria"] {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     height: 35vh;
     gap: 0em;
     overflow: auto;
-}
-
-section h4 {
-    margin: 1.2em;
-}
-
-section[data-element="galeria"] h4 {
-    flex: 100%;
+    margin-top: 0.1em;
 }
 
 
 section[data-element="archivosSVG"] {
+    flex-basis: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 section[data-element="archivosSVG"] svg {
@@ -87,9 +153,7 @@ section[data-element="archivosSVG"] svg {
     overflow: hidden;
 }
 
-section[data-element="archivosSVG"] h4 {
-    text-align: center;
-}
+
 
 section[data-element="archivosSVG"] polyline {
     transform: scale(0.6);

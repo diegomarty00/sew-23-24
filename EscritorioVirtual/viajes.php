@@ -101,7 +101,7 @@
             ?>
             <article>
                 <h3>Cambio de moneda</h3>
-                <p> Conversión de moneda europea y Lesoto</p>
+                <p>Conversión de moneda europea y Lesoto</p>
                 <?php 
                     $cambio = new Moneda('LSL', 'EUR');
                     echo "<p> 1€ = " . $cambio->consultaCambio() . "M </p>";

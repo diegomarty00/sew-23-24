@@ -115,6 +115,7 @@ $record = new Record();
 			<a href="sudoku.html" tabindex="9">Sudoku</a>
 			<a href="crucigrama.php" tabindex="10" class="active">Crucigrama</a>
 			<a href="api.html" tabindex="11">API</a>
+			<a href="cine.php" tabindex="12">Cine</a>
 		</nav>
 	</section>
 	<main>

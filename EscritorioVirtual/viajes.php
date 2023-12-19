@@ -18,7 +18,68 @@
 	<!--jquery min-->
 	<script src="js/viajes.js"></script>
 </head>
+<?php
+    class Carrusel{
+        private $params;
+        private $url;
+        private $encodedParams;
+        private $imagenes;
+        public function __construct($pais,$capital){
+            $tags = $pais . ",landscape";
+            $this->imagenes = array();
+            $this->params = array(
+                'tags' => $tags ,
+                'tagmode' => 'all',
+                'format' => 'php_serial',
+            );
+                
+            $this->encodedParams = array();
+            foreach ($this->params as $k => $v){
+                $this->encodedParams[] = urlencode($k).'='.urlencode($v);
+            }
+                
+            $this->url = "https://api.flickr.com/services/feeds/photos_public.gne?".implode('&',$this->encodedParams);
+                
+            $this->hacerConsulta();
+        }
 
+        private function hacerConsulta(){
+            $rsp = file_get_contents($this->url);
+            $rsp_obj = unserialize($rsp);
+            if(count($rsp_obj['items']) >0 ){
+                for ($i = 0; $i < 10; $i++) {
+                    $this->imagenes[$i] = $rsp_obj['items'][$i]['l_url'];
+                }
+            }
+        }
+        public function getImg(){
+            foreach($this->imagenes as $n => $imagen){
+                echo "<img src='".$imagen."' alt='Imagen del carrusel".$n."'>";
+            }
+        }
+
+    }
+    class Moneda {
+        private $monedaLocal;
+        private $monedaCambio;
+        
+        public function __construct($monedaLocal, $monedaCambio) {
+            $this->monedaLocal = $monedaLocal;
+            $this->monedaCambio = $monedaCambio;
+        }
+        
+        public function getCambio(){
+            $api_key = "7b61f0b3d5f7b4798ae815df1dd0aaeefc9dd9e4";
+            $amount = 1;
+            $url = "https://api.getgeoapi.com/v2/currency/convert?api_key=".$api_key."&from=".$this->monedaLocal."&to=".$this->monedaCambio."&amount=".$amount."&format=json";
+            $response = file_get_contents($url);
+            $result = json_decode($response, true);
+            echo "<p>El cambio de moneda de euros a dólar trinitense és: 1€ = ".$result['rates']['TTD']['rate']."TT$</p>";
+        }
+    }
+    $c = new Carrusel("Trinidad and Tobago", "Puerto España");
+    $m = new Moneda("EUR","TTD");
+?> 
 <body>
 	<!-- Datos con el contenidos que aparece en el navegador -->
 	<header>

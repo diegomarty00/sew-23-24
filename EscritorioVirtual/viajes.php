@@ -59,9 +59,7 @@
     }
 
     class Moneda {
-        public string $monedaPropia = "ALL";
-        public string $monedaCambio = "EUR";
-        private string $app_id = "15798ae3eba24c5bbfe6c3352288b483";
+        private string $app_id = "8e4ad58943d642fbb9261b32fd4b1765";
 
         public function __construct($moneda, $cambio) {
             $this->monedaPropia = $moneda;
@@ -69,15 +67,14 @@
         }
 
         public function consultaCambio() {
-            // no se puede cambiar la base (USD) porque se necesita suscripcion. Cojo las dos monedas y con factores de conversión consigo el equivalente a 1€ lek albanés
             $url = "https://openexchangerates.org/api/latest.json?app_id=" . $this->app_id . "&symbols=" . $this->monedaCambio . "," . $this->monedaPropia;
             $respuesta = file_get_contents($url);
             $json = json_decode($respuesta);
-            $ALL = $json->rates->ALL;
-            $EUR = $json->rates->EUR;
-            $equivalencia = round($ALL/$EUR, 3);
-            $resultado = "<p>1€=" . $equivalencia . " Leks albaneses</p>";
-            return $resultado;
+            $moneda = $json->rates->{$this->monedaPropia};
+            $cambio = $json->rates->{$this->monedaCambio};
+            $equivalencia = round($moneda/$cambio, 2);
+            $resultado = "<p> 1€ = " . $equivalencia . " M </p>";
+            return $equivalencia;
         }
     }
 ?>
@@ -104,9 +101,12 @@
             ?>
             <article>
                 <h3>Cambio de moneda</h3>
+                <p> Conversión de moneda europea y Lesoto</p>
                 <?php 
-                    $cambio = new Moneda('ALL', 'EUR');
-                    echo $cambio->consultaCambio();
+                    $cambio = new Moneda('LSL', 'EUR');
+                    echo "<p> 1€ = " . $cambio->consultaCambio() . "M </p>";
+                    $cambio = new Moneda('EUR', 'LSL');
+                    echo "<p> 1L = " . $cambio->consultaCambio() . "€ </p>";
                 ?>
             </article>
         </section>

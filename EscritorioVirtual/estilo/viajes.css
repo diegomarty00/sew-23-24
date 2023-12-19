@@ -75,6 +75,11 @@ section[data-element="mapas"] {
     align-items: center;
 }
 
+section[data-element="top"] article p{
+    justify-content: center;
+    text-align: center;
+}
+
 /*Especificidad: 001*/
 section[data-element="mapas"] button {
     display: flex;

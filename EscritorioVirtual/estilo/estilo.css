@@ -136,6 +136,7 @@ nav {
 /*Especificidad: 003*/
 nav a {
 	margin: 0.5em;
+	padding-right: 1em;
 }
 
 /*Especificidad: 004*/

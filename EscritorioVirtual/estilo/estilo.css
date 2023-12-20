@@ -208,6 +208,11 @@ ul {
 	line-height: 1.5;
 }
 
+/*Especifidad: 012*/
+ul li:nth-child(3) {
+    font-weight: bolder;
+}
+
 /*Especifidad: 001
 Definido el background-color
 anteriormente en body*/

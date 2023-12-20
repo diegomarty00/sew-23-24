@@ -6,8 +6,8 @@
 	<!-- Datos que describen el documento -->
 	<meta charset="UTF-8" />
 	<meta name="author" content="Diego Martinez Menendez" />
-	<meta name="description" content="ESCRIBEME" />
-	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, viajes" />
+	<meta name="description" content="Contiene la información de tu localización, las rutas de Lesoto, algunas fotos del lugar, etc." />
+	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, viajes, Lesoto, monedas, euros, loti" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Escritorio Virtual - Viajes</title>
     <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />

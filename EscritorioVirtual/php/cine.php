@@ -264,10 +264,10 @@ if (isset($_POST['peliculas'])) {
 	<!-- Datos que describen el documento -->
 	<meta charset="UTF-8" />
 	<meta name="author" content="Diego Martinez Menendez" />
-	<meta name="description" content="ESCRIBEME" />
-	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, juegos, videojuegos, game" />
+	<meta name="description" content="Encontrarás algunos ejemplos de películas que hay en la cartelera de un cine y la información de las películas" />
+	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, cine. actor, pelicula" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Escritorio Virtual - Juegos</title>
+	<title>Escritorio Virtual - Cartelera Cine</title>
     <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
 	<link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="../estilo/cine.css" />

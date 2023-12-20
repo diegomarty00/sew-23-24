@@ -268,9 +268,10 @@ if (isset($_POST['peliculas'])) {
 	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, juegos, videojuegos, game" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Escritorio Virtual - Juegos</title>
+    <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
 	<link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
     <link rel="stylesheet" type="text/css" href="../estilo/cine.css" />
-	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
+	<link rel="icon" href="../multimedia/imagenes/rino-32px.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -284,7 +285,7 @@ if (isset($_POST['peliculas'])) {
 			<a href="../noticias.html" tabindex="3" accesskey="n">Noticias</a>
 			<a href="../agenda.html" tabindex="4" accesskey="a">Agenda</a>
 			<a href="../meteorologia.html" tabindex="5" accesskey="m">Meteorología</a>
-			<a href="../viajes.php" tabindex="6" accesskey="v">Viajes</a>
+			<a href="viajes.php" tabindex="6" accesskey="v">Viajes</a>
 			<a href="../juegos.html" tabindex="7" class="active" accesskey="j">Juegos</a>
 
 		</nav>
@@ -294,7 +295,7 @@ if (isset($_POST['peliculas'])) {
 		<nav>
 			<a href="../memoria.html" tabindex="8">Memoria</a>
 			<a href="../sudoku.html" tabindex="9">Sudoku</a>
-			<a href="../crucigrama.php" tabindex="10">Crucigrama</a>
+			<a href="crucigrama.php" tabindex="10">Crucigrama</a>
 			<a href="../api.html" tabindex="11">API</a>
             <a href="cine.php" tabindex="12" class="active">Cine</a>
 		</nav>

@@ -10,15 +10,15 @@
 	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, viajes" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Escritorio Virtual - Viajes</title>
-	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/carrusel.css" />
-    <link rel="stylesheet" type="text/css" href="estilo/viajes.css" />
-    
-	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="../estilo/carrusel.css" />
+    <link rel="stylesheet" type="text/css" href="../estilo/viajes.css" />
+	<link rel="icon" href="../multimedia/imagenes/rino-32px.ico" type="image/x-icon">
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<!--jquery min-->
-	<script src="js/viajes.js"></script>
+	<script src="../js/viajes.js"></script>
 </head>
 <?php
     class Carrusel {
@@ -83,13 +83,13 @@
 	<header>
 		<h1>Escritorio Virtual</h1>
 		<nav>
-			<a href="index.html" tabindex="1" accesskey="i">Inicio</a>
-			<a href="sobremi.html" tabindex="2" accesskey="s">Sobre mi</a>
-			<a href="noticias.html" tabindex="3" accesskey="n">Noticias</a>
-			<a href="agenda.html" tabindex="4" accesskey="a">Agenda</a>
-			<a href="meteorologia.html" tabindex="5" accesskey="m">Meteorología</a>
+			<a href="../index.html" tabindex="1" accesskey="i">Inicio</a>
+			<a href="../sobremi.html" tabindex="2" accesskey="s">Sobre mi</a>
+			<a href="../noticias.html" tabindex="3" accesskey="n">Noticias</a>
+			<a href="../agenda.html" tabindex="4" accesskey="a">Agenda</a>
+			<a href="../meteorologia.html" tabindex="5" accesskey="m">Meteorología</a>
 			<a href="viajes.php" tabindex="6" class="active" accesskey="v">Viajes</a>
-			<a href="juegos.html" tabindex="7" accesskey="j">Juegos</a>
+			<a href="../juegos.html" tabindex="7" accesskey="j">Juegos</a>
 		</nav>
 	</header>
     <main>

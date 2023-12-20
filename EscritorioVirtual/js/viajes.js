@@ -280,8 +280,8 @@ class Viajes {
                             let fotos = $("<h5>").text("Galería de fotos");
                             galeria.append(fotos);
 
-                            hitoXML.find("foto").each((index, foto) => {
-                                let img = $("<img>").attr("src", foto.outerText).attr("alt", `Foto de ${hitoXML.attr('nombreHito')}`);
+                            hitoXML.find("foto").each((index, foto) => { //Recuerda que estás en la carpeta PHP
+                                let img = $("<img>").attr("src", "../multimedia/imagenes/xml/"+foto.outerText).attr("alt", `Foto de ${hitoXML.attr('nombreHito')}`);
                                 galeria.append(img);
                             })
                             articuloHitos.append(galeria);

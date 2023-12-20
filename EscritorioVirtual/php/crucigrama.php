@@ -10,14 +10,15 @@
 	<meta name="keywords" content="HTML, HTML5, W3C, estandar, whatwg, juegos, videojuegos, game" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Escritorio Virtual - Juegos</title>
-	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
-	<link rel="stylesheet" type="text/css" href="estilo/botonera.css" />
-	<link rel="stylesheet" type="text/css" href="estilo/crucigrama.css" />
-	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="../estilo/layout.css" />
+	<link rel="stylesheet" type="text/css" href="../estilo/estilo.css" />
+	<link rel="stylesheet" type="text/css" href="../estilo/botonera.css" />
+	<link rel="stylesheet" type="text/css" href="../estilo/crucigrama.css" />
+	<link rel="icon" href="../multimedia/imagenes/rino-32px.ico" type="image/x-icon">
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 	<!--jquery min-->
-	<script src="js/crucigrama.js"></script>
+	<script src="../js/crucigrama.js"></script>
 </head>
 
 <?php class Record
@@ -97,24 +98,24 @@ $record = new Record();
 		<h1>Escritorio Virtual</h1>
 		<nav>
 
-			<a href="index.html" tabindex="1" accesskey="i">Inicio</a>
-			<a href="sobremi.html" tabindex="2" accesskey="s">Sobre mi</a>
-			<a href="noticias.html" tabindex="3" accesskey="n">Noticias</a>
-			<a href="agenda.html" tabindex="4" accesskey="a">Agenda</a>
-			<a href="meteorologia.html" tabindex="5" accesskey="m">Meteorología</a>
+			<a href="../index.html" tabindex="1" accesskey="i">Inicio</a>
+			<a href="../sobremi.html" tabindex="2" accesskey="s">Sobre mi</a>
+			<a href="../noticias.html" tabindex="3" accesskey="n">Noticias</a>
+			<a href="../agenda.html" tabindex="4" accesskey="a">Agenda</a>
+			<a href="../meteorologia.html" tabindex="5" accesskey="m">Meteorología</a>
 			<a href="viajes.php" tabindex="6" accesskey="v">Viajes</a>
-			<a href="juegos.html" tabindex="7" class="active" accesskey="j">Juegos</a>
+			<a href="../juegos.html" tabindex="7" class="active" accesskey="j">Juegos</a>
 
 		</nav>
 	</header>
 	<section>
 		<h2>Lista de juegos disponibles</h2>
 		<nav>
-			<a href="memoria.html" tabindex="8">Memoria</a>
-			<a href="sudoku.html" tabindex="9">Sudoku</a>
+			<a href="../memoria.html" tabindex="8">Memoria</a>
+			<a href="../sudoku.html" tabindex="9">Sudoku</a>
 			<a href="crucigrama.php" tabindex="10" class="active">Crucigrama</a>
-			<a href="api.html" tabindex="11">API</a>
-			<a href="php/cine.php" tabindex="12">Cine</a>
+			<a href="../api.html" tabindex="11">API</a>
+			<a href="cine.php" tabindex="12">Cine</a>
 		</nav>
 	</section>
 	<main>

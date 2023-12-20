@@ -93,6 +93,13 @@ form {
     border-style: solid;
     border-color: #ced4da;
     border-radius: 0.5em;
+    background-color: #f8f9fa;
+    padding: 2em;
+    padding-right: 3em;
+    border-radius: 0.5em;
+    max-width: 40em;
+    margin: auto;
+    align-items: center;
 }
 
 /*Especificidad 001*/

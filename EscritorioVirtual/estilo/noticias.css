@@ -21,6 +21,7 @@ section {
     justify-content: center;
 }
 
+
 /*Especificidad: 001*/
 section h2 {
     flex-basis: 100%;
@@ -38,7 +39,6 @@ h3 {
 article {
     display: flex;
     flex-direction: column;
-    width: 25em;
     background-color: #EBF094;
     border-radius: 1em;
     padding: 0.5em;

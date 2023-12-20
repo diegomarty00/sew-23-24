@@ -115,7 +115,6 @@ main section[data-element="fileUpload"] {
 }
 
 section[data-element="rutas"] {
-    flex-basis: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

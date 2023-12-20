@@ -11,7 +11,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Escritorio Virtual - Juegos</title>
 	<link rel="stylesheet" type="text/css" href="estilo/estilo.css" />
-	
 	<link rel="stylesheet" type="text/css" href="estilo/botonera.css" />
 	<link rel="stylesheet" type="text/css" href="estilo/crucigrama.css" />
 	<link rel="icon" href="multimedia/imagenes/rino-32px.ico" type="image/x-icon">
@@ -120,7 +119,7 @@ $record = new Record();
 	</section>
 	<main>
 		<script>
-			var juego = new Crucigrama(3);
+			var juego = new Crucigrama(1);
 			var finish = false;
 			juego.paintMathword();
 
@@ -140,6 +139,7 @@ $record = new Record();
 		<section data-type="botonera">
 			<h4>Botonera</h4>
 			<article data-type="numeros">
+				<h5>Números</h5>
 				<button onclick="juego.introduceElement(1)">1</button>
 				<button onclick="juego.introduceElement(2)">2</button>
 				<button onclick="juego.introduceElement(3)">3</button>
@@ -151,6 +151,7 @@ $record = new Record();
 				<button onclick="juego.introduceElement(9)">9</button>
 			</article>
 			<article data-type="operadores">
+				<h5>Operadores</h5>
 				<button onclick="juego.introduceElement('*')">*</button>
 				<button onclick="juego.introduceElement('/')">/</button>
 				<button onclick="juego.introduceElement('-')">-</button>

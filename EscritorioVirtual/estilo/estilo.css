@@ -147,7 +147,6 @@ nav a {
 }
 
 /*Especificidad: 024, 014*/
-nav  a:hover:not(.active),
 nav  a:focus {
 	font-weight: bold;
 }

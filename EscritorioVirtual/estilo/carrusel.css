@@ -16,48 +16,52 @@ B. Black #000000
 
 /*Especificidad 011*/
 article[data-element="carrusel"] {
-    width: 100%;
-    max-width: 100vh;
-    height: 70vh;
-    position: relative;
-    overflow: hidden; /* <===  */
-    border-radius: 1em;
-    margin-bottom: 4em;
-  }
+  width: 100%;
+  max-width: 100vh;
+  height: 70vh;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1em;
+  margin-bottom: 4em;
+}
 
-  /*Especificidad 012*/
-  article[data-element="carrusel"] img {
-    width: 100%;
-    max-width: 100vh;
-    height: 60vh;
-    position: absolute;
-    transition: all 0.5s;
-    object-fit: cover;
-    border-radius: 0.5em;
-  }
-  /*Especificidad 012*/
-  article[data-element="carrusel"] button {
-    position: absolute;
-    width: 2em;
-    height: 2em;
-    padding: 0.5em;
-    border: none;
-    border-radius: 50%;
-    z-index: 10;
-    cursor: pointer;
-    background-color: #fff; /*Hereda el color de primer plano de body*/
-  }
-  /*Especificidad 022*/
-  article[data-element="carrusel"] button:active {
-    transform: scale(1.1);
-  }
-  /*Especificidad 022*/
-  article[data-element="carrusel"] button[data-action=previous] {
-    top: 50%;
-    left: 2%;
-  }
-  /*Especificidad 022*/
-  article[data-element="carrusel"] button[data-action=next] {
-    top: 50%;
-    right: 2%;
-  }
+/*Especificidad 012*/
+article[data-element="carrusel"] img {
+  width: 100%;
+  max-width: 100vh;
+  height: 60vh;
+  position: absolute;
+  transition: all 0.5s;
+  object-fit: cover;
+  border-radius: 0.5em;
+}
+
+/*Especificidad 012*/
+article[data-element="carrusel"] button {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+/*Especificidad 022*/
+article[data-element="carrusel"] button:active {
+  transform: scale(1.1);
+}
+
+/*Especificidad 022*/
+article[data-element="carrusel"] button[data-action=previous] {
+  top: 50%;
+  left: 2%;
+}
+
+/*Especificidad 022*/
+article[data-element="carrusel"] button[data-action=next] {
+  top: 50%;
+  right: 2%;
+}

@@ -22,7 +22,7 @@ section {
 }
 
 /*Especificidad: 001*/
-h3{
+h3 {
     border-color: #5B3354;
     border-style: solid;
 }
@@ -31,7 +31,7 @@ h3{
 article {
     display: flex;
     flex-direction: column;
-	background-color: #EBF094;
+    background-color: #EBF094;
     border-radius: 1em;
     padding: 0.8em;
     text-align: center;

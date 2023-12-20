@@ -20,12 +20,12 @@ body {
 	background-color: #304606;
 	margin: auto;
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 }
 
 /*Especifidad: 001
 Controlado con el color del fondo*/
-p{
+p {
 	color: #E6D1DC;
 }
 
@@ -52,7 +52,8 @@ header {
 
 /*Especificidad: 001*/
 h1,
-h2 {
+h2,
+h4 {
 	font-family: Helveltica, Verdana, sans-serif;
 	background-color: #EBF094;
 	color: #304606;
@@ -73,51 +74,37 @@ h2 {
 }
 
 /*Especifidad: 001*/
-h3 {
+h3,
+h5,
+h6 {
 	font-family: Helveltica, Verdana, sans-serif;
 	background-color: #E6D1DC;
 	color: #5B3354;
-	padding: 0.5em;
-	font-size: 1.3em;
 	border-radius: 0.5em 0em;
 	margin: 1em;
+	padding: 0.5em;
+}
+
+/*Especifidad: 001*/
+h3 {
+	font-size: 1.3em;
 }
 
 /*Especificidad: 001*/
 h4 {
-	font-family: Helveltica, Verdana, sans-serif;
-	background-color: #EBF094;
-	color: #304606;
-	padding: 0.5em;
 	font-size: 1.1em;
-	border-radius: 0.5em 0em;
 	margin: 1em;
 }
 
 /*Especificidad: 001*/
 h5 {
-	font-family: Helveltica, Verdana, sans-serif;
-	background-color: #E6D1DC;
-	color: #5B3354;
-	padding: 0.5em;
 	font-size: 0.9em;
-	border-radius: 0.5em 0em;
-	margin: 1em;
 }
 
 /*Especificidad: 001*/
 h6 {
-	font-family: Helveltica, Verdana, sans-serif;
-	background-color: #E6D1DC;
-	color: #5B3354;
-	padding: 0.5em;
 	font-size: 0.7em;
-	border-radius: 0.5em 0em;
-	margin: 1em;
 }
-
-
-
 
 /*Especificidad: 001*/
 nav {
@@ -129,25 +116,19 @@ nav {
 	flex-wrap: wrap;
 }
 
-
-/*Especificidad: 003*/
+/*Especificidad: 002*/
 nav a {
 	margin: 0.5em;
-}
-
-/*Especificidad: 004*/
-nav a {
 	padding: 0.25em 0.5em;
 	text-decoration: none;
 	background-color: #E6D1DC;
 	color: #304606;
 	border: 2px solid black;
 	border-radius: 0.5em 0em;
-	/* border-top-right-radius: 1em 1em; /* another rounded corner! */
 }
 
-/*Especificidad: 024, 014*/
-nav  a:focus {
+/*Especificidad: 012*/
+nav a:focus {
 	font-weight: bold;
 }
 
@@ -157,32 +138,25 @@ section nav {
 	justify-content: center;
 	list-style-type: none;
 	flex-wrap: wrap;
-}
-
-/*Especificidad: 003*/
-section nav {
 	margin: 0.5em;
 }
 
-/*Especificidad: 004*/
+/*Especificidad: 003*/
 section nav a {
 	padding: 0.25em 1em;
 	text-decoration: none;
-	/* no underline */
 	background-color: #E6D1DC;
 	color: #304606;
 	border: 2px solid black;
 	border-radius: 0.5em 0em;
-	/* border-top-right-radius: 1em 1em; /* another rounded corner! */
 }
 
-/*Especificidad: 024, 014*/
-section nav a:hover:not(.active),
+/*Especificidad: 013*/
 section nav a:focus {
 	font-weight: bold;
 }
 
-/*Especificidad: 014*/
+/*Especificidad: 011*/
 section .active {
 	background-color: #EBF094;
 	color: #304606;
@@ -234,7 +208,6 @@ table caption {
 	text-decoration: underline
 }
 
-
 /*Especifidad: 003*/
 table tr th {
 	text-align: center;
@@ -257,6 +230,7 @@ a {
 	color: #FFFFFF;
 }
 
+/*Especifidad: 001*/
 aside {
 	margin: 0.5em;
 }
@@ -300,7 +274,6 @@ dl dt {
 	font-size: 1em;
 	font-weight: bold;
 }
-
 
 /*Especifidad: 001*/
 img {

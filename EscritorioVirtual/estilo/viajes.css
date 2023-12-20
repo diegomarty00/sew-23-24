@@ -13,7 +13,7 @@ B. Black #000000
 7. Orchid #5B3354 		w, 3, 4, 5
 */
 
-
+/*Especificidad: 001*/
 main {
     display: flex;
     flex-wrap: wrap;
@@ -21,19 +21,24 @@ main {
     margin: 1em;
 }
 
-/*Especificidad: 001*/
+/*Especificidad: 003*/
 main section img {
     margin: 0;
 }
 
 
 /*Especificidad: 001*/
-h2, h3, h4, h5, h6{
+h2,
+h3,
+h4,
+h5,
+h6 {
     flex-basis: 100%;
     text-align: center;
     align-self: center;
 }
 
+/*Especificidad: 100*/
 #dinamico {
     min-width: 20em;
     max-width: 60em;
@@ -42,12 +47,13 @@ h2, h3, h4, h5, h6{
     width: 25vw;
 }
 
-section[data-element="mapas"] img{
+/*Especificidad: 012*/
+section[data-element="mapas"] img {
     max-width: 30em;
     max-height: 30em;
 }
 
-/*Especificidad: 001*/
+/*Especificidad: 002*/
 main section {
     display: flex;
     flex-wrap: wrap;
@@ -59,11 +65,13 @@ main section {
     max-width: 100%;
 }
 
-section[data-element="rutas"],  
-section[data-element="archivoSVG"]{
+/*Especificidad: 011*/
+section[data-element="rutas"],
+section[data-element="archivoSVG"] {
     flex-basis: 100%;
 }
 
+/*Especificidad: 011*/
 section[data-element="top"],
 section[data-element="mapas"] {
     display: flex;
@@ -75,12 +83,13 @@ section[data-element="mapas"] {
     align-items: center;
 }
 
-section[data-element="top"] article p{
+/*Especificidad: 013*/
+section[data-element="top"] article p {
     justify-content: center;
     text-align: center;
 }
 
-/*Especificidad: 001*/
+/*Especificidad: 012*/
 section[data-element="mapas"] button {
     display: flex;
     padding: 1em;
@@ -88,7 +97,7 @@ section[data-element="mapas"] button {
     border-style: solid;
     border-radius: 0.5em;
     background-color: #5B3354;
-	color: #E6D1DC;
+    color: #E6D1DC;
     border-color: #E6D1DC;
     border-width: 0.2em;
     font-size: 1.2em;
@@ -103,6 +112,7 @@ section[data-element="mapas"] button:active {
     transform: scale(1.1);
 }
 
+/*Especificidad: 012*/
 main section[data-element="fileUpload"] {
     flex-basis: 100%;
     display: flex;
@@ -111,9 +121,9 @@ main section[data-element="fileUpload"] {
     gap: 0.5em;
     align-items: center;
     justify-self: center;
-    
 }
 
+/*Especificidad: 011*/
 section[data-element="rutas"] {
     display: flex;
     flex-direction: column;
@@ -121,6 +131,7 @@ section[data-element="rutas"] {
     gap: 1em;
 }
 
+/*Especificidad: 011*/
 article[data-element="infoRuta"] {
     display: flex;
     flex-direction: column;
@@ -128,11 +139,12 @@ article[data-element="infoRuta"] {
     width: 80%;
 }
 
+/*Especificidad: 012*/
 article[data-element="infoRuta"] p {
     margin: 0.2em;
 }
 
-
+/*Especificidad: 011*/
 section[data-element="galeria"] {
     display: flex;
     flex-direction: column;
@@ -143,7 +155,7 @@ section[data-element="galeria"] {
     margin-top: 0.1em;
 }
 
-
+/*Especificidad: 011*/
 section[data-element="archivosSVG"] {
     flex-basis: 100%;
     display: flex;
@@ -151,18 +163,15 @@ section[data-element="archivosSVG"] {
     align-items: center;
 }
 
+/*Especificidad: 012*/
 section[data-element="archivosSVG"] svg {
     width: 80%;
     height: 35vh;
     overflow: hidden;
 }
 
-
-
-section[data-element="archivosSVG"] polyline {
-    transform: scale(0.6);
-}
-
+/*Especificidad: 012*/
+section[data-element="archivosSVG"] polyline,
 section[data-element="archivosSVG"] text {
     transform: scale(0.6);
 }

@@ -13,6 +13,7 @@ B. Black #000000
 7. Orchid #5B3354 		w, 3, 4, 5
 */
 
+/*Especificidad 001*/
 main {
     display: flex;
     flex-wrap: wrap;
@@ -86,6 +87,7 @@ p[data-state="blocked"] {
     color: black;
 }
 
+/*Especificidad 001*/
 form {
     border-width: 0.2em;
     border-style: solid;
@@ -93,11 +95,13 @@ form {
     border-radius: 0.5em;
 }
 
+/*Especificidad 001*/
 label {
     display: flex;
     margin-bottom: 0.5em;
 }
 
+/*Especificidad 011*/
 input[type="text"] {
     width: 100%;
     padding: 1em;
@@ -108,6 +112,7 @@ input[type="text"] {
     border-color: #ced4da;
 }
 
+/*Especificidad 011*/
 input[type="submit"] {
     display: flex;
     padding: 1em;
@@ -120,15 +125,17 @@ input[type="submit"] {
     transition: transform 0.3s;
 }
 
+/*Especificidad 021*/
 input[type="submit"]:hover {
     transform: scale(1.1);
 }
 
-/*Especificidad: 011*/
+/*Especificidad: 021*/
 input[type="submit"]:active {
     transform: scale(0.8);
 }
 
+/*Especificidad 011*/
 section[data-type=top] {
     display: flex;
     gap: 1em;

@@ -27,11 +27,11 @@ section[data-type=botonera] h2 {
     width: 100%;
     text-align: center;
     margin: 0em;
-    
+
 }
 
 /*Especificidad: 001*/
-article{
+article {
     display: flex;
     flex-wrap: wrap;
     gap: 0.2em;
@@ -42,7 +42,7 @@ article{
 }
 
 /*Especificidad: 003*/
-section article button{
+section article button {
     width: 4em;
     height: 4em;
     text-align: center;

@@ -21,13 +21,14 @@ main {
     justify-content: center;
 }
 
-
+/*Especificidad: 001*/
 canvas {
     flex: 1;
     /* Esto hace que el elemento canvas ocupe todo el espacio disponible */
     max-width: 30em;
 }
 
+/*Especificidad: 002*/
 main section {
     width: 100%;
 }

@@ -13,10 +13,12 @@ B. Black #000000
 7. Orchid #5B3354 		w, 3, 4, 5
 */
 
+/*Especificidad 001*/
 ul {
 	color: #000000;
 }
 
+/*Especificidad 001*/
 main {
 	background-color: #EBF094;
 	border-radius: 2em;
@@ -33,7 +35,6 @@ h3 {
 	font-size: 1.7em;
 	margin: 0.5em;
 }
-
 
 /*Especifidad: 001*/
 h4 {

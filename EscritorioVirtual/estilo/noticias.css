@@ -22,7 +22,7 @@ section {
 }
 
 
-/*Especificidad: 001*/
+/*Especificidad: 002*/
 section h2 {
     flex-basis: 100%;
     margin: 1.1em;
@@ -74,12 +74,12 @@ textarea {
     outline: none;
 }
 
+/*Especificidad: 002*/
 article label {
     text-align: left;
     margin-left: 1em;
     font-size: 0.9em;
 }
-
 
 /*Especificidad: 001*/
 button {
@@ -93,7 +93,6 @@ button {
     cursor: pointer;
     transition: transform 0.3s;
 }
-    
 
 /*Especificidad: 011*/
 button:active {

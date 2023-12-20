@@ -238,7 +238,7 @@ table caption {
 /*Especifidad: 003*/
 table tr th {
 	text-align: center;
-	color: white;
+	color: black;
 	font-size: 1.3em;
 	border-radius: 5px;
 	background-color: #9BA216;

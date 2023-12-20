@@ -74,6 +74,13 @@ textarea {
     outline: none;
 }
 
+article label {
+    text-align: left;
+    margin-left: 1em;
+    font-size: 0.9em;
+}
+
+
 /*Especificidad: 001*/
 button {
     display: flex;
@@ -86,11 +93,7 @@ button {
     cursor: pointer;
     transition: transform 0.3s;
 }
-
-/*Especificidad: 011*/
-button:hover {
-    transform: scale(1.1);
-}
+    
 
 /*Especificidad: 011*/
 button:active {

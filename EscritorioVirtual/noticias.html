@@ -44,11 +44,20 @@
 		</article>
 		<article>
 			<h3>Manualmente</h3>
-			<input type="text" name="Titulo" placeholder="Titular">
-			<textarea name='Entradilla' required placeholder="Entradilla"></textarea>
-			<textarea name='Noticia' required placeholder="Texto informativo sorbe la noticia"></textarea>
-			<input type="text" name="Autor" placeholder="Autor">
+			<label for="titulo">Titulo:</label>
+			<input type="text" id="titulo" name="Titulo" placeholder="Titular">
+
+			<label for="entradilla">Entradilla:</label>
+			<textarea id="entradilla" name="Entradilla" required placeholder="Breve entrada"></textarea>
+
+			<label for="noticia">Noticia:</label>
+			<textarea id="noticia" name="Noticia" required placeholder="Texto informativo"></textarea>
+
+			<label for="autor">Autor:</label>
+			<input type="text" id="autor" name="Autor" placeholder="Firma">
+
 			<button onclick="noticias.insertarNoticialManualmente()">Añadir noticia</button>
+
 		</article>
 	</section>
 
